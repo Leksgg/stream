@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p image sonido video)",
+      "Bash(touch image/.gitkeep sonido/.gitkeep video/.gitkeep)",
+      "WebFetch(domain:streams.afuentescantillana.workers.dev)",
+      "Bash(curl -sI \"https://streams.afuentescantillana.workers.dev/txt/hola.txt\")",
+      "Bash(curl -s \"https://streams.afuentescantillana.workers.dev/txt/test.txt\" -D -)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(npx wrangler:*)"
+    ]
+  }
+}

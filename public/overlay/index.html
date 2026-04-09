@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Overlay</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: transparent;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* Container for alerts - centered bottom */
+    #alert-container {
+      position: fixed;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    /* Alert box */
+    .alert {
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+      animation: alertIn 0.4s ease forwards;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      max-width: 80vw;
+    }
+
+    .alert.out {
+      animation: alertOut 0.4s ease forwards;
+    }
+
+    .alert .sub {
+      font-size: 18px;
+      font-weight: normal;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+
+    /* Image alert */
+    .alert img {
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 8px;
+      display: block;
+      margin: 10px auto 0;
+    }
+
+    /* Video alert */
+    .alert video {
+      max-width: 400px;
+      max-height: 300px;
+      border-radius: 8px;
+      display: block;
+      margin: 10px auto 0;
+    }
+
+    @keyframes alertIn {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes alertOut {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+    }
+
+    /* Connection status indicator */
+    #status {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e74c3c;
+      transition: background 0.3s;
+    }
+
+    #status.connected {
+      background: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+  <div id="status"></div>
+  <div id="alert-container"></div>
+
+  <script>
+    const WS_URL = new URLSearchParams(location.search).get('ws') || 'wss://leksimus-ws.onrender.com';
+    const WORKER_BASE = location.origin; // same Cloudflare Worker for assets
+    const DEFAULT_DURATION = 5000;
+
+    let ws;
+    let reconnectDelay = 1000;
+
+    // --- WebSocket connection ---
+    function connect() {
+      ws = new WebSocket(WS_URL);
+
+      ws.onopen = () => {
+        console.log('[overlay] connected');
+        document.getElementById('status').classList.add('connected');
+        reconnectDelay = 1000;
+      };
+
+      ws.onclose = () => {
+        console.log('[overlay] disconnected, reconnecting in', reconnectDelay, 'ms');
+        document.getElementById('status').classList.remove('connected');
+        setTimeout(connect, reconnectDelay);
+        reconnectDelay = Math.min(reconnectDelay * 2, 30000);
+      };
+
+      ws.onerror = (err) => {
+        console.error('[overlay] ws error', err);
+        ws.close();
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          handleEvent(data);
+        } catch (e) {
+          console.warn('[overlay] invalid message', event.data);
+        }
+      };
+    }
+
+    // --- Event handler ---
+    function handleEvent(data) {
+      // Expected format:
+      // { type: "alert", text: "...", sub: "...", duration: 5000 }
+      // { type: "image", src: "/image/foto.png", text: "...", duration: 5000 }
+      // { type: "video", src: "/video/clip.mp4", duration: 8000 }
+      // { type: "sound", src: "/sonido/alert.mp3" }
+
+      switch (data.type) {
+        case 'alert':
+          showAlert({ text: data.text, sub: data.sub, duration: data.duration });
+          break;
+
+        case 'image':
+          showAlert({ text: data.text, imageSrc: assetUrl(data.src), duration: data.duration });
+          break;
+
+        case 'video':
+          showVideo(assetUrl(data.src), data.text, data.duration);
+          break;
+
+        case 'sound':
+          playSound(assetUrl(data.src));
+          break;
+
+        default:
+          console.log('[overlay] unknown event type:', data.type);
+      }
+    }
+
+    // --- Resolve asset URL ---
+    function assetUrl(src) {
+      if (!src) return '';
+      if (src.startsWith('http')) return src;
+      return WORKER_BASE + src;
+    }
+
+    // --- Show text/image alert ---
+    function showAlert({ text, sub, imageSrc, duration }) {
+      const container = document.getElementById('alert-container');
+      const el = document.createElement('div');
+      el.className = 'alert';
+
+      if (text) el.innerHTML = text;
+      if (sub) el.innerHTML += `<div class="sub">${sub}</div>`;
+      if (imageSrc) {
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        el.appendChild(img);
+      }
+
+      container.appendChild(el);
+
+      // Play sound if provided
+      if (arguments[0].sound) {
+        playSound(assetUrl(arguments[0].sound));
+      }
+
+      const d = duration || DEFAULT_DURATION;
+      setTimeout(() => {
+        el.classList.add('out');
+        el.addEventListener('animationend', () => el.remove());
+      }, d);
+    }
+
+    // --- Show video alert ---
+    function showVideo(src, text, duration) {
+      const container = document.getElementById('alert-container');
+      const el = document.createElement('div');
+      el.className = 'alert';
+
+      if (text) el.innerHTML = text;
+
+      const video = document.createElement('video');
+      video.src = src;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.onended = () => {
+        el.classList.add('out');
+        el.addEventListener('animationend', () => el.remove());
+      };
+      el.appendChild(video);
+
+      container.appendChild(el);
+
+      // Fallback removal if video doesn't end
+      const d = duration || 15000;
+      setTimeout(() => {
+        if (el.parentNode) {
+          el.classList.add('out');
+          el.addEventListener('animationend', () => el.remove());
+        }
+      }, d);
+    }
+
+    // --- Play sound ---
+    function playSound(src) {
+      const audio = new Audio(src);
+      audio.play().catch(e => console.warn('[overlay] audio blocked:', e));
+    }
+
+    // --- Start ---
+    connect();
+  </script>
+</body>
+</html>
