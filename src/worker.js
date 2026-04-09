@@ -2,19 +2,23 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const params = url.searchParams;
+    const isTxt = url.pathname.endsWith('.txt');
 
-    // If no query params or not a .txt file, serve static asset as-is
-    if (!url.pathname.endsWith('.txt') || params.toString() === '') {
+    // If not a .txt file, serve static asset as-is
+    if (!isTxt) {
       return env.ASSETS.fetch(request);
     }
 
-    // Fetch the raw file from assets
-    const assetResponse = await env.ASSETS.fetch(new Request(url.origin + url.pathname));
+    // If .txt with no query params, return 1 random line by default
+    // Fetch the raw file from assets (clean URL without query params)
+    const cleanUrl = new URL(url.pathname, url.origin);
+    const assetResponse = await env.ASSETS.fetch(cleanUrl.toString());
     if (!assetResponse.ok) {
-      return new Response('File not found', { status: 404, headers: corsHeaders() });
+      return new Response('File not found', { status: 404, headers: corsHeaders('text/plain; charset=utf-8') });
     }
 
-    const text = await assetResponse.text();
+    const buffer = await assetResponse.arrayBuffer();
+    const text = new TextDecoder('utf-8').decode(buffer);
     const lines = text.split('\n').filter(line => line.trim() !== '');
 
     let result;
@@ -56,10 +60,9 @@ export default {
 };
 
 function corsHeaders(contentType) {
-  const headers = {
+  return {
     'Access-Control-Allow-Origin': '*',
+    'Content-Type': contentType,
     'Cache-Control': 'no-cache',
   };
-  if (contentType) headers['Content-Type'] = contentType;
-  return headers;
 }
