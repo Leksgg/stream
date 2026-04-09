@@ -28,9 +28,11 @@ export default {
       result = lines.join('\n');
 
     } else if (params.has('find')) {
-      // ?find=keyword → líneas que contengan el texto
+      // ?find=keyword → busca en la línea, devuelve solo la parte después de |
       const keyword = params.get('find').toLowerCase();
-      const matches = lines.filter(line => line.toLowerCase().includes(keyword));
+      const matches = lines
+        .filter(line => line.toLowerCase().includes(keyword))
+        .map(line => line.includes('|') ? line.split('|').slice(1).join('|').trim() : line);
       result = matches.length > 0 ? matches.join('\n') : 'No results found';
 
     } else if (params.has('line')) {
