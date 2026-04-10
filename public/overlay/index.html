@@ -105,9 +105,17 @@
   <div id="alert-container"></div>
 
   <script>
-    const WS_URL = new URLSearchParams(location.search).get('ws') || 'wss://leksimus-ws.onrender.com';
+    const params = new URLSearchParams(location.search);
+    const ROOM = params.get('room') || params.get('streamer'); // streamer identifier
+    const DEFAULT_WS = 'wss://leksimus-ws.onrender.com/overlay';
+    // Si pasas ?ws=... puedes sobrescribir; si no, se añade el room como query al default.
+    const WS_URL = params.get('ws') || (ROOM ? `${DEFAULT_WS}?room=${encodeURIComponent(ROOM)}` : DEFAULT_WS);
     const WORKER_BASE = location.origin; // same Cloudflare Worker for assets
     const DEFAULT_DURATION = 5000;
+
+    if (!ROOM) {
+      console.warn('[overlay] no room specified — add ?room=tu_nombre to the URL');
+    }
 
     let ws;
     let reconnectDelay = 1000;
@@ -117,9 +125,14 @@
       ws = new WebSocket(WS_URL);
 
       ws.onopen = () => {
-        console.log('[overlay] connected');
+        console.log('[overlay] connected, subscribing to room:', ROOM);
         document.getElementById('status').classList.add('connected');
         reconnectDelay = 1000;
+
+        // Subscribe to this streamer's room
+        if (ROOM) {
+          ws.send(JSON.stringify({ type: 'subscribe', room: ROOM }));
+        }
       };
 
       ws.onclose = () => {
