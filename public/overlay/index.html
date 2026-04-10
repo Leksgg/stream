@@ -16,6 +16,22 @@
       color: #fff;
     }
 
+    /* Fullscreen clip host sits behind the 3x3 grid so that
+       positioned items (alerts, !so clips) always appear on top. */
+    #fullscreen-host {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #fullscreen-host video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: transparent;
+    }
+
     /* 3x3 grid covering the whole viewport.
        Each cell is a positioning slot (1..9) for overlay media. */
     #grid {
@@ -25,6 +41,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       pointer-events: none;
+      z-index: 10;
     }
 
     .slot {
@@ -56,8 +73,8 @@
       animation: itemOut 0.35s ease forwards;
     }
 
-    .item img,
-    .item video {
+    #grid .item img,
+    #grid .item video {
       display: block;
       max-width: 30vw;
       max-height: 30vh;
@@ -114,6 +131,7 @@
 </head>
 <body>
   <div id="status"></div>
+  <div id="fullscreen-host"></div>
   <div id="grid">
     <div class="slot" data-pos="1"></div>
     <div class="slot" data-pos="2"></div>
@@ -179,9 +197,10 @@
     function handleEvent(data) {
       // Expected payloads (duration is in SECONDS from the bot):
       //   { type: 'alert', text, sub, duration, position }
-      //   { type: 'image', src, position, duration, loop }
-      //   { type: 'video', src, position, duration, loop }
+      //   { type: 'image', src, position, duration, loop, width, height }
+      //   { type: 'video', src, position, duration, loop, width, height, volume }
       //   { type: 'sound', src, duration }
+      //   { type: 'fullscreen_clip', src, volume }
       switch (data.type) {
         case 'alert':
           showAlert(data);
@@ -195,8 +214,31 @@
         case 'sound':
           playSound(data);
           break;
+        case 'fullscreen_clip':
+          showFullscreenClip(data);
+          break;
         default:
           console.log('[overlay] unknown event type:', data.type);
+      }
+    }
+
+    const DIMENSION_REGEX = /^\d+(\.\d+)?(px|vw|vh|%|em|rem)$/i;
+    function sanitizeDimension(value) {
+      if (typeof value !== 'string') return '';
+      const trimmed = value.trim().toLowerCase();
+      return DIMENSION_REGEX.test(trimmed) ? trimmed : '';
+    }
+
+    function applyDimensions(element, data) {
+      const width = sanitizeDimension(data?.width);
+      const height = sanitizeDimension(data?.height);
+      if (width) {
+        element.style.width = width;
+        element.style.maxWidth = 'none';
+      }
+      if (height) {
+        element.style.height = height;
+        element.style.maxHeight = 'none';
       }
     }
 
@@ -249,7 +291,16 @@
       const img = document.createElement('img');
       img.src = assetUrl(data.src);
       img.alt = '';
+      applyDimensions(img, data);
       mountItem(slot, img, resolveDurationMs(data.duration));
+    }
+
+    function mountItemUntilEnded(slot, content) {
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.appendChild(content);
+      slot.appendChild(item);
+      return item;
     }
 
     function showVideo(data) {
@@ -259,20 +310,71 @@
       video.autoplay = true;
       video.playsInline = true;
       video.loop = Boolean(data.loop);
-      video.volume = 1.0;
+      video.volume = Number.isFinite(data.volume) ? Math.max(0, Math.min(1, data.volume)) : 1.0;
       video.muted = false;
+      applyDimensions(video, data);
 
-      const durationMs = resolveDurationMs(data.duration);
-      const item = mountItem(slot, video, durationMs);
+      // duration=0 (or missing) = play until the video ends naturally.
+      // Useful for clips whose exact length we don't know upfront.
+      const rawDuration = Number(data.duration);
+      const playNatural = !video.loop && (!Number.isFinite(rawDuration) || rawDuration <= 0);
 
-      // If not looping, also remove as soon as the video ends naturally.
+      let item;
+      if (playNatural) {
+        item = mountItemUntilEnded(slot, video);
+      } else {
+        item = mountItem(slot, video, resolveDurationMs(data.duration));
+      }
+
       if (!video.loop) {
-        video.onended = () => {
+        const closeNow = () => {
           if (!item.isConnected) return;
           item.classList.add('out');
           item.addEventListener('animationend', () => item.remove(), { once: true });
         };
+        video.onended = closeNow;
+        video.onerror = closeNow;
       }
+    }
+
+    let fullscreenCurrent = null;
+    function showFullscreenClip(data) {
+      const host = document.getElementById('fullscreen-host');
+      if (!host) return;
+
+      // Replace any currently-playing fullscreen clip.
+      if (fullscreenCurrent && fullscreenCurrent.isConnected) {
+        try { fullscreenCurrent.querySelector('video')?.pause(); } catch (_) {}
+        fullscreenCurrent.remove();
+        fullscreenCurrent = null;
+      }
+
+      const video = document.createElement('video');
+      video.src = assetUrl(data.src);
+      video.autoplay = true;
+      video.playsInline = true;
+      video.loop = false;
+      video.volume = Number.isFinite(data.volume) ? Math.max(0, Math.min(1, data.volume)) : 1.0;
+      video.muted = false;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'item';
+      wrapper.style.width = '100%';
+      wrapper.style.height = '100%';
+      wrapper.appendChild(video);
+      host.appendChild(wrapper);
+      fullscreenCurrent = wrapper;
+
+      const closeNow = () => {
+        if (!wrapper.isConnected) return;
+        wrapper.classList.add('out');
+        wrapper.addEventListener('animationend', () => {
+          wrapper.remove();
+          if (fullscreenCurrent === wrapper) fullscreenCurrent = null;
+        }, { once: true });
+      };
+      video.onended = closeNow;
+      video.onerror = closeNow;
     }
 
     function playSound(data) {
