@@ -7,7 +7,13 @@
       "Bash(curl -sI \"https://streams.afuentescantillana.workers.dev/txt/hola.txt\")",
       "Bash(curl -s \"https://streams.afuentescantillana.workers.dev/txt/test.txt\" -D -)",
       "WebFetch(domain:developers.cloudflare.com)",
-      "Bash(npx wrangler:*)"
+      "Bash(npx wrangler:*)",
+      "Read(//d/Proyectos/Leksimus/**)"
+    ],
+    "additionalDirectories": [
+      "d:\\Proyectos\\Leksimus\\src\\server",
+      "d:\\Proyectos\\Leksimus\\src\\utils",
+      "d:\\Proyectos\\Leksimus"
     ]
   }
 }
