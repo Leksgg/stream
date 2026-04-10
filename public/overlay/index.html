@@ -7,80 +7,91 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
+    html, body {
       background: transparent;
       overflow: hidden;
       width: 100vw;
       height: 100vh;
       font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
     }
 
-    /* Container for alerts - centered bottom */
-    #alert-container {
+    /* 3x3 grid covering the whole viewport.
+       Each cell is a positioning slot (1..9) for overlay media. */
+    #grid {
       position: fixed;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
       pointer-events: none;
     }
 
-    /* Alert box */
-    .alert {
+    .slot {
+      position: relative;
+      display: flex;
+      padding: 24px;
+    }
+
+    /* Slots 1..9 correspond to the 3x3 layout, left→right, top→bottom.
+       Text anchors to the nearest corner/edge of the slot. */
+    .slot[data-pos="1"] { align-items: flex-start;   justify-content: flex-start; }
+    .slot[data-pos="2"] { align-items: flex-start;   justify-content: center;     }
+    .slot[data-pos="3"] { align-items: flex-start;   justify-content: flex-end;   }
+    .slot[data-pos="4"] { align-items: center;       justify-content: flex-start; }
+    .slot[data-pos="5"] { align-items: center;       justify-content: center;     }
+    .slot[data-pos="6"] { align-items: center;       justify-content: flex-end;   }
+    .slot[data-pos="7"] { align-items: flex-end;     justify-content: flex-start; }
+    .slot[data-pos="8"] { align-items: flex-end;     justify-content: center;     }
+    .slot[data-pos="9"] { align-items: flex-end;     justify-content: flex-end;   }
+
+    .item {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      animation: itemIn 0.35s ease forwards;
+      pointer-events: none;
+    }
+
+    .item.out {
+      animation: itemOut 0.35s ease forwards;
+    }
+
+    .item img,
+    .item video {
+      display: block;
+      max-width: 30vw;
+      max-height: 30vh;
+      border-radius: 8px;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Text alert box (only used by 'alert' events) */
+    .alert-box {
       background: rgba(0, 0, 0, 0.85);
-      color: #fff;
       padding: 20px 40px;
       border-radius: 12px;
       font-size: 28px;
       font-weight: bold;
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px) scale(0.9);
-      animation: alertIn 0.4s ease forwards;
       border: 2px solid rgba(255, 255, 255, 0.15);
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       max-width: 80vw;
     }
 
-    .alert.out {
-      animation: alertOut 0.4s ease forwards;
-    }
-
-    .alert .sub {
+    .alert-box .sub {
       font-size: 18px;
       font-weight: normal;
       opacity: 0.8;
       margin-top: 6px;
     }
 
-    /* Image alert */
-    .alert img {
-      max-width: 300px;
-      max-height: 300px;
-      border-radius: 8px;
-      display: block;
-      margin: 10px auto 0;
-    }
-
-    /* Video alert */
-    .alert video {
-      max-width: 400px;
-      max-height: 300px;
-      border-radius: 8px;
-      display: block;
-      margin: 10px auto 0;
-    }
-
-    @keyframes alertIn {
+    @keyframes itemIn {
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    @keyframes alertOut {
+    @keyframes itemOut {
       from { opacity: 1; transform: translateY(0) scale(1); }
-      to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+      to   { opacity: 0; transform: translateY(-10px) scale(0.95); }
     }
 
     /* Connection status indicator */
@@ -93,6 +104,7 @@
       border-radius: 50%;
       background: #e74c3c;
       transition: background 0.3s;
+      z-index: 9999;
     }
 
     #status.connected {
@@ -102,25 +114,35 @@
 </head>
 <body>
   <div id="status"></div>
-  <div id="alert-container"></div>
+  <div id="grid">
+    <div class="slot" data-pos="1"></div>
+    <div class="slot" data-pos="2"></div>
+    <div class="slot" data-pos="3"></div>
+    <div class="slot" data-pos="4"></div>
+    <div class="slot" data-pos="5"></div>
+    <div class="slot" data-pos="6"></div>
+    <div class="slot" data-pos="7"></div>
+    <div class="slot" data-pos="8"></div>
+    <div class="slot" data-pos="9"></div>
+  </div>
 
   <script>
     const params = new URLSearchParams(location.search);
-    const ROOM = params.get('room') || params.get('streamer'); // streamer identifier
+    const ROOM = params.get('room') || params.get('streamer');
     const DEFAULT_WS = 'wss://leksimus-ws.onrender.com/overlay';
-    // Si pasas ?ws=... puedes sobrescribir; si no, se añade el room como query al default.
     const WS_URL = params.get('ws') || (ROOM ? `${DEFAULT_WS}?room=${encodeURIComponent(ROOM)}` : DEFAULT_WS);
-    const WORKER_BASE = location.origin; // same Cloudflare Worker for assets
-    const DEFAULT_DURATION = 5000;
+    const WORKER_BASE = location.origin;
+    const DEFAULT_DURATION_MS = 5000;
+    const MIN_DURATION_MS = 1000;
+    const MAX_DURATION_MS = 600000;
 
     if (!ROOM) {
-      console.warn('[overlay] no room specified — add ?room=tu_nombre to the URL');
+      console.warn('[overlay] no room specified — add ?room=<token> to the URL');
     }
 
     let ws;
     let reconnectDelay = 1000;
 
-    // --- WebSocket connection ---
     function connect() {
       ws = new WebSocket(WS_URL);
 
@@ -128,8 +150,6 @@
         console.log('[overlay] connected, subscribing to room:', ROOM);
         document.getElementById('status').classList.add('connected');
         reconnectDelay = 1000;
-
-        // Subscribe to this streamer's room
         if (ROOM) {
           ws.send(JSON.stringify({ type: 'subscribe', room: ROOM }));
         }
@@ -149,116 +169,126 @@
 
       ws.onmessage = (event) => {
         try {
-          const data = JSON.parse(event.data);
-          handleEvent(data);
+          handleEvent(JSON.parse(event.data));
         } catch (e) {
           console.warn('[overlay] invalid message', event.data);
         }
       };
     }
 
-    // --- Event handler ---
     function handleEvent(data) {
-      // Expected format:
-      // { type: "alert", text: "...", sub: "...", duration: 5000 }
-      // { type: "image", src: "/image/foto.png", text: "...", duration: 5000 }
-      // { type: "video", src: "/video/clip.mp4", duration: 8000 }
-      // { type: "sound", src: "/sonido/alert.mp3" }
-
+      // Expected payloads (duration is in SECONDS from the bot):
+      //   { type: 'alert', text, sub, duration, position }
+      //   { type: 'image', src, position, duration, loop }
+      //   { type: 'video', src, position, duration, loop }
+      //   { type: 'sound', src, duration }
       switch (data.type) {
         case 'alert':
-          showAlert({ text: data.text, sub: data.sub, duration: data.duration });
+          showAlert(data);
           break;
-
         case 'image':
-          showAlert({ text: data.text, imageSrc: assetUrl(data.src), duration: data.duration });
+          showImage(data);
           break;
-
         case 'video':
-          showVideo(assetUrl(data.src), data.text, data.duration);
+          showVideo(data);
           break;
-
         case 'sound':
-          playSound(assetUrl(data.src));
+          playSound(data);
           break;
-
         default:
           console.log('[overlay] unknown event type:', data.type);
       }
     }
 
-    // --- Resolve asset URL ---
     function assetUrl(src) {
       if (!src) return '';
-      if (src.startsWith('http')) return src;
-      return WORKER_BASE + src;
+      if (/^https?:\/\//i.test(src)) return src;
+      return WORKER_BASE + (src.startsWith('/') ? src : `/${src}`);
     }
 
-    // --- Show text/image alert ---
-    function showAlert({ text, sub, imageSrc, duration }) {
-      const container = document.getElementById('alert-container');
-      const el = document.createElement('div');
-      el.className = 'alert';
+    function resolveDurationMs(rawDurationSecs, fallbackMs = DEFAULT_DURATION_MS) {
+      const secs = Number(rawDurationSecs);
+      if (!Number.isFinite(secs) || secs <= 0) return fallbackMs;
+      const ms = Math.round(secs * 1000);
+      return Math.max(MIN_DURATION_MS, Math.min(MAX_DURATION_MS, ms));
+    }
 
-      if (text) el.innerHTML = text;
-      if (sub) el.innerHTML += `<div class="sub">${sub}</div>`;
-      if (imageSrc) {
-        const img = document.createElement('img');
-        img.src = imageSrc;
-        el.appendChild(img);
+    function resolveSlot(position) {
+      const pos = Number(position);
+      if (!Number.isInteger(pos) || pos < 1 || pos > 9) {
+        return document.querySelector('.slot[data-pos="5"]');
       }
+      return document.querySelector(`.slot[data-pos="${pos}"]`);
+    }
 
-      container.appendChild(el);
+    function mountItem(slot, content, durationMs) {
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.appendChild(content);
+      slot.appendChild(item);
 
-      // Play sound if provided
-      if (arguments[0].sound) {
-        playSound(assetUrl(arguments[0].sound));
-      }
-
-      const d = duration || DEFAULT_DURATION;
       setTimeout(() => {
-        el.classList.add('out');
-        el.addEventListener('animationend', () => el.remove());
-      }, d);
+        item.classList.add('out');
+        item.addEventListener('animationend', () => item.remove(), { once: true });
+      }, durationMs);
+
+      return item;
     }
 
-    // --- Show video alert ---
-    function showVideo(src, text, duration) {
-      const container = document.getElementById('alert-container');
-      const el = document.createElement('div');
-      el.className = 'alert';
+    function showAlert(data) {
+      const slot = resolveSlot(data.position);
+      const box = document.createElement('div');
+      box.className = 'alert-box';
+      if (data.text) box.innerHTML = data.text;
+      if (data.sub) box.innerHTML += `<div class="sub">${data.sub}</div>`;
+      mountItem(slot, box, resolveDurationMs(data.duration));
+    }
 
-      if (text) el.innerHTML = text;
+    function showImage(data) {
+      const slot = resolveSlot(data.position);
+      const img = document.createElement('img');
+      img.src = assetUrl(data.src);
+      img.alt = '';
+      mountItem(slot, img, resolveDurationMs(data.duration));
+    }
 
+    function showVideo(data) {
+      const slot = resolveSlot(data.position);
       const video = document.createElement('video');
-      video.src = src;
+      video.src = assetUrl(data.src);
       video.autoplay = true;
       video.playsInline = true;
-      video.onended = () => {
-        el.classList.add('out');
-        el.addEventListener('animationend', () => el.remove());
-      };
-      el.appendChild(video);
+      video.loop = Boolean(data.loop);
+      video.volume = 1.0;
+      video.muted = false;
 
-      container.appendChild(el);
+      const durationMs = resolveDurationMs(data.duration);
+      const item = mountItem(slot, video, durationMs);
 
-      // Fallback removal if video doesn't end
-      const d = duration || 15000;
-      setTimeout(() => {
-        if (el.parentNode) {
-          el.classList.add('out');
-          el.addEventListener('animationend', () => el.remove());
-        }
-      }, d);
+      // If not looping, also remove as soon as the video ends naturally.
+      if (!video.loop) {
+        video.onended = () => {
+          if (!item.isConnected) return;
+          item.classList.add('out');
+          item.addEventListener('animationend', () => item.remove(), { once: true });
+        };
+      }
     }
 
-    // --- Play sound ---
-    function playSound(src) {
-      const audio = new Audio(src);
-      audio.play().catch(e => console.warn('[overlay] audio blocked:', e));
+    function playSound(data) {
+      const audio = new Audio(assetUrl(data.src));
+      audio.volume = 1.0;
+      audio.muted = false;
+      audio.play().catch((e) => console.warn('[overlay] audio blocked:', e));
+
+      const durationMs = resolveDurationMs(data.duration, 0);
+      if (durationMs > 0) {
+        setTimeout(() => {
+          try { audio.pause(); audio.currentTime = 0; } catch (_) {}
+        }, durationMs);
+      }
     }
 
-    // --- Start ---
     connect();
   </script>
 </body>
