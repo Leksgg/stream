@@ -261,6 +261,30 @@
       return Math.max(MIN_DURATION_MS, Math.min(MAX_DURATION_MS, ms));
     }
 
+    function resolveVolume(rawVolume, fallback = 1.0) {
+      const volume = Number(rawVolume);
+      if (!Number.isFinite(volume)) return fallback;
+      return Math.max(0, Math.min(1, volume));
+    }
+
+    function attemptMediaPlay(media, label, options = {}) {
+      const allowMutedFallback = options.allowMutedFallback !== false;
+      const playPromise = media.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch((err) => {
+          if (!allowMutedFallback) {
+            console.warn(`[overlay] ${label}.play() failed:`, err?.message || err);
+            return;
+          }
+          console.warn(`[overlay] ${label}.play() rejected, retrying muted:`, err?.message || err);
+          media.muted = true;
+          media.play().catch((err2) => {
+            console.warn(`[overlay] ${label}.play() still failing muted:`, err2?.message || err2);
+          });
+        });
+      }
+    }
+
     function resolveSlot(position) {
       const pos = Number(position);
       if (!Number.isInteger(pos) || pos < 1 || pos > 9) {
@@ -313,10 +337,11 @@
       const slot = resolveSlot(data.position);
       const video = document.createElement('video');
       video.src = assetUrl(data.src);
+      video.preload = 'auto';
       video.autoplay = true;
       video.playsInline = true;
       video.loop = Boolean(data.loop);
-      video.volume = Number.isFinite(data.volume) ? Math.max(0, Math.min(1, data.volume)) : 1.0;
+      video.volume = resolveVolume(data.volume);
       video.muted = false;
       applyDimensions(video, data);
 
@@ -341,19 +366,7 @@
         console.log('[overlay] video canplay');
       });
 
-      const tryPlay = () => {
-        const p = video.play();
-        if (p && typeof p.catch === 'function') {
-          p.catch((err) => {
-            console.warn('[overlay] video.play() rejected, retrying muted:', err?.message || err);
-            video.muted = true;
-            video.play().catch((err2) => {
-              console.warn('[overlay] video.play() still failing muted:', err2?.message || err2);
-            });
-          });
-        }
-      };
-      tryPlay();
+      attemptMediaPlay(video, 'video');
 
       if (!video.loop) {
         const closeNow = (reason) => {
@@ -371,24 +384,61 @@
       }
     }
 
+    const MAX_FULLSCREEN_CLIP_QUEUE = 5;
+    const fullscreenClipQueue = [];
     let fullscreenCurrent = null;
-    function showFullscreenClip(data) {
-      const host = document.getElementById('fullscreen-host');
-      if (!host) return;
+    let fullscreenProcessing = false;
 
-      // Replace any currently-playing fullscreen clip.
-      if (fullscreenCurrent && fullscreenCurrent.isConnected) {
-        try { fullscreenCurrent.querySelector('video')?.pause(); } catch (_) {}
-        fullscreenCurrent.remove();
-        fullscreenCurrent = null;
+    function logFullscreenQueueState(reason, extra = {}) {
+      console.log('[overlay] fullscreen clip queue', {
+        reason,
+        current: Boolean(fullscreenCurrent),
+        pending: fullscreenClipQueue.length,
+        maxPending: MAX_FULLSCREEN_CLIP_QUEUE,
+        ...extra,
+      });
+    }
+
+    function showFullscreenClip(data) {
+      if (fullscreenClipQueue.length >= MAX_FULLSCREEN_CLIP_QUEUE) {
+        const dropped = fullscreenClipQueue.shift();
+        logFullscreenQueueState('drop-oldest-pending', {
+          droppedSrc: assetUrl(dropped?.src),
+          nextSrc: assetUrl(data?.src),
+        });
+      }
+
+      fullscreenClipQueue.push(data);
+      logFullscreenQueueState('queued', {
+        src: assetUrl(data?.src),
+      });
+      processFullscreenClipQueue();
+    }
+
+    function processFullscreenClipQueue() {
+      if (fullscreenProcessing || fullscreenCurrent || fullscreenClipQueue.length === 0) {
+        return;
+      }
+
+      fullscreenProcessing = true;
+      const data = fullscreenClipQueue.shift();
+      logFullscreenQueueState('starting', {
+        src: assetUrl(data?.src),
+      });
+      const host = document.getElementById('fullscreen-host');
+      if (!host) {
+        fullscreenProcessing = false;
+        logFullscreenQueueState('host-missing');
+        return;
       }
 
       const video = document.createElement('video');
       video.src = assetUrl(data.src);
+      video.preload = 'auto';
       video.autoplay = true;
       video.playsInline = true;
       video.loop = false;
-      video.volume = Number.isFinite(data.volume) ? Math.max(0, Math.min(1, data.volume)) : 1.0;
+      video.volume = resolveVolume(data.volume);
       video.muted = false;
 
       const wrapper = document.createElement('div');
@@ -399,23 +449,38 @@
       host.appendChild(wrapper);
       fullscreenCurrent = wrapper;
 
+      video.addEventListener('loadedmetadata', () => {
+        console.log('[overlay] fullscreen clip loadedmetadata', { src: video.src, duration: video.duration });
+      });
+      video.addEventListener('canplay', () => {
+        console.log('[overlay] fullscreen clip canplay');
+      });
+
       const closeNow = () => {
         if (!wrapper.isConnected) return;
         wrapper.classList.add('out');
         wrapper.addEventListener('animationend', () => {
           wrapper.remove();
-          if (fullscreenCurrent === wrapper) fullscreenCurrent = null;
+          if (fullscreenCurrent === wrapper) {
+            fullscreenCurrent = null;
+            fullscreenProcessing = false;
+            logFullscreenQueueState('finished', {
+              src: assetUrl(data?.src),
+            });
+            processFullscreenClipQueue();
+          }
         }, { once: true });
       };
       video.onended = closeNow;
       video.onerror = closeNow;
+      attemptMediaPlay(video, 'fullscreen clip');
     }
 
     function playSound(data) {
       const audio = new Audio(assetUrl(data.src));
-      audio.volume = 1.0;
+      audio.volume = resolveVolume(data.volume);
       audio.muted = false;
-      audio.play().catch((e) => console.warn('[overlay] audio blocked:', e));
+      attemptMediaPlay(audio, 'audio', { allowMutedFallback: false });
 
       const durationMs = resolveDurationMs(data.duration, 0);
       if (durationMs > 0) {
