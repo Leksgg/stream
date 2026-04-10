@@ -219,6 +219,10 @@
         case 'fullscreen_clip':
           showFullscreenClip(data);
           break;
+        case 'subscribed':
+          // Server ACK tras suscribirse a un room: no requiere render.
+          console.log('[overlay] subscription ACK room=', data.room);
+          break;
         default:
           console.log('[overlay] unknown event type:', data.type);
       }
