@@ -187,7 +187,9 @@
 
       ws.onmessage = (event) => {
         try {
-          handleEvent(JSON.parse(event.data));
+          const data = JSON.parse(event.data);
+          console.log('[overlay] event received', data);
+          handleEvent(data);
         } catch (e) {
           console.warn('[overlay] invalid message', event.data);
         }
@@ -319,6 +321,8 @@
       const rawDuration = Number(data.duration);
       const playNatural = !video.loop && (!Number.isFinite(rawDuration) || rawDuration <= 0);
 
+      console.log('[overlay] showVideo', { src: video.src, position: data.position, duration: rawDuration, playNatural });
+
       let item;
       if (playNatural) {
         item = mountItemUntilEnded(slot, video);
@@ -326,14 +330,40 @@
         item = mountItem(slot, video, resolveDurationMs(data.duration));
       }
 
+      video.addEventListener('loadedmetadata', () => {
+        console.log('[overlay] video loadedmetadata', { duration: video.duration, videoWidth: video.videoWidth });
+      });
+      video.addEventListener('canplay', () => {
+        console.log('[overlay] video canplay');
+      });
+
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch((err) => {
+            console.warn('[overlay] video.play() rejected, retrying muted:', err?.message || err);
+            video.muted = true;
+            video.play().catch((err2) => {
+              console.warn('[overlay] video.play() still failing muted:', err2?.message || err2);
+            });
+          });
+        }
+      };
+      tryPlay();
+
       if (!video.loop) {
-        const closeNow = () => {
+        const closeNow = (reason) => {
+          console.log('[overlay] video close', reason);
           if (!item.isConnected) return;
           item.classList.add('out');
           item.addEventListener('animationend', () => item.remove(), { once: true });
         };
-        video.onended = closeNow;
-        video.onerror = closeNow;
+        video.onended = () => closeNow('ended');
+        video.onerror = (e) => {
+          const err = video.error;
+          console.warn('[overlay] video error', err && { code: err.code, message: err.message });
+          closeNow('error');
+        };
       }
     }
 
