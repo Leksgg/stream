@@ -1,170 +1,226 @@
-amanodescubierta | A Mano Descubierta: (genérica)
-abandonadoatusuerte | Abandonado A Tu Suerte: (William "Bill" Overbeck)
-adrenalina | Adrenalina: (Meg Thomas)
-agilidad | Agilidad: (Feng Min)
-alerta | Alerta: (Feng Min)
-arrebato | Arrebato: (Kate Denson)
-asenlamanga | As En La Manga: (Ace Visconti)
-autoconservacion | Autoconservación: (Yun-Jin Lee)
-autocuracion | Autocuración: (Claudette Morel)
-autodidacta | Autodidacta: (Adam Francis)
-bailaconmigo | Baila Conmigo: (Kate Denson)
-bajovigilancia | Bajo Vigilancia: (Detective Tapp)
-bendicioncirculodecuracion | Bendición: Círculo De Curación: (Mikaela Reid)
-bendicionexponencial | Bendición: Exponencial: (Jonah Vasquez)
-bendicioniluminacion | Bendición: Iluminación: (Alan Wake)
-bendicionpasosombrio | Bendición: Paso Sombrío: (Mikaela Reid)
-bendicionteoriaoscura | Bendición: Teoría Oscura: (Yoichi Asakawa)
-bulo | Bulo: (Zarina Kassir)
-buscador | Buscador: (Gabriel Soma)
-camaderia | Camaradería: (Steve Harrington)
-campeondelaluz | Campeón De La Luz: (Alan Wake)
-canguro | Canguro: (Steve Harrington)
-carneresbaladiza | Carne Resbaladiza: (genérica)
-cazamenor | Caza Menor: (genérica)
-caidaequilibrada | Caída Equilibrada: (Nea Karlsson)
-clarividencia | Clarividencia: (Mikaela Reid)
-companerodeescena | Compañero De Escena: (Nicolas Cage)
-concalle | Con Calle: (Nea Karlsson)
-concentracioninterna | Concentración Interna: (Haddie Kaur)
-conexionempatica | Conexión Empática: (Yoichi Asakawa)
-conocimientosdebotanica | Conocimientos De Botánica: (Claudette Morel)
-consejopaterno | Consejo Paterno: (Yoichi Asakawa)
-construccionduradera | Construcción Duradera: (Felix Richter)
-contrafuerza | Contrafuerza: (Jill Valentine)
-corazonada | Corazonada: (Detective Tapp)
-cuesteloquecueste | Cueste Lo Que Cueste: (Yui Kimura)
-curacionreactiva | Curación Reactiva: (Ada Wong)
-defrente | De Frente: (Jane Romero)
-depiesligeros | De Pies Ligeros: (genérica)
-detripascorazon | De Tripas Corazón: (Leon S. Kennedy)
-demuestraloquevales | Demuestra Lo Que Vales: (Dwight Fairfield)
-desatame | Desátame: (Thalita Lyra)
-distorsion | Distorsión: (Jeff Johansen)
-distraccion | Distracción: (Adam Francis)
-dramaturgia | Dramaturgia: (Nicolas Cage)
-dejavu | Déjà Vu: (genérica)
-eltempledelhombre | El Temple Del Hombre: (Ashley J. Williams)
-empatia | Empatía: (Claudette Morel)
-energiapotencial | Energía Potencial: (Vittorio Toscano)
-engano | Engaño: (Élodie Rakoto)
-escalofrios | Escalofríos: (genérica)
-esperanza | Esperanza: (genérica)
-esprint | Esprint: (Meg Thomas)
-espiritucalmado | Espíritu Calmado: (Jake Park)
-espiritudenovato | Espíritu De Novato: (Leon S. Kennedy)
-estonopuedeestarpasando | Esto No Puede Estar Pasando: (genérica)
-estrelladelasuerte | Estrella De La Suerte: (Ellen Ripley)
-evaluacion | Evaluación: (Élodie Rakoto)
-evasionurbana | Evasión Urbana: (Nea Karlsson)
-extraoficial | Extraoficial: (Zarina Kassir)
-fajador | Fajador: (David King)
-familia | Familia: (genérica)
-farmacia | Farmacia: (Quentin Smith)
-fechalimite | Fecha Límite: (Alan Wake)
-fijacion | Fijación: (Nancy Wheeler)
-fuerzainterior | Fuerza Interior: (Nancy Wheeler)
-fuga | Fuga: (Yui Kimura)
-giroargumental | Giro Argumental: (Nicolas Cage)
-golpedesuerte | Golpe De Suerte: (Yui Kimura)
-golpedecisivo | Golpe Decisivo: (Laurie Strode)
-granadaaturdidora | Granada Aturdidora: (Leon S. Kennedy)
-hastaotra | Hasta Otra: (Ashley J. Williams)
-hechoparaesto | Hecho Para Esto: (Gabriel Soma)
-hiperconcentracion | Hiperconcentración: (Rebecca Chambers)
-inquebrantable | Inquebrantable: (William "Bill" Overbeck)
-instintodesaqueador | Instinto De Saqueador: (genérica)
-interceptor | Interceptor: (Ada Wong)
-jugadorsecundario | Jugador Secundario: (Renato Lyra)
-liberacion | Liberación: (Adam Francis)
-ligeradepies | Ligera De Pies: (Ellen Ripley)
-loconseguiremos | Lo Conseguiremos: (genérica)
-luchaintensa | Lucha Intensa: (Élodie Rakoto)
-lider | Líder: (Dwight Fairfield)
-manifestacionresidual | Manifestación Residual: (Haddie Kaur)
-melapela | Me La Pela: (David King)
-medidacorrectiva | Medida Correctiva: (Jonah Vasquez)
-medidasdesesperadas | Medidas Desesperadas: (Felix Richter)
-mejorjuntos | Mejor Juntos: (Nancy Wheeler)
-mejorquenuevo | Mejor Que Nuevo: (Rebecca Chambers)
-minaexplosiva | Mina Explosiva: (Jill Valentine)
-nadiesequedaatras | Nadie Se Queda Atrás: (genérica)
-neblinoso | Neblinoso: (Vittorio Toscano)
-objetodeobsesion | Objeto De Obsesión: (Laurie Strode)
-oportunidades | Oportunidades: (Kate Denson)
-pactodesangre | Pacto De Sangre: (Cheryl Mason)
-pasion | Pasión: (Haddie Kaur)
-percepcionoscura | Percepción Oscura: (genérica)
-perfilbajo | Perfil Bajo: (Ada Wong)
-periciatecnica | Pericia Técnica: (Feng Min)
-porlosdemas | Por Los Demás: (Zarina Kassir)
-postramiento | Postramiento: (Jeff Johansen)
-premonicion | Premonición: (genérica)
-primeralinea | Primera Línea: (Yun-Jin Lee)
-reafirmacion | Reafirmación: (Rebecca Chambers)
-resiliencia | Resiliencia: (genérica)
-resurgimiento | Resurgimiento: (Jill Valentine)
-rivalidadamistosa | Rivalidad Amistosa: (Thalita Lyra)
-ruptura | Ruptura: (Jeff Johansen)
-sabotear | Sabotear: (Jake Park)
-salvaguardadealma | Salvaguarda De Alma: (Cheryl Mason)
-segundoaliento | Segundo Aliento: (Steve Harrington)
-serenidad | Serenidad: (Jane Romero)
-sobreponerse | Sobreponerse: (Jonah Vasquez)
-solidaridad | Solidaridad: (Jane Romero)
-soloquedoyo | Solo Quedo Yo: (Laurie Strode)
-solucionadordeproblemas | Solucionador De Problemas: (Gabriel Soma)
-subirlasapuestas | Subir Las Apuestas: (Ace Visconti)
-sujetate | Sujétate: (Ashley J. Williams)
-supresuondealianza | Supresión De Alianza: (Cheryl Mason)
-tenacidad | Tenacidad: (Detective Tapp)
-tiempoprestado | Tiempo Prestado: (William "Bill" Overbeck)
-torrentedesangre | Torrente De Sangre: (Renato Lyra)
-trabajoenequipopoderdual | Trabajo En Equipo: Poder Dual: (Thalita Lyra)
-trabajoenequiposigilocolectivo | Trabajo En Equipo: Sigilo Colectivo: (Renato Lyra)
-trampaquimica | Trampa Química: (Ellen Ripley)
-tacticaveloz | Táctica Veloz: (Vittorio Toscano)
-vamosavivirparasiempre | Vamos A Vivir Para Siempre: (David King)
-velocidadsilenciosa | Velocidad Silenciosa: (Meg Thomas)
-vigilia | Vigilia: (Quentin Smith)
-visiondefuturo | Visión De Futuro: (Felix Richter)
-voluntaddehierro | Voluntad De Hierro: (Jake Park)
-vinculo | Vínculo: (Dwight Fairfield)
-despierta | Despierta: (Quentin Smith)
-exitoaplastante | Éxito Aplastante: (Yun-Jin Lee)
-invocacionaranastejedoras | Invocación: Arañas Tejedoras: (Sable Ward)
-fuerzaenlassombras | Fuerza En Las Sombras: (Sable Ward)
-embrujada | Embrujada: (Sable Ward)
-espejismo | Espejismo: (Aestri y Baermar)
-inspiracionbardica | Inspiración Bárdica: (Aestri y Baermar)
-visionestatica | Visión Estática: (Aestri y Baermar)
-sutileza | Sutileza: (Lara Croft)
-curtida | Curtida: (Lara Croft)
-especialista | Especialista: (Lara Croft)
-ojosdebelmont | Ojos De Belmont: (Trevor Belmont)
-exultacion | Exultación: (Trevor Belmont)
-momentodegloria | Momento De Gloria: (Trevor Belmont)
-separacionlimpia | Separación Limpia: (Taurie Cain)
-cargasobreloshombros | Carga Sobre Los Hombros: (Taurie Cain)
-invocacioncuervostraicioneros | Invocación: Cuervos Traicioneros: (Taurie Cain)
-nohacerdano | No Hacer Daño: (Orela Rose)
-deberdesocorro | Deber De Socorro: (Orela Rose)
-respuestarapida | Respuesta Rápida: (Orela Rose)
-ingenioapocaliptico | Ingenio Apocalíptico: (Rick Grimes)
-venapormi | Ven A Por Mí: (Rick Grimes)
-trabajoenequipocurtirse | Trabajo En Equipo: Curtirse: (Rick Grimes)
-conviccion | Convicción: (Michonne Grimes)
-ultimadefensa | Última Defensa: (Michonne Grimes)
-trabajoenequipoalderribo | Trabajo En Equipo: Al Derribo: (Michonne Grimes)
-vidaenlacarretera | Vida En La Carretera: (Vee Boonyasak)
-unodostrescuatro | Uno Dos Tres Cuatro: (Vee Boonyasak)
-notasfantasmales | Notas Fantasmales: (Vee Boonyasak)
-badabadabum | Bada Bada Bum: (Dustin Henderson)
-cambiodeplanes | Cambio De Planes: (Dustin Henderson)
-trabajoenequipocircuitocompleto | Trabajo En Equipo: Circuito Completo: (Dustin Henderson)
-trabajoenequipotonosuave | Trabajo En Equipo: Tono Suave: (Eleven)
-tevemos | Te Vemos: (Eleven)
-percepcionextrasensorial | Percepción Extrasensorial: (Eleven)
-estadofluido | Estado Fluido: (Kwon Tae-Young)
-unlugarparanosotros | Un Lugar Para Nosotros: (Kwon Tae-Young)
-cincopasospordelante | Cinco Pasos Por Delante: (Kwon Tae-Young)
+amanodescubierta | A Mano Descubierta: Aumenta el radio de lectura de auras de todos los supervivientes en 16 metros — Ace Visconti
+abandonadoatusuerte | Abandonado a tu Suerte: Permite ver el aura de la trampilla en un radio de 32 metros cuando eres el último superviviente con vida — William "Bill" Overbeck
+adrenalina | Adrenalina: Te cura un estado de salud y otorga un 50 % de Celeridad por 5 segundos al completarse los generadores — Meg Thomas
+agilidad | Agilidad: Otorga un 50 % de Celeridad durante 3 segundos tras realizar un salto rápido o mediano — Feng Min
+alerta | Alerta: Revela el aura del asesino durante 5 segundos cuando este rompe un palé, muro o daña un generador — Feng Min
+arrebato | Arrebato: Aumenta la fuerza del forcejeo, oculta ganchos cercanos al asesino y otorga progreso si este cae desde una altura — Kate Denson
+asenlamanga | As en la Manga: Garantiza accesorios al encontrar objetos en cofres y permite conservarlos al escapar — Ace Visconti
+autoconservacion | Autoconservación: Otorga el efecto de Esquiva durante 30 segundos cada vez que otro superviviente sea colgado — Lee Yun-Jin
+autocuracion | Autocuración: Permite curarse a uno mismo sin necesidad de un botiquín a un 35 % de la velocidad de curación normal — Claudette Morel
+autodidacta | Autodidacta: Comienzas con una penalización de curación que se convierte en una gran bonificación progresiva al acumular distintivos con pruebas de habilidad — Adam Francis
+badabadabum | Bada Bada Bum: Tras reparar un generador, permite colocar en una ventana una trampa que aplica Entorpecimiento al asesino — Dustin Henderson
+bailaconmigo | Baila Conmigo: Oculta tus marcas de arañazos durante 5 segundos tras saltar obstáculos o salir rápido de una taquilla — Kate Denson
+bajovigilancia | Bajo Vigilancia: Acumula distintivos por estar cerca del asesino que convierten pruebas de habilidad buenas en excelentes con progreso extra — Detective Tapp
+bendicioncirculodecuracion | Bendición: Círculo de Curación: Crea un tótem benefactor que permite curar a otros un 100 % más rápido y revela el aura de heridos dentro de su radio — Mikaela Reid
+bendicionexponencial | Bendición: Exponencial: Crea un tótem benefactor que permite a los supervivientes derribados recuperarse por completo y un 100 % más rápido — Jonah Vasquez
+bendicioniluminacion | Bendición: Iluminación: Crea un tótem que revela auras de cofres y generadores a los supervivientes, y acelera la purificación o bendición de otros tótems — Alan Wake
+bendicionpasosombrio | Bendición: Paso Sombrío: Crea un tótem benefactor que oculta las marcas de arañazos y las auras de los supervivientes dentro de su radio — Mikaela Reid
+bendicionteoriaoscura | Bendición: Teoría Oscura: Crea un tótem benefactor que otorga un 2 % de Celeridad a los supervivientes que estén dentro de su radio de alcance — Yoichi Asakawa
+bulo | Bulo: Al entrar en una taquilla, crea una falsa alerta de ruido en el último generador que hayas reparado — Zarina Kassir
+buscador | Buscador: Recarga tu caja de herramientas vacía al conseguir 5 pruebas de habilidad excelentes y permite encontrar una caja de herramientas en cofres — Gabriel Soma
+camaderia | Camaradería: Pausa el cronómetro de la fase de lucha en el gancho durante 34 segundos si un aliado se acerca a 16 metros — Steve Harrington
+cambiodeplanes | Cambio de Planes: Permite transformar una caja de herramientas en un botiquín de la misma rareza al esconderte en una taquilla — Dustin Henderson
+campeondelaluz | Campeón de la Luz: Otorga un 50 % de Celeridad al usar una linterna y aplica Entorpecimiento al asesino tras cegarlo — Alan Wake
+canguro | Canguro: Al desenganchar, el superviviente recibe Celeridad y oculta sus rastros, mientras tú ves el aura del asesino — Steve Harrington
+cargasobreloshombros | Carga sobre los hombros: Tomas el estado de gancho de un aliado para reducir el suyo, a cambio de gritar y sufrir Vulnerabilidad — Taurie Cain
+carneresbaladiza | Carne resbaladiza: Otorga 3 intentos adicionales para desengancharte por ti mismo y aumenta un 4 % la probabilidad de éxito — genérica
+cazamenor | Caza menor: Emite una alerta sonora al mirar hacia un tótem cercano y reduce su área de detección por cada tótem purificado — genérica
+caidaequilibrada | Caída equilibrada: Al caer desde una altura, obtienes un impulso de velocidad del 50 %, reduces el tambaleo y el ruido de la caída — Nea Karlsson
+cincopasospordelante | Cinco pasos por delante: Revela auras de palés y ventanas cercanas en persecución, y te permite moverte antes tras derribar un palé — Kwon Tae-Young
+clarividencia | Clarividencia: Tras interactuar con un tótem, puedes ver auras de cofres, puertas, generadores, ganchos y la trampilla si no llevas un objeto — Mikaela Reid
+compañerodeescena | Compañero de escena: Gritas al mirar al asesino en su radio de terror para revelar su aura, con probabilidad de gritar de nuevo y ampliar la visión — Nicolas Cage
+concalle | Con calle: Revela el aura del asesino al agotar un objeto por primera vez y aumenta las cargas de los objetos encontrados en cofres — Nea Karlsson
+concentracioninterna | Concentración interna: Revela el aura del asesino durante 10 segundos cuando hiere a otro aliado y te permite ver las marcas de arañazos de otros supervivientes — Haddie Kaur
+conexionempatica | Conexión empática: Aumenta la velocidad con la que curas a otros un 35 % y permite que los aliados heridos vean tu aura — Yoichi Asakawa
+conocimientosdebotanica | Conocimientos de botánica: Aumenta la velocidad de curación un 50 % — Claudette Morel
+consejopaterno | Consejo paterno: Al aturdir al asesino, dejas de emitir gruñidos de dolor y de dejar rastros de sangre o marcas de arañazos durante 7 segundos — Yoichi Asakawa
+construccionduradera | Construcción duradera: Al esconderte en una taquilla con un objeto agotado, este se recarga un porcentaje que disminuye con cada uso — Felix Richter
+contrafuerza | Contrafuerza: Purificas tótems más rápido por cada distintivo obtenido y revela el aura del tótem más lejano tras realizar la purificación — Jill Valentine
+conviccion | Convicción: Permite levantarte al instante tras haber curado a un aliado si estás derribado al 25 %, aunque volverás a caer tras 30 segundos — Michonne Grimes
+corazonada | Corazonada: Al completarse un generador, revela las auras de cofres, generadores y tótems cercanos durante 20 segundos — Detective Tapp
+cuesteloquecueste | Cueste lo que cueste: Permite ver el aura de los palés derribados y levantarlos para volver a utilizarlos — Yui Kimura
+curacionreactiva | Curación reactiva: Obtienes un 50 % del progreso de curación restante de forma instantánea si otro superviviente es herido cerca de ti — Ada Wong
+curtida | Curtida: Tras interactuar con un tótem y un cofre, sustituye tus gritos por la revelación del aura del asesino durante 5 segundos — Lara Croft
+defrente | De frente: Tras estar en una taquilla 3 segundos, salir rápido aturde al asesino si está cerca, provocando Agotamiento — Jane Romero
+depiesligeros | De pies ligeros: Tus marcas de arañazos aparecen más dispersas y desaparecen 5 segundos antes de lo normal — genérica
+detripascorazon | De tripas corazón: Suprime el ruido y los gruñidos de dolor al curar, y penaliza mínimamente los fallos en pruebas de habilidad sin alertar al asesino — Leon S. Kennedy
+deberdesocorro | Deber de socorro: Al recibir un golpe por protección estando ileso, otorgas un 25 % de Celeridad a los aliados cercanos durante 6 segundos — Orela Rose
+dejavu | Déjà Vu: Revela las auras de los 3 generadores más cercanos entre sí y aumenta tu velocidad de reparación en ellos un 6 % — genérica
+eltempledelhombre | El temple del hombre: Tras recibir 3 golpes por protección, evitas el siguiente derribo, pero el asesino verá tu aura cuando estés ileso y lejos de él — Ashley J. Williams
+embrujada | Embrujada: Te permite desengancharte por tus propios medios en el sótano y revela el aura del asesino durante 20 segundos tras ser desenganchada — Sable Ward
+empatia | Empatía: Revela las auras de los aliados heridos en un radio de 128 metros — Claudette Morel
+energiapotencial | Energía potencial: Te permite acumular progreso de reparación en forma de distintivos para aplicarlos instantáneamente más tarde, pero los pierdes si sufres daño — Vittorio Toscano
+engano | Engaño: Al intentar entrar rápido en una taquilla, no entras pero generas una alerta de ruido y dejas de dejar marcas de arañazos durante 5 segundos — Élodie Rakoto
+escalofrios | Escalofríos: Recibes un aviso sonoro y realizas acciones un 6 % más rápido cuando el asesino te mira directamente dentro de un radio de 36 metros — genérica
+especialista | Especialista: Al abrir o rebuscar en cofres obtienes distintivos que se consumen al lograr una prueba de habilidad excelente, otorgando progreso permanente al generador — Lara Croft
+espejismo | Espejismo: Tras reparar un 20 %, permite crear una copia estática de ti mismo junto a objetos clave para distraer al asesino durante 60 segundos — Aestri Yazar
+esperanza | Esperanza: Al completarse todos los generadores, obtienes un 5 % de Celeridad de forma permanente — genérica
+esprint | Esprint: Al empezar a correr, obtienes un 50 % de Celeridad durante 3 segundos, lo que provoca Agotamiento — Meg Thomas
+espiritucalmado | Espíritu calmado: Evitas asustar a los cuervos y gritar, además de realizar acciones de interacción en silencio a cambio de una menor velocidad — Jake Park
+estadofluido | Estado fluido: Por cada generador completado obtienes un distintivo que aumenta la velocidad de curación, desenganche y acciones con tótems un 10 % — Kwon Tae-Young
+estonepuedestarpasando | Esto no puede estar pasando: Mientras estés herido, las zonas de éxito excelente en las pruebas de habilidad básicas aumentan un 30 % — genérica
+estrelladelasuerte | Estrella de la suerte: Suprime los gruñidos de dolor en taquillas y, al salir, revela auras de aliados y del generador cercano sin dejar rastro de sangre ni ruido por 30 segundos — Ellen Ripley
+evaluacion | Evaluación: Empiezas con 4 distintivos que permiten rebuscar en cofres ya abiertos un 80 % más rápido para obtener nuevos objetos — Élodie Rakoto
+evasionurbana | Evasión urbana: Aumenta tu velocidad de movimiento al estar agachado en un 100 % — Nea Karlsson
+extraoficial | Extraoficial: Tras ser desenganchado, obtienes Resistencia, silencio total en gruñidos de dolor e inmunidad a la lectura de aura por 40 segundos — Zarina Kassir
+exultacion | Exultación: Al aturdir al asesino con un palé, aumenta la rareza de tu objeto al siguiente nivel y recarga un 75 % de sus cargas — Trevor Belmont
+fajador | Fajador: Tras ser desenganchado, te permite obtener Resistencia durante 0.5 segundos mientras corres herido, provocando Agotamiento — David King
+familia | Familia: Mientras alguien esté colgado, revela las auras de todos los supervivientes y la del asesino si este se encuentra cerca del gancho — genérica
+farmacia | Farmacia: Desbloqueas cofres un 125 % más rápido y con menos ruido, garantizando un botiquín raro en el primero que abras — Quentin Smith
+fechalimite | Fecha límite: Mientras estés herido, las pruebas de habilidad básicas aparecen un 10 % más a menudo y en lugares aleatorios; fallarlas penaliza un 50 % el progreso — Alan Wake
+fijación | Fijación: Caminas un 20 % más rápido y puedes ver tus propias marcas de arañazos en todo momento — Nancy Wheeler
+fuerzaenlassombras | Fuerza en las sombras: En el sótano, puedes curarte sin botiquín a un 70 % de velocidad; al terminar, ves el aura del asesino por 10 segundos — Sable Ward
+fuerzainterior | Fuerza interior: Tras purificar un tótem, esconderte en una taquilla durante 8 segundos mientras estás herido te cura automáticamente — Nancy Wheeler
+fuga | Fuga: Al estar cerca de un superviviente cargado por el asesino, obtienes un 10 % de Celeridad y permites que el aliado forcejee un 25 % más rápido — Yui Kimura
+giroargumental | Giro argumental: Te permite entrar en estado de agonía voluntariamente y en silencio para recuperarte por completo, obteniendo Celeridad y curación instantánea al levantarte — Nicolas Cage
+golpedecisivo | Golpe decisivo: Tras ser desenganchado, si el asesino te recoge en los siguientes 60 segundos, puedes superar una prueba de habilidad para aturdirlo 4 segundos y escapar — Laurie Strode
+granadaaturdidora | Granada aturdidora: Tras reparar un 40 %, puedes fabricar una granada en una taquilla que al detonar ciega a quienes estén cerca y alerta al asesino — Leon S. Kennedy
+hastaotra | Hasta otra: Al ser recogido por el asesino, el 50 % de tu progreso de recuperación en el suelo se convierte automáticamente en progreso de forcejeo (hasta un 50 %) — Ashley J. Williams
+hechoparaesto | Hecho para esto: Al estar herido, obtienes un 3 % de Celeridad si sufres Herida profunda y ganas Resistencia por 10 segundos tras terminar de curar a un aliado — Gabriel Soma
+hiperconcentracion | Hiperconcentración: Ganar pruebas de habilidad excelentes otorga distintivos que aumentan su frecuencia, velocidad y el progreso obtenido, pero se pierden todos al fallar o interrumpir la acción — Rebecca Chambers
+ingenioapocaliptico | Ingenio apocalíptico: Ves auras de palés rotos a 32 metros y, tras abrir o rebuscar en 2 cofres, puedes crear un palé frágil en el lugar de uno roto — Rick Grimes
+inquebrantable | Inquebrantable: Te recuperas un 35 % más rápido estando en el suelo y te permite levantarte por tu cuenta una vez por partida — William "Bill" Overbeck
+inspiraciónbárdica | Inspiración bárdica: Al actuar para otros supervivientes, lanzas un dado de 20 para otorgar una bonificación de progreso (1 %, 2 % o 3 %) en las pruebas de habilidad durante 90 segundos — Aestri Yazar
+instintodesaqueador | Instinto de saqueador: Revela las auras de cofres cerrados y objetos en el suelo a 64 metros, aumentando un 50 % la probabilidad de hallar objetos raros — genérica
+interceptor | Interceptor: Tras reparar un 40 %, puedes colocar una trampa en un generador que revela su aura a aliados y muestra el aura del asesino si este se acerca — Ada Wong
+invocacionarañastejedoras | Invocación: Arañas tejedoras: Realiza un ritual en el sótano para reducir permanentemente el progreso requerido de todos los generadores, quedando herido y con Desesperanza — Sable Ward
+jugadorsecundario | Jugador secundario: Cuando el asesino recoge a otro superviviente, tienes 10 segundos para empezar a correr y obtener un 50 % de Celeridad durante 5 segundos, provocando Agotamiento — Renato Lyra
+liberacion | Liberación: Tras desenganchar a un aliado de forma segura, tu próximo intento de desenganche propio tendrá un 100 % de éxito, pero sufrirás Desesperanza por 60 segundos — Adam Francis
+ligeradepies | Ligera de pies: Mientras estés ileso, el asesino no oirá tus pisadas al correr; tras realizar una acción rápida, la habilidad entra en recarga durante 10 segundos — Ellen Ripley
+loconseguiremos | Lo conseguiremos: Tras desenganchar a un superviviente, curas a los demás un 100 % más rápido durante 90 segundos — genérica
+luchaintensa | Lucha intensa: Mientras el asesino te carga, si tienes un 15 % de forcejeo y pasas junto a un palé en vertical, puedes derribarlo para aturdirlo y escapar; ves las auras de los palés estando en el suelo — Élodie Rakoto
+lider | Líder: Aumentas un 30 % la velocidad de tus aliados cercanos al curar, sabotear, purificar, desenganchar, abrir cofres y abrir puertas de salida — Dwight Fairfield
+manifestaciónresidual | Manifestación residual: Al cegar al asesino, este sufre el estado de Ceguera por 30 segundos; además, te permite rebuscar en un cofre abierto para obtener una linterna — Haddie Kaur
+melapela | Me la pela: Comienzas la partida herido y con Desesperanza de forma permanente, pero tus gruñidos son silenciosos, no dejas sangre y puedes levantarte del suelo por tu cuenta — David King
+medidacorrectiva | Medida correctiva: Comienzas con 3 distintivos (máximo 5); cuando un aliado falla una prueba de habilidad básica cerca de ti, se consume un distintivo para convertir el fallo en un acierto y revelas su aura — Jonah Vasquez
+medidasdesesperadas | Medidas desesperadas: Por cada superviviente herido, derribado o colgado, aumentas un 20 % tu velocidad al curar y desenganchar — Felix Richter
+mejorjuntos | Mejor juntos: Mientras reparas un generador, su aura se revela a otros supervivientes; si el asesino derriba a alguien, ves las auras de todos tus aliados por 30 segundos — Nancy Wheeler
+mejorquenuevo | Mejor que nuevo: Tras curar a otro superviviente, este obtiene un 16 % de velocidad adicional al curar, desbloquear cofres, bendecir y purificar tótems hasta que vuelva a sufrir daño — Rebecca Chambers
+minaexplosiva | Mina explosiva: Tras reparar un 40 %, puedes colocar una trampa en un generador que revela su aura a aliados; si el asesino lo patea, la mina explota, aturdiéndolo por 4 segundos y causando Ceguera — Jill Valentine
+momentodegloria | Momento de gloria: Tras abrir o rebuscar en 2 cofres, la próxima vez que te hieran sufrirás Desesperanza; si no recibes daño durante los siguientes 60 segundos, te curarás un estado de salud al instante — Trevor Belmont
+nadiesequedaatras | Nadie se queda atrás: Cuando se completan los generadores, curas y desenganchas un 100 % más rápido, otorgas un 10 % de Celeridad a quienes desenganches y ves las auras de tus aliados — genérica
+neblinoso | Neblinoso: Al reparar, cada vez que logres una prueba de habilidad básica excelente, verás el aura del asesino durante 6 segundos — Vittorio Toscano
+nohacerdaño | No hacer daño: Al curar a otros, tu velocidad aumenta un 50 % por cada estado de gancho que tengan; las pruebas de habilidad excelentes otorgan un 3 % de progreso adicional — Orela Rose
+notasfantasmales | Notas fantasmales: Mientras sufres Agotamiento, tus marcas de arañazos desaparecen un 50 % más rápido; además, recuperas el Agotamiento un 10 % más rápido — Vee Boonyasak
+objetodeobsesion | Objeto de obsesión: Si eres la obsesión, el asesino ve tu aura cada 30 segundos; mientras él te ve, tú ves la suya y obtienes un 6 % de velocidad en reparación, curación y purificación — Laurie Strode
+ojosdebelmont | Ojos de Belmont: Cuando se completa un generador, ves el aura del asesino durante 3 segundos; además, cualquier efecto que te permita ver su aura durará 2 segundos más — Trevor Belmont
+oportunidades | Oportunidades: Ves las auras de palés, ventanas y muros destruibles en un radio de 32 metros — Kate Denson
+pactodesangre | Pacto de sangre: Si no eres la obsesión, tú y ella veis vuestras auras mientras estéis heridos; al terminar de curaros mutuamente, ambos obtenéis un 7 % de Celeridad si permanecéis cerca — Cheryl Mason
+pasion | Pasión: Al bendecir o purificar un tótem, reparas un 10 % más rápido hasta que sufras daño; si el tótem era de maleficio, el bono de velocidad se duplica — Haddie Kaur
+percepciónextrasensorial | Percepción extrasensorial: Tras agacharte 4 segundos, revelas auras en un radio de hasta 44 metros y obtienes Esquiva e Inconsciencia; la habilidad se agota al levantarte o tras 11 segundos y tiene 40 segundos de recarga — Eleven
+percepciónoscura | Percepción oscura: Cada vez que se completa un generador, si el asesino está en un radio de 24 metros de ti, verás su aura durante 10 segundos — genérica
+perfilbajo | Perfil bajo: Cuando eres el único superviviente que no está derribado o colgado, ocultas tus marcas de arañazos, charcos de sangre y gruñidos de dolor durante 90 segundos — Ada Wong
+periciatécnica | Pericia técnica: Al reparar, reduces el ruido de reparación en 8 metros; si fallas una prueba de habilidad, el generador no explota, pero pierde un 3 % de progreso adicional — Feng Min
+porlosdemas | Por los demas: Mientras estes ileso, puedes curar instantaneamente a otro superviviente un estado de salud; a cambio, sufres daño, recibes Desesperanza por 60 segundos y te conviertes en la obsesion — Zarina Kassir
+periciatecnica | Pericia tecnica: Al reparar, el ruido del generador se reduce 8 metros; si fallas una prueba de habilidad, el generador no explota pero pierde un 3 % de progreso adicional — Feng Min
+porlosdemas | Por los demas: Mientras estes ileso, puedes curar instantaneamente a otro superviviente un estado de salud; a cambio, sufres daño, recibes Desesperanza por 60 segundos y te conviertes en la obsesion — Zarina Kassir
+postratamiento | Postratamiento: Hasta 3 supervivientes y tu vereis vuestras auras mutuamente cada vez que os desengancheis o cureis entre si; el efecto persiste hasta que seas colgado — Jeff Johansen
+premonicion | Premonicion: Cuando el asesino esta en un radio de 36 metros y miras en su direccion (area conica de 45 grados), escucharas una alerta sonora; tiene un tiempo de recarga de 30 segundos — generica
+primeralinea | Primera linea: Obtienes 3 distintivos (maximo 9) cuando cuelgan a otro superviviente; al lograr una prueba de habilidad excelente reparando, consumes los distintivos para otorgar un 2 % de progreso permanente por cada uno — Lee Yun-Jin
+reafirmacion | Reafirmacion: Una vez por cada estado de gancho, al estar a menos de 6 metros de un superviviente colgado, puedes pausar su progreso de sacrificio durante 30 segundos — Rebecca Chambers
+resiliencia | Resiliencia: Mientras estes herido, obtienes un 9 % de velocidad adicional al reparar, curar, sabotear, desenganchar, saltar, abrir puertas, desbloquear cofres y purificar o bendecir totems — generica
+respuestarapida | Respuesta rapida: Al salir rapidamente de una taquilla sufres Agotamiento por 20 segundos; mientras sufras Agotamiento, veras el aura del asesino durante 2 segundos — Orela Rose
+resurgimiento | Resurgimiento: Cada vez que te desenganchen, obtendras un 70 % de progreso de curacion al instante — Jill Valentine
+rivalidadamistosa | Rivalidad amistosa: Al terminar de reparar un generador con al menos otro superviviente, todos los involucrados reparais un 5 % mas rapido durante 120 segundos — Thalita Lyra
+ruptura | Ruptura: Cuando te desenganchen, el gancho se rompe durante 180 segundos y veras el aura del asesino durante 6 segundos — Jeff Johansen
+sabotear | Sabotear: Cuando el asesino carga a un superviviente en un radio de 56 metros, ves las auras de los ganchos y ganchos flagelantes; permite sabotear ganchos con un tiempo de recarga de 60 segundos — Jake Park
+salvaguardadealma | Salvaguarda de alma: Mientras estes maldito, puedes recuperarte por completo del estado de agonia; al levantarte, obtienes Resistencia durante 30 segundos; tiene un tiempo de recarga de 8 segundos — Cheryl Mason
+segundoaliento | Segundo aliento: Tras curar a un superviviente, la proxima vez que te desenganchen sufriras Desesperanza; despues de 20 segundos, si no te han derribado, te curaras automaticamente — Steve Harrington
+separacionlimpia | Separacion limpia: Al terminar de curar a alguien o mientras te curan, puedes activar Desesperanza; tras 60 segundos, si no te han derribado, te curas al instante — Taurie Cain
+serenidad | Serenidad: La primera vez que empiezas a reparar cada generador, ves el aura del asesino durante 8 segundos; cuando se completa un generador, no dejas marcas de arañazos durante 30 segundos — Jane Romero
+sobreponerse | Sobreponerse: Cuando sufres daño, mantienes el aumento de velocidad durante 2 segundos mas y sufres Agotamiento por 40 segundos — Jonah Vasquez
+solidaridad | Solidaridad: Estando herido y curando a otro superviviente sin botiquin, tambien obtendras progreso de curacion para ti mismo con una conversion del 70 % — Jane Romero
+soloquedoyo | Solo quedo yo: Obtienes 1 distintivo por cada superviviente muerto; cada uno impide que el asesino vea tu aura en un radio de 24 metros. Si eres el ultimo vivo, reparas un 75 % mas rapido y abres puertas o trampilla un 50 % mas rapido — Laurie Strode
+solucionadordeproblemas | Solucionador de problemas: Mientras el asesino te persiga, ves el aura del generador con mas progreso; al derribar un pale, ves el aura del asesino durante 6 segundos. El efecto dura hasta 10 segundos tras finalizar la persecucion — Gabriel Soma
+subirlasapuestas | Subir las apuestas: Por cada superviviente con vida, todos obtienen un 3 % de suerte adicional; ademas, permite que todos los supervivientes intenten desengancharse por sus propios medios — Ace Visconti
+sujetate | Sujetate: Al curar a un superviviente derribado, ambos veis el aura del asesino; el superviviente curado obtiene un 50 % de Celeridad y no deja marcas de arañazos durante 5 segundos — Ashley J. Williams
+supresiondealianza | Supresión de alianza: Tras reparar generadores durante 45 segundos, puedes activar la habilidad para que el Ente bloquee el generador que estás reparando durante 30 segundos — Cheryl Mason
+sutileza | Sutileza: Cuando estés ileso, realizas saltos rápidos un 20 % más rápido; tiene un tiempo de recarga de 30 segundos tras activarse — Lara Croft
+tevemos | Te vemos: Cada vez que el asesino ve tu aura obtienes 1 distintivo (recarga de 10 s); al llegar a 4, se consumen para que todos los supervivientes vean el aura del asesino durante 15 segundos — Eleven
+tenacidad | Tenacidad: Estando derribado, te arrastras un 50 % más rápido, puedes recuperarte mientras te mueves y tus gruñidos de dolor son un 75 % más silenciosos — Detective Tapp
+tiempoprestado | Tiempo prestado: Al desenganchar a un superviviente, este mantiene sus efectos de Resistencia y Celeridad por desenganche durante 10 segundos adicionales — William "Bill" Overbeck
+torrentedesangre | Torrente de sangre: Hasta que se reparen todos los generadores, tras ser desenganchado tienes 60 segundos para activar la habilidad y perder el Agotamiento al instante; se desactiva al realizar acciones llamativas — Renato Lyra
+trabajoenequipoalderribo | Trabajo en equipo: Al derribo: Cada vez que ciegues o aturdas al asesino con un palé, los supervivientes heridos en un radio de 24 metros obtienen Resistencia y ven el aura del asesino durante 10 segundos — Michonne Grimes
+trabajoenequipocircuitocompleto | Trabajo en equipo: Circuito completo: Por cada superviviente que repare junto a ti, las zonas de pruebas de habilidad aumentan un 25 %; además, reparas un 5 % más rápido mientras lo hagas con al menos otro compañero — Dustin Henderson
+trabajoenequipocurtirse | Trabajo en equipo: Curtirse: Cuando otro superviviente en un radio de 24 metros ciegue o aturda al asesino con un palé, durante 30 segundos no emitirás gruñidos de dolor, ni dejarás charcos de sangre ni marcas de arañazos — Rick Grimes
+trabajoenequipopoderdual | Trabajo en equipo: Poder dual: Cuando termines de curar a otro superviviente, ambos obtenéis un 5 % de Celeridad mientras estéis a menos de 16 metros; el efecto termina 4 segundos después de separarse — Thalita Lyra
+trabajoenequiposigilo| Trabajo en equipo: Sigilo colectivo: Cuando otro superviviente termine de curarte, ninguno dejaréis marcas de arañazos mientras estéis a menos de 16 metros; el efecto termina 4 segundos después de separarse — Renato Lyra
+trabajoenequipotonosuave | Trabajo en equipo: Tono suave: Por cada superviviente que repare un generador junto a ti, el alcance de los ruidos por reparar disminuye un 25 %; además, reparas un 5 % más rápido mientras lo hagas con al menos otro compañero — Eleven
+trampaquimica | Trampa química: Tras reparar un 20 % de progreso en generadores, puedes colocar una trampa en un palé derribado durante 60 segundos; si el asesino lo rompe, sufrirá un 50 % de Entorpecimiento durante 4 segundos — Ellen Ripley
+tacticaveloz | Táctica veloz: Mientras el asesino te persiga, ves las auras de otros supervivientes y estos reparan un 5 % más rápido; si sufres daño, la habilidad entra en recarga durante 40 segundos — Vittorio Toscano
+unlugarparanosotros | Un lugar para nosotros: Mientras curas a otro superviviente, ambos obtenéis Esquiva; si terminas de curar a la obsesión, los dos obtenéis Esquiva durante 30 segundos. Reduce las probabilidades de ser la obsesión — Kwon Tae-Young
+unodostrescuatro | ¡Uno, dos, tres, cuatro!: Mientras estés inactivo, activa la habilidad para potenciar a los supervivientes en un radio de 16 metros durante 15 segundos; esto aumenta la probabilidad de pruebas de habilidad un 20 % y el efecto dura 90 segundos tras completar la actuación (recarga de 90 s) — Vee Boonyasak
+venapormi | ¡Ven a por mí!: Cada vez que desenganches a un superviviente, si estás de cuclillas e inactivo, puedes activar la habilidad para que los supervivientes derribados y heridos en un radio de 24 metros no dejen marcas ni sangre durante 15 segundos; después gritas y el asesino ve tu aura durante 5 segundos — Rick Grimes
+vamosavivirparasiempre | Vamos a vivir para siempre: Curas a supervivientes derribados un 100 % más rápido; al terminar de curarlos, estos obtienen Resistencia durante 10 segundos (tiempo de recarga de 30 segundos) — David King
+velocidadsilenciosa | Velocidad silenciosa: Te escondes en taquillas y saltas obstáculos sin hacer ruido ni dar una alerta al asesino; tiene un tiempo de recarga de 15 segundos — Meg Thomas
+vidaenlacarretera | Vida en la carretera: Estando herido, sin Desesperanza y reparando un generador, obtienes 1 distintivo por cada prueba de habilidad excelente (pierdes 1 al fallar); al llegar a 4, se consumen para curarte un 100 % más rápido hasta terminar la curación — Vee Boonyasak
+vigilia | Vigilia: Todos los supervivientes en un radio de 16 metros se recuperan un 66 % más rápido de los estados de Ceguera, Desesperanza, Agotamiento, Vulnerabilidad, Hemorragia, Entorpecimiento, Laceración e Inconsciencia; el efecto persiste 15 segundos al salir del radio — Quentin Smith
+visiondefuturo | Visión de futuro: Ves las auras de los generadores en un radio de 32 metros; cuando se completa un generador, la habilidad entra en recarga durante 16 segundos — Felix Richter
+visiónestatica | Visión estática: Tras estar inactivo durante 2 segundos, ves las auras del asesino, de los cofres y de los generadores en un radio de 24 metros hasta que vuelvas a moverte — Aestri Yazar
+voluntaddehierro | Voluntad de hierro: Estando herido y sin sufrir Agotamiento, tus gruñidos de dolor son un 100 % más silenciosos — Jake Park
+vinculo | Vínculo: Ves las auras de otros supervivientes en un radio de 36 metros — Dwight Fairfield
+exitoaplastante | Éxito aplastante: Cada vez que aturdas al asesino con un palé, obtienes un 50 % de Celeridad durante 4 segundos y sufres Agotamiento durante 20 segundos — Lee Yun-Jin
+ultimadefensa | Última defensa: Tras esconderte 90 segundos en el radio de terror, realizar un salto rápido aturdirá al asesino durante 3 segundos si está a menos de 2.5 metros (una vez por partida) — Michonne Grimes
+agotamiento | Agotamiento: Impide el uso de otras habilidades que provoquen este mismo estado mientras esté activo — Efecto de estado
+celeridad | Celeridad: Aumenta la velocidad de movimiento del asesino o del superviviente mientras el efecto persista — Efecto de estado
+entorpecimiento | Entorpecimiento: Reduce la velocidad de movimiento de los asesinos o supervivientes mientras el efecto esté activo — Efecto de estado
+esquiva | Esquiva: Oculta auras, marcas de arañazos, charcos de sangre y gruñidos de dolor del superviviente — Efecto de estado
+vulnerabilidad | Vulnerabilidad: Los supervivientes pueden ser derribados de un solo ataque básico aunque estén ilesos — Efecto de estado
+desesperanza | Desesperanza: Impide que los supervivientes afectados puedan ser curados — Efecto de estado
+resistencia | Resistencia: Efecto de estado que evita el derribo al recibir un golpe, otorgando Herida profunda en su lugar — Efecto de estado
+ceguera | Ceguera: Efecto de estado que impide a asesinos o supervivientes ver auras esenciales — Efecto de estado
+inconsciencia | Inconsciencia: Efecto de estado que impide al superviviente escuchar el radio de terror del asesino — Mecánica de juego
+despierta | ¡Despierta!: Cuando se completan todos los generadores, ves las auras de los interruptores de las puertas; al abrirlas, los demás ven tu aura y lo haces un 12.5 % más rápido por cada superviviente vivo — Quentin Smith
+Ace | A mano descubierta — As en la manga — Subir las apuestas
+Ada | Curación reactiva — Interceptor — Perfil bajo
+Adam | Autodidacta — Distracción — Liberación
+Aestri&Baermar | Espejismo — Inspiración Bárdica — Visión Estática
+AlanWake | Bendición: iluminación — Campeón de la luz — Fecha límite
+Ashley | El temple del hombre — Hasta otra — Sujétate
+Cheryl | Pacto de sangre — Salvaguarda de alma — Supresión de alianza
+Claudette | Autocuración — Conocimientos de botánica — Empatía
+David | Fajador — Me la pela — Vamos a vivir para siempre
+DetectiveTapp | Bajo vigilancia — Corazonada — Tenacidad
+Dustin | Bada Bada Bum — Cambio de Planes — Trabajo en Equipo: Circuito Completo
+Dwight | Demuestra lo que vales — Líder — Vínculo
+Eleven | Trabajo en Equipo: Tono Suave — Te Vemos — Percepción Extrasensorial
+EllenRipley | Estrella de la suerte — Ligera de pies — Trampa química
+Elodie | Engaño — Evaluación — Lucha intensa
+Felix | Construcción duradera — Medidas desesperadas — Visión de futuro
+FengMin | Agilidad — Alerta — Pericia técnica
+Gabriel | Buscador — Hecho para esto — Solucionador de problemas
+Haddie | Concentración interna — Manifestación residual — Pasión
+Jake | Espíritu calmado — Sabotear — Voluntad de hierro
+Jane | De frente — Serenidad — Solidaridad
+Jeff | Distorsión — Postramiento — Ruptura
+Jill | Contrafuerza — Mina explosiva — Resurgimiento
+Jonah | Bendición: exponencial — Medida correctiva — Sobreponerse
+Kate | Arrebato — Baila conmigo — Oportunidades
+KwonTae-Young | Estado Fluido — Un Lugar para Nosotros — Cinco Pasos por Delante
+Lara | Sutileza — Curtida — Especialista
+Laurie | Golpe decisivo — Objeto de obsesión — Solo quedo yo
+Leon | De tripas corazón — Espíritu de novato — Granada aturdidora
+Meg | Adrenalina — Esprint — Velocidad silenciosa
+Mickaela | Bendición: círculo de curación — Bendición: paso sombrío — Clarividencia
+Michonne | Convicción — Última Defensa — Trabajo en Equipo: Al Derribo
+Nancy | Fijación — Fuerza interior — Mejor juntos
+Nea | Caída equilibrada — Con calle — Evasión urbana
+NicolasCage | Compañero de escena — Dramaturgia — Giro argumental
+Orela | No Hacer Daño — Deber de Socorro — Respuesta Rápida
+Quentin | Farmacia — Vigilia — ¡Despierta!
+Rebecca | Hiperconcentración — Mejor que nuevo — Reafirmación
+Renato | Jugador secundario — Torrente de sangre — Trabajo en equipo: sigilo colectivo
+Rick | Ingenio Apocalíptico — ¡Ven a por Mí! — Trabajo en Equipo: Curtirse
+Sable | Invocación: Arañas Tejedoras — Fuerza en las Sombras — Embrujada
+Steve | Camadería — Canguro — Segundo aliento
+Taurie | Separación Limpia — Carga Sobre Los Hombros — Invocación: Cuervos Traicioneros
+Thalita | Desátame — Rivalidad amistosa — Trabajo en equipo: poder dual
+Trevor | Ojos de Belmont — Exultación — Momento de Gloria
+Vee | Vida en la Carretera — ¡Uno, dos, tres, cuatro! — Notas Fantasmales
+Vittorio | Energía potencial — Neblinoso — Táctica veloz
+Bill | Abandonado a tu suerte — Inquebrantable — Tiempo prestado
+Yoichi | Bendición: teoría oscura — Conexión empática — Consejo paterno
+Yui | Cueste lo que cueste — Fuga — Golpe de suerte
+Yun-Jin | Autoconservación — Primera línea — Éxito aplastante
+Zarina | Bulo — Extraoficial — Por los demás
+Generica | Carne resbaladiza — Caza menor — De pies ligeros — Déjà vu — Escalofríos — Esperanza — Esto no puede estar pasando — Familia — Instinto de saqueador — Lo conseguiremos — Nadie se queda atrás — Percepción oscura — Premonición — Resiliencia
