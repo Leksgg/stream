@@ -366,3 +366,64 @@ miradaerrante | Mirada Errante: Al empezar una persecución, verás las auras de
 monitorizacionyabuso | Monitorización y Abuso: Tu radio de terror aumenta un 15 % mientras estás en persecución y disminuye un 25 % cuando no estás persiguiendo a nadie — El Doctor
 muertedefranklin | Muerte de Franklin: Tus ataques básicos hacen que el superviviente suelte su objeto y te permite ver el aura de los objetos soltados en un radio de 64 metros — El Caníbal
 murmulloamargo | Murmullo Amargo: Al completarse un generador, ves el aura de los supervivientes a menos de 16 metros de este por 5 s; al completarse todos, ves las auras de todos por 10 s — genérica
+Animatronico | Avería — Empleo Disponible — Miedo Fantasmal
+Freddys | Avería — Empleo Disponible — Miedo Fantasmal
+Arponero | Interruptor del Hombre Muerto — Maleficio: Represalias — Oído para la Maquinaria
+Pistoler | Interruptor del Hombre Muerto — Maleficio: Represalias — Oído para la Maquinaria
+Caballero | Sin Escondite — Soberbia — Maleficio: Enfréntate a la Oscuridad
+Canibal | Barbacoa y Chile — Noqueo — Muerte de Franklin
+Bubba | Barbacoa y Chile — Noqueo — Muerte de Franklin
+Cenobita | Candado — Gancho Flagelante: Obsequio Doloroso — Maleficio: Juguete
+Cerebro | Anatomía Superior — Percepción Activada — Terminal
+Wesker | Anatomía Superior — Percepción Activada — Terminal
+Demogorgon | Quebrantamentes — Restricción Cruel — Sobretensión
+Demo | Quebrantamentes — Restricción Cruel — Sobretensión
+Deterioro | Agarre del Dragón — Maleficio: Favor de Sangre — Maleficio: Inmortal
+Doctor | Monitorización y Abuso — Presencia Abrumadora — Sobrecarga
+Espectro | Depredación — Hijo de las Sombras — Sabueso de Sangre
+Patitas | Depredación — Hijo de las Sombras — Sabueso de Sangre
+Espiritu | Furia Espiritual — Maleficio: Tierra Embrujada — Rencor
+Ghoul | Maleficio: Solo hay Miseria — Nadie es Libre — Unidos Eternamente
+Kaneki | Maleficio: Solo hay Miseria — Nadie es Libre — Unidos Eternamente
+Liche | Arrogancia Tenebrosa — Sintonía con la Urdimbre — Toque Lánguido
+VecnaDnD | Arrogancia Tenebrosa — Sintonía con la Urdimbre — Toque Lánguido
+Oni | Eco Sangriento — Némesis — Tácticas de Zanshin
+Payaso | Coulrofobia — Desconcierto — Pim Pam Pum
+primero| Maleficio: Mente Colmena — Proyecto Secreto — Retrasa el Reloj
+vecnaStranger | Maleficio: Mente Colmena — Proyecto Secreto — Retrasa el Reloj
+Pueblerino | Hijo de la Luz — Manitas — Resistente
+Billy | Hijo de la Luz — Manitas — Resistente
+elsenoroscuro| Codicia Humana — Dominación — Maleficio: Destino Desdichado
+dracula  | Codicia Humana — Dominación — Maleficio: Destino Desdichado
+Traicionero | Deslumbrado — Maleficio: Control de Masas — Sin Escapatoria
+Kpopper | Deslumbrado — Maleficio: Control de Masas — Sin Escapatoria
+Trampero | Agitación — Fuerza Bruta — Presencia Perturbadora
+Verdugo | Imposición de Penitencia — Rastro de Tormento — Vínculo Mortal
+Doritos | Imposición de Penitencia — Rastro de Tormento — Vínculo Mortal
+Piramid | Imposición de Penitencia — Rastro de Tormento — Vínculo Mortal
+xenomorfo| Arma Definitiva — Brutalidad Veloz — Instinto Alienígena
+alien| Arma Definitiva — Brutalidad Veloz — Instinto Alienígena
+KillerPerks | Acechador de Ciervos — Apretón de Hierro — Carnicero Chapucero — Desasosiego — Esperanza Destruida — Espías de las Sombras — Gancho Flagelante: Santuario Monstruoso — Implacable — Insidia — Maleficio: La Emoción de la Caza — Maleficio: Nadie Escapa de la Muerte — Murmullo Amargo — Murmullos
+ghostface| Persecución Furtiva — Soy todo oídos — Temblores Trepidantes
+goodguy | Amigos para Siempre — Maleficio: Dos Pueden Jugar — Pilas Incluidas
+Chuky | Amigos para Siempre — Maleficio: Dos Pueden Jugar — Pilas Incluidas
+Adiestradoracanina | Gancho Flagelante: Brújula Serrada — Sin Descanso — Trueno Ensordecedor
+Artista | Acogida Nefasta — Gancho Flagelante: Dolor Retumbante — Maleficio: Pentimento
+Cazadora | Bestia de Presa — Instinto Territorial — Maleficio: Nana de Cazadora
+Cerda | Gancho Flagelante: Truco del Verdugo — Supervisión — Toma una Decisión
+ComerciantedeCalaveras | Influencia — Veda Abierta — ¡Plaf!
+pasarelas | Influencia — Veda Abierta — ¡Plaf!
+Comerciante | Influencia — Veda Abierta — ¡Plaf!
+Draga | Disolución — Oscuridad Expuesta — Toque Séptico
+Enfermera | Aliento — Tanatofobia — Vocación de Enfermera
+Forma | Jugar con la Comida — Lo Mejor para el Final — Luz que Agoniza
+Mayers | Jugar con la Comida — Lo Mejor para el Final — Luz que Agoniza
+Krasue | Maleficio: Obertura del Mal — Mirada Errante — Voraz
+Legion | Discordancia — Doncella de Hierro — Furia Ciega
+Onryo | Gancho Flagelante: Oleada de Ira — Salmuera — Tormenta Vil
+Pesadilla | Enfurecimiento — Guardián de Sangre — Recuérdame
+Plaga | Devoción Oscura — Intervención Corrupta — Terror Contagioso
+Singularidad | Aprendizaje de Máquina — Duda Impuesta — Limitaciones Genéticas
+Desconocido | Imprevisto — Incompleto — Separación
+Mellizos | Acaparadora — Golpe de Gracia — Opresión
+Nemesis | Acecho Letal — Erupción
