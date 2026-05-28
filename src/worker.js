@@ -10,16 +10,22 @@ export default {
     }
 
     // If .txt with no query params, return 1 random line by default
-    // Fetch the raw file from assets (clean URL without query params)
     const cleanUrl = new URL(url.pathname, url.origin);
-    const assetResponse = await env.ASSETS.fetch(cleanUrl.toString());
-    if (!assetResponse.ok) {
-      return new Response('File not found', { status: 404, headers: corsHeaders('text/plain; charset=utf-8') });
+    const isDbdPerks = cleanUrl.pathname.endsWith('/txt/dbdperks.txt');
+
+    let lines;
+    if (isDbdPerks) {
+      lines = await loadNightlightPerks();
+      if (!lines.length) {
+        lines = await loadAssetLines(env, cleanUrl.toString());
+      }
+    } else {
+      lines = await loadAssetLines(env, cleanUrl.toString());
     }
 
-    const buffer = await assetResponse.arrayBuffer();
-    const text = new TextDecoder('utf-8').decode(buffer);
-    const lines = text.split('\n').filter(line => line.trim() !== '');
+    if (!lines.length) {
+      return new Response('File not found', { status: 404, headers: corsHeaders('text/plain; charset=utf-8') });
+    }
 
     let result;
 
@@ -60,6 +66,54 @@ export default {
     });
   },
 };
+
+async function loadAssetLines(env, assetUrl) {
+  const assetResponse = await env.ASSETS.fetch(assetUrl);
+  if (!assetResponse.ok) {
+    return [];
+  }
+
+  const buffer = await assetResponse.arrayBuffer();
+  const text = new TextDecoder('utf-8').decode(buffer);
+  return text.split('\n').map(line => line.trim()).filter(Boolean);
+}
+
+async function loadNightlightPerks() {
+  try {
+    const response = await fetch('https://nightlight.gg/perks/viewer?shown=pick', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+        'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
+      },
+    });
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const html = await response.text();
+    const seen = new Set();
+    const lines = [];
+    const regex = /\|\s*([^|]+?)\s+(\d+)\s+Games\s*\|\s*([^|]+?)\|/g;
+
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+      const name = match[1].replace(/\s+/g, ' ').trim();
+      const games = match[2].trim();
+      const stats = match[3].replace(/\s+/g, ' ').trim();
+      const line = `${name} | ${games} Games | ${stats}`;
+
+      if (!seen.has(line)) {
+        seen.add(line);
+        lines.push(line);
+      }
+    }
+
+    return lines;
+  } catch (error) {
+    return [];
+  }
+}
 
 function corsHeaders(contentType) {
   return {
