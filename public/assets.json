@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "updated": "2026-05-28",
+  "base": "/",
+  "overlay": {
+    "main": "/overlay/index.html",
+    "query": {
+      "room": "overlay room token",
+      "ws": "optional websocket override"
+    }
+  },
+  "events": {
+    "image": ["src", "position", "duration", "width", "height"],
+    "video": ["src", "position", "duration", "loop", "width", "height", "volume"],
+    "sound": ["src", "duration", "volume"],
+    "fullscreen_clip": ["src", "volume"],
+    "alert": ["text", "sub", "duration", "position"]
+  },
+  "assets": [
+    {
+      "id": "logo-leks-red",
+      "type": "image",
+      "label": "Leks red",
+      "src": "/image/Leks-red.png",
+      "tags": ["brand", "leks"],
+      "defaults": { "position": 5, "duration": 5 }
+    },
+    {
+      "id": "logo-leks-purple",
+      "type": "image",
+      "label": "Leks purple",
+      "src": "/image/Leks-purple.png",
+      "tags": ["brand", "leks"],
+      "defaults": { "position": 5, "duration": 5 }
+    },
+    {
+      "id": "logo-leks-grey",
+      "type": "image",
+      "label": "Leks grey",
+      "src": "/image/Leks-grey.png",
+      "tags": ["brand", "leks"],
+      "defaults": { "position": 5, "duration": 5 }
+    },
+    {
+      "id": "social-instagram",
+      "type": "image",
+      "label": "Instagram",
+      "src": "/image/Insta2.png",
+      "tags": ["social"],
+      "defaults": { "position": 7, "duration": 6 }
+    },
+    {
+      "id": "social-tiktok",
+      "type": "image",
+      "label": "TikTok",
+      "src": "/image/TikTok3.png",
+      "tags": ["social"],
+      "defaults": { "position": 7, "duration": 6 }
+    },
+    {
+      "id": "social-twitch",
+      "type": "image",
+      "label": "Twitch",
+      "src": "/image/TTV4.png",
+      "tags": ["social", "twitch"],
+      "defaults": { "position": 7, "duration": 6 }
+    },
+    {
+      "id": "social-x",
+      "type": "image",
+      "label": "X",
+      "src": "/image/X1.png",
+      "tags": ["social"],
+      "defaults": { "position": 7, "duration": 6 }
+    },
+    {
+      "id": "social-youtube",
+      "type": "image",
+      "label": "YouTube",
+      "src": "/image/YT5.png",
+      "tags": ["social"],
+      "defaults": { "position": 7, "duration": 6 }
+    },
+    {
+      "id": "sound-aplausos",
+      "type": "sound",
+      "label": "Aplausos",
+      "src": "/sonido/aplausos.mp3",
+      "tags": ["sound", "reaction"],
+      "defaults": { "duration": 4, "volume": 0.8 }
+    },
+    {
+      "id": "sound-stevegull",
+      "type": "sound",
+      "label": "Stevegull",
+      "src": "/sonido/stevegull.mp3",
+      "tags": ["sound", "reaction"],
+      "defaults": { "duration": 4, "volume": 0.8 }
+    },
+    {
+      "id": "video-aguita",
+      "type": "video",
+      "label": "Aguita",
+      "src": "/video/Aguita.mp4",
+      "tags": ["video", "reaction"],
+      "defaults": { "position": 5, "duration": 8, "volume": 0.8 }
+    }
+  ],
+  "textSources": [
+    { "id": "accion1", "src": "/txt/accion1.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "accion2", "src": "/txt/accion2.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "carlos", "src": "/txt/carlos.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "chistes", "src": "/txt/chistes.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "dbdperks", "src": "/txt/dbdperks.txt", "features": ["random", "full", "find", "line", "return", "nightlight-fallback"] },
+    { "id": "excusa", "src": "/txt/excusa.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "frasecl", "src": "/txt/frasecl.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "hola", "src": "/txt/hola.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "randomsurvi", "src": "/txt/randomsurvi.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "reto", "src": "/txt/reto.txt", "features": ["random", "full", "find", "line", "return"] },
+    { "id": "ruletaperks", "src": "/txt/ruletaperks.txt", "features": ["random", "full", "find", "line", "return"] }
+  ]
+}

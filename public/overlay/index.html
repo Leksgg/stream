@@ -111,7 +111,8 @@
       to   { opacity: 0; transform: translateY(-10px) scale(0.95); }
     }
 
-    /* Connection status indicator */
+    /* Connection status indicator — oculto por defecto para no ensuciar el
+       stream; visible solo con ?debug en la URL del overlay. */
     #status {
       position: fixed;
       top: 10px;
@@ -122,6 +123,7 @@
       background: #e74c3c;
       transition: background 0.3s;
       z-index: 9999;
+      display: none;
     }
 
     #status.connected {
@@ -147,6 +149,21 @@
   <script>
     const params = new URLSearchParams(location.search);
     const ROOM = params.get('room') || params.get('streamer');
+    // Capa de este overlay. Tres capas mutuamente excluyentes + 'all':
+    //   ?layer=alerts   → solo alertas (tarjetas, contadores, etc.)
+    //   ?layer=general  → media excepto el SO (sonidos, imágenes, vídeos, otros clips)
+    //   ?layer=so       → solo el clip del !so (eventos con soClip:true)
+    //   sin ?layer      → todo (default, compatibilidad)
+    // Permite tener una Browser Source por capa sin que se pisen entre sí.
+    const LAYER = (params.get('layer') || 'all').toLowerCase();
+    function eventLayer(data) {
+      if (data && data.soClip) return 'so';
+      if (data && ['image', 'video', 'sound', 'fullscreen_clip'].includes(data.type)) return 'general';
+      return 'alerts';
+    }
+    function passesLayer(data) {
+      return LAYER === 'all' || LAYER === eventLayer(data);
+    }
     const DEFAULT_WS = 'wss://leksimus-ws.onrender.com/overlay';
     const WS_URL = params.get('ws') || (ROOM ? `${DEFAULT_WS}?room=${encodeURIComponent(ROOM)}` : DEFAULT_WS);
     const WORKER_BASE = location.origin;
@@ -156,6 +173,11 @@
 
     if (!ROOM) {
       console.warn('[overlay] no room specified — add ?room=<token> to the URL');
+    }
+
+    // El indicador de conexión solo se muestra en modo debug (?debug).
+    if (params.has('debug')) {
+      document.getElementById('status').style.display = 'block';
     }
 
     let ws;
@@ -203,6 +225,8 @@
       //   { type: 'video', src, position, duration, loop, width, height, volume }
       //   { type: 'sound', src, duration }
       //   { type: 'fullscreen_clip', src, volume }
+      // Enrutado por capa (?layer): alerts | general | so. Sin ?layer = todo.
+      if (!passesLayer(data)) return;
       switch (data.type) {
         case 'alert':
           showAlert(data);

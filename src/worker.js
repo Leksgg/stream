@@ -4,6 +4,24 @@ export default {
     const params = url.searchParams;
     const isTxt = url.pathname.endsWith('.txt');
 
+    if (url.pathname === '/api/health') {
+      return jsonResponse({ ok: true, service: 'stream-assets' });
+    }
+
+    if (url.pathname === '/api/assets' || url.pathname === '/api/manifest') {
+      const manifestUrl = new URL('/assets.json', url.origin);
+      const manifestResponse = await env.ASSETS.fetch(manifestUrl);
+
+      if (!manifestResponse.ok) {
+        return jsonResponse({ ok: false, error: 'Manifest not found' }, 404);
+      }
+
+      const manifest = await manifestResponse.text();
+      return new Response(manifest, {
+        headers: corsHeaders('application/json; charset=utf-8'),
+      });
+    }
+
     // If not a .txt file, serve static asset as-is
     if (!isTxt) {
       return env.ASSETS.fetch(request);
@@ -121,4 +139,11 @@ function corsHeaders(contentType) {
     'Content-Type': contentType,
     'Cache-Control': 'no-cache',
   };
+}
+
+function jsonResponse(payload, status = 200) {
+  return new Response(JSON.stringify(payload, null, 2), {
+    status,
+    headers: corsHeaders('application/json; charset=utf-8'),
+  });
 }
