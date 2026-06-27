@@ -4,6 +4,7 @@
   "base": "/",
   "overlay": {
     "main": "/overlay/index.html",
+    "intermission": "/overlay/intermission.html",
     "query": {
       "room": "overlay room token",
       "ws": "optional websocket override"

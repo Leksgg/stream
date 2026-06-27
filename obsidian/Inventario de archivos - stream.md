@@ -25,6 +25,7 @@ Inventario de archivos relevantes del repo. Excluye `.git`, `.wrangler` y `node_
 | [scripts/scrape_nightlight.js](<../scripts/scrape_nightlight.js>) | script | Playwright, DeadByDaylight, Nightlight |
 | [public/assets.json](<../public/assets.json>) | manifiesto | assets, LeksimusBOT, overlay |
 | [public/overlay/index.html](<../public/overlay/index.html>) | overlay | OBS, WebSocket, LeksimusBOT |
+| [public/overlay/intermission.html](<../public/overlay/intermission.html>) | overlay | OBS, intermission, LeksimusBOT |
 | [public/image/Insta2.png](<../public/image/Insta2.png>) | imagen | redes, stream |
 | [public/image/Leks-grey.png](<../public/image/Leks-grey.png>) | imagen | marca, stream |
 | [public/image/Leks-purple.png](<../public/image/Leks-purple.png>) | imagen | marca, stream |

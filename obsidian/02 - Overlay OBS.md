@@ -4,7 +4,9 @@ estado: activo
 repo: stream
 proyecto: stream-resources
 componente: overlay-obs
-ruta: public/overlay/index.html
+ruta:
+  - public/overlay/index.html
+  - public/overlay/intermission.html
 eventos_overlay:
   - alert
   - image
@@ -25,11 +27,15 @@ tags:
 
 > [!info] Fuente
 > - [public/overlay/index.html](<../public/overlay/index.html>)
+> - [public/overlay/intermission.html](<../public/overlay/intermission.html>)
 
 ## Funcion
 
 > [!summary] Browser Source
 > Overlay transparente para OBS que se conecta por WebSocket al servidor de Leksimus usando `room` o `streamer`. Renderiza recursos visuales y sonoros sobre una grilla 3x3 o como clip fullscreen.
+
+> [!summary] Intermision
+> `public/overlay/intermission.html` guarda la escena standalone de intermission de Leksimus Bot. Esta pensada para Browser Source 1920x1080, con slot principal, chat lateral, widget libre, panel de redes, reloj y guias activables con `?guides=on`.
 
 ## Contrato de eventos
 
