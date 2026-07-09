@@ -22,3 +22,11 @@ npx wrangler deploy   # deploy a Cloudflare
 - Al añadir o quitar assets de `public/`, mantener coherente el manifiesto que expone `/api/assets`.
 - La carpeta `obsidian/` contiene notas de indexación para el vault Leksodia (excepción controlada de las convenciones de grafo): son notas laterales que documentan assets y endpoints. Si cambias estructura de assets o endpoints, actualiza la nota correspondiente en `obsidian/` (incluido `Inventario de archivos - stream.md`). No añadir frontmatter a código o assets para Obsidian; solo a las notas de `obsidian/`.
 - `.wrangler/` y `node_modules/` son generados: no tocarlos ni indexarlos.
+
+## Conducta del agente (cualquier modelo)
+
+1. **Anclaje de contexto.** Al iniciar sesión y siempre que se retome el trabajo tras una compresión o resumen de contexto, releer este archivo y la tarea en curso antes de continuar.
+2. **Verificar antes de afirmar.** No declarar que un endpoint u overlay funciona sin probarlo (`npx wrangler dev`). Si no se pudo verificar, decirlo explícitamente.
+3. **No rellenar huecos.** El contrato de eventos WebSocket con Leksimus es fuente de verdad externa: si un evento o parámetro no está documentado aquí o en el repo Leksimus, decir "no está documentado", nunca asumir su forma.
+4. **Declarar supuestos.** Antes de un cambio no trivial, listar qué se sabe, qué se asume y qué se va a comprobar; validar contra el código actual.
+5. **Segunda pasada.** Revisar el propio diff contra el objetivo antes de cerrar (incluida la coherencia de `/api/assets` y las notas de `obsidian/`). Hallazgos colaterales se anotan, no se arreglan de paso.
