@@ -161,9 +161,9 @@ voluntaddehierro | Voluntad de hierro: Estando herido y sin sufrir Agotamiento, 
 vinculo | Vínculo: Ves las auras de otros supervivientes en un radio de 36 metros — Dwight Fairfield
 exitoaplastante | Éxito aplastante: Cada vez que aturdas al asesino con un palé, obtienes un 50 % de Celeridad durante 4 segundos y sufres Agotamiento durante 20 segundos — Lee Yun-Jin
 ultimadefensa | Última defensa: Tras esconderte 90 segundos en el radio de terror, realizar un salto rápido aturdirá al asesino durante 3 segundos si está a menos de 2.5 metros (una vez por partida) — Michonne Grimes
-wideopenthrottle | Wide Open Throttle: Al hacer un salto rápido sobre un palé, recibes un impulso de Celeridad, el palé se restablece y queda bloqueado durante un tiempo; los aliados ven su aura mientras dure — Shane Wiigwaas
-lendahand | Lend A Hand: Una vez por partida, bendecir o purificar un tótem te da una habilidad que, mientras curas a otro superviviente, le otorga una pequeña cantidad permanente de cargas de curación — Shane Wiigwaas
-crossexamination | Cross-Examination: Dentro del radio de terror y sin estar en persecución, ves brevemente el rastro de Marcas Luminosas que deja el asesino; al seguirlo recibes un impulso de Celeridad — Shane Wiigwaas
+wideopenthrottle | Máxima Velocidad: Al hacer un salto rápido sobre un palé, recibes un impulso de Celeridad, el palé se restablece y queda bloqueado durante un tiempo; los aliados ven su aura mientras dure — Shane Wiigwaas
+lendahand | Echar una Mano: Una vez por partida, bendecir o purificar un tótem te da una habilidad que, mientras curas a otro superviviente, le otorga una pequeña cantidad permanente de cargas de curación — Shane Wiigwaas
+crossexamination | Interrogatorio: Dentro del radio de terror y sin estar en persecución, ves brevemente el rastro de Marcas Luminosas que deja el asesino; al seguirlo recibes un impulso de Celeridad — Shane Wiigwaas
 agotamiento | Agotamiento: Impide el uso de otras habilidades que provoquen este mismo estado mientras esté activo — Efecto de estado
 celeridad | Celeridad: Aumenta la velocidad de movimiento del asesino o del superviviente mientras el efecto persista — Efecto de estado
 entorpecimiento | Entorpecimiento: Reduce la velocidad de movimiento de los asesinos o supervivientes mientras el efecto esté activo — Efecto de estado
@@ -215,7 +215,7 @@ Rebecca | Hiperconcentración — Mejor que nuevo — Reafirmación
 Renato | Jugador secundario — Torrente de sangre — Trabajo en equipo: sigilo colectivo
 Rick | Ingenio Apocalíptico — ¡Ven a por Mí! — Trabajo en Equipo: Curtirse
 Sable | Invocación: Arañas Tejedoras — Fuerza en las Sombras — Embrujada
-Shane | Wide Open Throttle — Lend A Hand — Cross-Examination
+Shane | Máxima Velocidad — Echar una Mano — Interrogatorio
 Steve | Camadería — Canguro — Segundo aliento
 Taurie | Separación Limpia — Carga Sobre Los Hombros — Invocación: Cuervos Traicioneros
 Thalita | Desátame — Rivalidad amistosa — Trabajo en equipo: poder dual
@@ -370,9 +370,9 @@ miradaerrante | Mirada Errante: Al empezar una persecución, verás las auras de
 monitorizacionyabuso | Monitorización y Abuso: Tu radio de terror aumenta un 15 % mientras estás en persecución y disminuye un 25 % cuando no estás persiguiendo a nadie — El Doctor
 muertedefranklin | Muerte de Franklin: Tus ataques básicos hacen que el superviviente suelte su objeto y te permite ver el aura de los objetos soltados en un radio de 64 metros — El Caníbal
 murmulloamargo | Murmullo Amargo: Al completarse un generador, ves el aura de los supervivientes a menos de 16 metros de este por 5 s; al completarse todos, ves las auras de todos por 10 s — genérica
-hexscaredtodeath | Hex: Scared To Death: Tras colgar a 3 supervivientes distintos, se enciende un tótem apagado; durante una persecución, al romper un palé con un ataque básico, los supervivientes a 13 metros gritan y sufren un 11/12/13 % de Entorpecimiento durante 3 segundos — The Slasher (Jason)
-silentshadow | Silent Shadow: Cada vez que cuelgas a un superviviente, obtienes Indetectable durante 11/12/13 segundos; al completarse todos los generadores, obtienes Indetectable — The Slasher (Jason)
-rampage | Rampage: Al romper con un ataque básico un palé o muro destruible, obtienes 1 distintivo (máximo 13); si te ciegan o aturden con un palé, durante 13 segundos obtienes un 1 % de Celeridad por cada distintivo (recarga de 30/25/20 s) — The Slasher (Jason)
+hexscaredtodeath | Maleficio: Terror Hasta la Muerte: Tras colgar a 3 supervivientes distintos, se enciende un tótem apagado; durante una persecución, al romper un palé con un ataque básico, los supervivientes a 13 metros gritan y sufren un 11/12/13 % de Entorpecimiento durante 3 segundos — The Slasher (Jason)
+silentshadow | Sombra Silenciosa: Cada vez que cuelgas a un superviviente, obtienes Indetectable durante 11/12/13 segundos; al completarse todos los generadores, obtienes Indetectable — The Slasher (Jason)
+rampage | Matanza: Al romper con un ataque básico un palé o muro destruible, obtienes 1 distintivo (máximo 13); si te ciegan o aturden con un palé, durante 13 segundos obtienes un 1 % de Celeridad por cada distintivo (recarga de 30/25/20 s) — The Slasher (Jason)
 Animatronico | Avería — Empleo Disponible — Miedo Fantasmal
 Freddys | Avería — Empleo Disponible — Miedo Fantasmal
 Arponero | Interruptor del Hombre Muerto — Maleficio: Represalias — Oído para la Maquinaria
@@ -395,8 +395,8 @@ Kaneki | Maleficio: Solo hay Miseria — Nadie es Libre — Unidos Eternamente
 Liche | Arrogancia Tenebrosa — Sintonía con la Urdimbre — Toque Lánguido
 VecnaDnD | Arrogancia Tenebrosa — Sintonía con la Urdimbre — Toque Lánguido
 Oni | Eco Sangriento — Némesis — Tácticas de Zanshin
-Jason | Hex: Scared To Death — Silent Shadow — Rampage
-TheSlasher | Hex: Scared To Death — Silent Shadow — Rampage
+Jason | Maleficio: Terror Hasta la Muerte — Sombra Silenciosa — Matanza
+TheSlasher | Maleficio: Terror Hasta la Muerte — Sombra Silenciosa — Matanza
 Payaso | Coulrofobia — Desconcierto — Pim Pam Pum
 primero| Maleficio: Mente Colmena — Proyecto Secreto — Retrasa el Reloj
 vecnaStranger | Maleficio: Mente Colmena — Proyecto Secreto — Retrasa el Reloj
