@@ -14,7 +14,11 @@
 ```bash
 npx wrangler dev      # desarrollo local
 npx wrangler deploy   # deploy a Cloudflare
+npm run test:e2e          # tests E2E con Playwright (levanta wrangler dev en :8821)
+npm run test:e2e:report   # abre el reporte HTML del último run (playwright-report/)
 ```
+
+Los tests E2E viven en `e2e/` (Playwright Test, `@playwright/test`). Son independientes de `playwright` (dependencia usada solo por `scripts/scrape_nightlight.js`): no mezclarlos.
 
 ## Reglas
 
