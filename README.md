@@ -1,16 +1,3 @@
----
-tipo: readme-repo
-estado: activo
-repo: stream
-proyecto: stream-resources
-up: "[[10 Repositorios GitHub/_repos/stream/obsidian/00 - Indice Stream]]"
-tags:
-  - Streaming
-  - Cloudflare
-  - LeksimusBOT
-  - OBS
----
-
 # stream
 
 Cloudflare Worker para recursos de stream usados por overlays, comandos y Leksimus BOT.

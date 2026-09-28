@@ -1,36 +1,38 @@
-# stream — guía para agentes
+# stream — instrucciones para agentes
 
-**Cloudflare Worker** (`name = "streams"`) que sirve recursos de stream para overlays OBS, comandos y Leksimus BOT. Rama: `main`. Remoto: `Leksgg/stream`.
+Este archivo dice dónde están las normas y qué hace falta para trabajar en el código. Las normas no se copian aquí: viven en el vault LksPrime.
 
-## Arquitectura
+## Antes de trabajar
 
-- `src/worker.js` — único punto de entrada del Worker. Endpoints documentados en `README.md` (`/api/health`, `/api/assets`, `/txt/<archivo>.txt` con sus query params, `/overlay/index.html?room=...`).
-- `public/` — assets estáticos servidos por el binding `ASSETS` (`run_worker_first = true`: el Worker intercepta antes de servir estáticos). Imágenes, sonidos, vídeos y textos dinámicos del overlay viven aquí.
-- `scripts/scrape_nightlight.js` — scraping con Playwright de fuentes externas (única dependencia npm).
-- `wrangler.toml` — configuración; logs de observabilidad activados.
+1. **Reglas**: lee `D:\LksPrime\01 Reglas\Reglas obligatorias.md`. Se cumplen todas y se citan por su ID (T-04, R-10…). Método de trabajo en un repo: `D:\LksPrime\01 Reglas\Metodología de trabajo en repositorios.md`.
+2. **Proyecto**: lee `D:\LksPrime\02 Proyectos\Streaming\Stream Resources\Stream Resources.md`: estado, enlaces y reglas del proyecto (STR-01 y STR-02). Decisiones, historial y documentación en su carpeta `Docs\`.
+3. **Documentación de assets y endpoints**: en `D:\LksPrime\02 Proyectos\Streaming\Stream Resources\Docs\Repo\`. Si cambias assets o endpoints, actualiza esas notas.
+4. **Skills**: qué hay y cuándo se usan, en `D:\LksPrime\00 Sistema\Índice de skills.md`.
+5. **Documentación**: se escribe en el vault, en la carpeta del proyecto (V-01). En el repo solo va el `README.md` técnico. Una tarea de varias sesiones tiene su nota de actividad en `D:\LksPrime\03 Diario\Actividades\`.
+
+## Proyecto
+
+Cloudflare Worker (`name = "streams"`) que sirve recursos de stream para overlays de OBS, comandos y Leksimus BOT. Rama de producción: `main`. Remoto: `Leksgg/stream`.
+
+- `src/worker.js`: único punto de entrada. Endpoints descritos en `README.md` (`/api/health`, `/api/assets`, `/txt/<archivo>.txt`, `/overlay/index.html?room=...`).
+- `public/`: assets servidos por el binding `ASSETS` (`run_worker_first = true`: el Worker intercepta antes de servir estáticos).
+- `scripts/scrape_nightlight.js`: scraping con Playwright de fuentes externas.
+- `wrangler.toml`: configuración, con logs de observabilidad activados.
 
 ## Comandos
 
 ```bash
-npx wrangler dev      # desarrollo local
-npx wrangler deploy   # deploy a Cloudflare
-npm run test:e2e          # tests E2E con Playwright (levanta wrangler dev en :8821)
-npm run test:e2e:report   # abre el reporte HTML del último run (playwright-report/)
+npx wrangler dev          # desarrollo local
+npx wrangler deploy       # despliegue a Cloudflare
+npm run test:e2e          # E2E con Playwright (levanta wrangler dev en :8821)
+npm run test:e2e:report   # reporte HTML del último run
 ```
 
-Los tests E2E viven en `e2e/` (Playwright Test, `@playwright/test`). Son independientes de `playwright` (dependencia usada solo por `scripts/scrape_nightlight.js`): no mezclarlos.
+Verificación mínima (R-10): el endpoint u overlay tocado responde en `npx wrangler dev` y `npm run test:e2e` pasa.
 
-## Reglas
+## Lo que no hay que romper
 
-- El overlay escucha eventos WebSocket desde Leksimus (`alert`, `image`, `video`, `sound`, `fullscreen_clip`). Cambios en el contrato de eventos deben coordinarse con el repo Leksimus — no renombrar eventos unilateralmente.
-- Al añadir o quitar assets de `public/`, mantener coherente el manifiesto que expone `/api/assets`.
-- La carpeta `obsidian/` contiene notas de indexación para el vault Leksodia (excepción controlada de las convenciones de grafo): son notas laterales que documentan assets y endpoints. Si cambias estructura de assets o endpoints, actualiza la nota correspondiente en `obsidian/` (incluido `Inventario de archivos - stream.md`). No añadir frontmatter a código o assets para Obsidian; solo a las notas de `obsidian/`.
-- `.wrangler/` y `node_modules/` son generados: no tocarlos ni indexarlos.
-
-## Conducta del agente (cualquier modelo)
-
-1. **Anclaje de contexto.** Al iniciar sesión y siempre que se retome el trabajo tras una compresión o resumen de contexto, releer este archivo y la tarea en curso antes de continuar.
-2. **Verificar antes de afirmar.** No declarar que un endpoint u overlay funciona sin probarlo (`npx wrangler dev`). Si no se pudo verificar, decirlo explícitamente.
-3. **No rellenar huecos.** El contrato de eventos WebSocket con Leksimus es fuente de verdad externa: si un evento o parámetro no está documentado aquí o en el repo Leksimus, decir "no está documentado", nunca asumir su forma.
-4. **Declarar supuestos.** Antes de un cambio no trivial, listar qué se sabe, qué se asume y qué se va a comprobar; validar contra el código actual.
-5. **Segunda pasada.** Revisar el propio diff contra el objetivo antes de cerrar (incluida la coherencia de `/api/assets` y las notas de `obsidian/`). Hallazgos colaterales se anotan, no se arreglan de paso.
+- El contrato de eventos WebSocket con Leksimus (`alert`, `image`, `video`, `sound`, `fullscreen_clip`) solo cambia coordinado con el repo de Leksimus (STR-01).
+- Al añadir o quitar assets de `public/`, el manifiesto de `/api/assets` tiene que seguir siendo coherente.
+- Los E2E (`e2e/`, `@playwright/test`) son independientes de la dependencia `playwright` que usa el scraper: no se mezclan.
+- `.wrangler/` y `node_modules/` son generados.
