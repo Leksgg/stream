@@ -47,6 +47,9 @@ export async function handleDbd(url, env) {
   if (result.generic) {
     return svg ? svgResponse(await genericCard(env, url.origin, result.generic)) : text(genericMessage(result.generic));
   }
+  if (result.effect) {
+    return svg ? svgResponse(await effectCard(env, url.origin, result.effect)) : text(effectMessage(result.effect));
+  }
   if (!svg) return text(chatMessage(kind, query, result, data));
   if (!result.hit) return svgResponse(await notFoundCard(kind, query, result));
   const card = kind === 'perk'
@@ -140,7 +143,40 @@ function distance(a, b) {
   return rows[a.length][b.length];
 }
 
+// Efectos de estado. Cada perk trae en data.json los que menciona (campo fx),
+// detectados en su descripción completa. Alias: nombre en inglés y erratas habituales.
+const EFFECTS = [
+  ['Celeridad', ['haste']], ['Entorpecimiento', ['hindered']], ['Agotamiento', ['exhausted', 'exhaustion', 'agotado']],
+  ['Resistencia', ['endurance']], ['Quebranto', ['broken', 'roto']], ['Esquiva', ['evasion', 'evacion']],
+  ['Indetectable', ['undetectable']], ['Ceguera', ['blindness', 'blind', 'ciego']], ['Inconsciencia', ['oblivious']],
+  ['Hemorragia', ['hemorrhage']], ['Laceración', ['mangled']], ['Vulnerabilidad', ['exposed', 'expuesto']],
+  ['Herida profunda', ['deepwound']], ['Incapacitación', ['incapacitated']], ['Desesperanza', ['hopelessness']],
+  ['Debilidad', ['weakened']], ['Sed de sangre', ['bloodlust']], ['Gritar', ['grito', 'scream']], ['Auras', ['aura', 'aurareading']],
+].map(([name, aliases]) => ({ name, keys: [slug(name), ...aliases.map(slug)] }));
+
+const ROLE_WORD = /^(k|killers?|asesin[ao]s?|s|survis?|supervivientes?)$/;
+
+function findEffect(query) {
+  const words = query.trim().split(/\s+/);
+  let role = null;
+  if (words.length > 1 && ROLE_WORD.test(slug(words.at(-1)))) role = /^(k|killer|asesin)/.test(slug(words.pop())) ? 'k' : 's';
+  const q = slug(words.join(' '));
+  if (q.length < 4) return null;
+  const effect = EFFECTS.find(e => e.keys.includes(q))
+    || EFFECTS.find(e => e.keys.some(k => k.startsWith(q)))
+    || (q.length >= 6 ? EFFECTS.find(e => e.keys.some(k => distance(q, k) <= 1)) : null);
+  return effect ? { name: effect.name, role } : null;
+}
+
 function findPerk(data, query) {
+  const q = slug(query);
+  const exact = data.perks.filter(p => p.k === q || slug(p.en) === q);
+  if (exact.length === 1) return { hit: exact[0], suggestions: [] };
+  const effect = findEffect(query);
+  if (effect) {
+    const perks = data.perks.filter(p => p.fx?.includes(effect.name) && (!effect.role || p.r === effect.role));
+    return { hit: null, suggestions: [], effect: { ...effect, perks } };
+  }
   return search(data.perks, query, p => [p.k, slug(p.en)]);
 }
 
@@ -432,14 +468,60 @@ function genericMessage(group) {
   return clip(`Perks genéricas de ${who} (${group.perks.length}): ${group.perks.map(p => p.n).join(' · ')}`);
 }
 
+function effectMessage(effect) {
+  const who = effect.role === 'k' ? ' de asesino' : effect.role === 's' ? ' de superviviente' : '';
+  if (!effect.perks.length) return `Ninguna perk${who} menciona ${effect.name}. Puede venir del poder o de los accesorios de algún asesino.`;
+  const groups = [['s', 'Survi'], ['k', 'Killer']]
+    .map(([r, label]) => [label, effect.perks.filter(p => p.r === r).map(p => p.n)])
+    .filter(([, names]) => names.length);
+  const head = `Perks con ${effect.name}${who} (${effect.perks.length})`;
+  const full = `${head}: ${groups.map(([label, names]) => (effect.role ? '' : label + ': ') + names.join(' · ')).join(' | ')}`;
+  if (full.length <= CHAT_MAX) return full;
+  // No cabe: cada rol recibe la misma parte del espacio, y se avisa de cuántas faltan y cómo filtrar.
+  const tail = effect.role ? '' : ' Añade survi o killer para filtrar.';
+  const budget = Math.floor((CHAT_MAX - head.length - tail.length - 20) / groups.length);
+  let shown = 0;
+  const parts = groups.map(([label, names]) => {
+    let part = effect.role ? '' : label + ':';
+    for (const name of names) {
+      const next = part + (part.endsWith(':') || !part ? ' ' : ' · ') + name;
+      if (next.length > budget) break;
+      part = next;
+      shown++;
+    }
+    return part.trim();
+  });
+  return `${head}: ${parts.join(' | ')} … y ${effect.perks.length - shown} más.${tail}`;
+}
+
+const EFFECT_CARD_MAX = 15;
+
+async function effectCard(env, origin, effect) {
+  const who = effect.role === 'k' ? 'Asesino · ' : effect.role === 's' ? 'Superviviente · ' : '';
+  if (!effect.perks.length) {
+    const body = `<text x="30" y="62" fill="${C.fg}" font-size="30" font-weight="700">${esc(`Ninguna perk con ${effect.name}`)}</text>`
+      + `<text x="30" y="102" fill="${C.dim}" font-size="21">Puede venir del poder o de los accesorios de algún asesino</text>`;
+    return frame(900, 140, body);
+  }
+  const perks = effect.perks.slice(0, EFFECT_CARD_MAX);
+  const more = effect.perks.length - perks.length;
+  return genericCard(env, origin, {
+    perks,
+    title: `Perks con ${effect.name}`,
+    subtitle: `${who}${effect.perks.length} perks${more ? ` · se muestran ${perks.length}` : ''}`,
+  });
+}
+
 async function genericCard(env, origin, group) {
   const icons = await Promise.all(group.perks.map(p => dataUri(env, origin, p.i)));
   const perRow = 5;
   const rows = Math.ceil(group.perks.length / perRow);
   const width = 900;
   const height = 110 + rows * 170;
-  let body = `<text x="30" y="58" fill="${C.fg}" font-size="34" font-weight="700">Perks genéricas</text>`
-    + `<text x="30" y="88" fill="${C.dim}" font-size="19">${group.role === 'k' ? 'Asesino' : 'Superviviente'} · ${group.perks.length} perks que puede usar cualquiera</text>`;
+  const title = group.title || 'Perks genéricas';
+  const subtitle = group.subtitle || `${group.role === 'k' ? 'Asesino' : 'Superviviente'} · ${group.perks.length} perks que puede usar cualquiera`;
+  let body = `<text x="30" y="58" fill="${C.fg}" font-size="34" font-weight="700">${esc(title)}</text>`
+    + `<text x="30" y="88" fill="${C.dim}" font-size="19">${esc(subtitle)}</text>`;
   group.perks.forEach((perk, i) => {
     const cx = 105 + (i % perRow) * 172;
     const cy = 165 + Math.floor(i / perRow) * 170;

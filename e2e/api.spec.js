@@ -81,3 +81,15 @@ test('GET /dbd/pj tolera erratas y lista las perks genéricas', async ({ request
   const card = await request.get('/dbd/pj.svg?q=genericas');
   expect(card.headers()['content-type']).toContain('image/svg+xml');
 });
+
+test('GET /dbd/perk busca también por efecto de estado', async ({ request }) => {
+  const haste = await (await request.get('/dbd/perk?q=celeridad')).text();
+  expect(haste).toMatch(/^Perks con Celeridad \(\d+\): Survi: /);
+  expect(haste.length).toBeLessThanOrEqual(450);
+  expect(await (await request.get('/dbd/perk?q=exhausted killer')).text()).toMatch(/^Perks con Agotamiento de asesino \(\d+\): /);
+  expect(await (await request.get('/dbd/perk?q=evacion')).text()).toContain('Autoconservación');
+  expect(await (await request.get('/dbd/perk?q=desesperanza')).text()).toMatch(/^Ninguna perk menciona Desesperanza/);
+  expect(await (await request.get('/dbd/perk?q=adrenalina')).text()).toMatch(/^Adrenalina \(/);
+  const card = await (await request.get('/dbd/perk.svg?q=ceguera')).text();
+  expect(card).toContain('Perks con Ceguera');
+});
