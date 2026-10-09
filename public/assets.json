@@ -123,6 +123,7 @@
     { "id": "dbd-pj", "src": "/dbd/pj", "query": { "q": "nombre o apodo del personaje" }, "formats": ["text", "svg"], "svg": "/dbd/pj.svg" },
     { "id": "dbd-random-build", "src": "/dbd/random/build", "query": { "r": "killer para asesino", "s": "semilla ({util.count})", "u": "usuario" }, "formats": ["text", "svg"], "svg": "/dbd/random/build.svg" },
     { "id": "dbd-random-survi", "src": "/dbd/random/survi", "query": { "s": "semilla", "u": "usuario" }, "formats": ["text", "svg"], "svg": "/dbd/random/survi.svg" },
-    { "id": "dbd-random-killer", "src": "/dbd/random/killer", "query": { "s": "semilla", "u": "usuario" }, "formats": ["text", "svg"], "svg": "/dbd/random/killer.svg" }
+    { "id": "dbd-random-killer", "src": "/dbd/random/killer", "query": { "s": "semilla", "u": "usuario" }, "formats": ["text", "svg"], "svg": "/dbd/random/killer.svg" },
+    { "id": "dbd-builder", "src": "/dbd/builder.json", "formats": ["json"], "cors": true, "description": "Dataset de la herramienta Builds DBD de digitalbite.net (schemaVersion, ids del juego, iconos en /dbd/icons, /dbd/pj y /dbd/items)" }
   ]
 }

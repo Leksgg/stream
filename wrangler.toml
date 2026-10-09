@@ -5,7 +5,9 @@ compatibility_date = "2024-09-25"
 [assets]
 directory = "./public"
 binding = "ASSETS"
-run_worker_first = true
+# Todo pasa por el Worker salvo los estáticos de DBD (iconos, retratos, objetos y JSON),
+# que se sirven directamente con las cabeceras de public/_headers (CORS y caché) para la web.
+run_worker_first = ["/*", "!/dbd/icons/*", "!/dbd/items/*", "!/dbd/pj/*", "!/dbd/*.json"]
 
 [observability]
 enabled = true
