@@ -285,7 +285,7 @@ async function charCard(env, origin, char, data, eyebrow = '') {
     ...perks.map(p => dataUri(env, origin, p.i)),
   ]);
   const width = 900;
-  const height = 320;
+  const height = 340;
   let body = `<clipPath id="pc"><rect x="30" y="30" width="220" height="260" rx="10"/></clipPath>`
     + `<rect x="30" y="30" width="220" height="260" rx="10" fill="${C.panel}"/>`
     + (portrait ? `<image href="${portrait}" x="10" y="40" width="260" height="260" clip-path="url(#pc)" preserveAspectRatio="xMidYMid slice"/>` : '');
@@ -294,7 +294,7 @@ async function charCard(env, origin, char, data, eyebrow = '') {
   perks.forEach((perk, i) => {
     const cx = 370 + i * 200;
     body += diamond(cx, 182, 120, icons[i], 'c' + i);
-    wrap(perk.n, 20, 2).forEach((line, j) => {
+    wrap(perk.n, 20, 3).forEach((line, j) => {
       body += `<text x="${cx}" y="${266 + j * 24}" fill="${C.fg}" font-size="19" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });
     if (perk.ch) body += `<rect x="${cx + 26}" y="122" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${cx + 50}" y="138" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
