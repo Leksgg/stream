@@ -1,0 +1,49 @@
+{
+  "_nota": "Correcciones a los datos de tricky que no vienen en la descarga.",
+  "nombreIngles": {
+    "SoleSurvivor": "Down to the Last",
+    "ObjectOfObsession": "Bound by Obsession"
+  },
+  "sinPersonaje": [
+    "SoleSurvivor"
+  ],
+  "patch": "10.2.0",
+  "date": "2026-10-06",
+  "aliasExtra": {
+    "laforma": [
+      "myers",
+      "michael",
+      "michaelmyers"
+    ],
+    "elcanibal": [
+      "leatherface"
+    ],
+    "lapesadilla": [
+      "freddy",
+      "freddykrueger"
+    ],
+    "elverdugo": [
+      "pyramidhead",
+      "cabezapiramide"
+    ],
+    "elcenobita": [
+      "pinhead"
+    ],
+    "laonryo": [
+      "sadako"
+    ],
+    "elxenomorfo": [
+      "xeno"
+    ],
+    "goodguy": [
+      "chucky"
+    ],
+    "elliche": [
+      "vecna"
+    ],
+    "elanimatronico": [
+      "springtrap",
+      "fnaf"
+    ]
+  }
+}
