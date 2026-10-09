@@ -1,0 +1,6 @@
+icons/
+pylib/
+__pycache__/
+data.json
+builder_data.json
+builds-dbd.html

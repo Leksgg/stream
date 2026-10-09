@@ -1,0 +1,321 @@
+<title>Builds DBD 10.2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: catálogo a la izquierda, mesa de build fija a la derecha (como la pantalla de carga del juego); en móvil la mesa va arriba. Tema único oscuro, elegido a propósito: es la niebla del juego. */
+:root{
+  color-scheme:dark;
+  --bg:#141218; --panel:#1c1922; --raise:#25212d; --line:#3a3444; --fg:#ece6dc; --dim:#a79fb0; --faint:#8f879b;
+  --bone:#e8dcc8; --blood:#c4302b; --focus:#f0c96a;
+  --r-common:#8a6a4b; --r-uncommon:#b89b2c; --r-rare:#3e8a3c; --r-veryrare:#7a3fb0; --r-visceral:#b4204f; --r-event:#d9822b;
+  --perk:#4b2a6e; --perk-hi:#7b4bb0;
+  --f-disp:"Saira Condensed","Arial Narrow",Arial,sans-serif; --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 var(--f-body)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:18px 40px}
+header.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:16px}
+h1{font:700 30px/1 var(--f-disp);letter-spacing:.02em;text-transform:uppercase;margin:0;text-wrap:balance}
+h1 small{display:block;font:500 13px/1.3 var(--f-body);letter-spacing:0;text-transform:none;color:var(--dim);margin-top:6px}
+.role{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px}
+.role button{border:0;background:none;padding:8px 16px;border-radius:4px;cursor:pointer;font:600 15px var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.role button[aria-pressed="true"]{background:var(--raise);color:var(--fg);box-shadow:inset 0 -2px 0 var(--bone)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.side{order:-1;position:static!important;padding:12px;gap:10px}.det.idle{display:none}.perks4{transform:scale(.85);margin:-10px}}
+/* catálogo */
+.cat{min-width:0}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px;overflow-x:auto}
+.tabs button{border:0;background:none;padding:10px 14px;cursor:pointer;font:600 15px var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--fg);border-color:var(--bone)}
+.tabs .n{font:400 12px var(--f-body);color:var(--faint);margin-left:4px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.search{flex:1 1 220px;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 12px;color:var(--fg);font:inherit}
+.search::placeholder{color:var(--faint)}
+select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 10px;color:var(--fg);font:inherit;max-width:100%}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;color:var(--dim);display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{border-color:var(--bone);color:var(--fg);background:var(--raise)}
+.chip .dot{width:9px;height:9px;border-radius:2px;transform:rotate(45deg)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.count{font-size:13px;color:var(--faint);margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.card{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px 10px;background:var(--panel);border:1px solid transparent;border-radius:6px;cursor:pointer;text-align:center;min-width:0}
+.card:hover{border-color:var(--line);background:var(--raise)}
+.card[aria-pressed="true"]{border-color:var(--bone);background:var(--raise)}
+.card .nm{font-size:13px;line-height:1.2;overflow-wrap:anywhere}
+.card .sub{font-size:12px;color:var(--faint);line-height:1.2;overflow-wrap:anywhere}
+.tag{position:absolute;top:6px;right:6px;font:700 10px/1 var(--f-disp);letter-spacing:.06em;color:#ff8f86;padding:2px 4px;border:1px solid rgba(196,48,43,.6);border-radius:3px}
+.tag.rw{background:var(--blood);border-color:var(--blood);color:#fff}
+.empty{padding:28px 12px;text-align:center;color:var(--dim);background:var(--panel);border-radius:6px}
+/* iconos */
+.dia{width:72px;height:72px;position:relative;display:grid;place-items:center;flex:none}
+.dia::before{content:"";position:absolute;inset:11px;transform:rotate(45deg);background:radial-gradient(circle at 50% 40%,var(--perk-hi),var(--perk) 70%);border:1px solid #9a73c9;box-shadow:inset 0 0 10px rgba(0,0,0,.5)}
+.dia img{position:relative;width:72px;height:72px;object-fit:contain}
+.sq{width:60px;height:60px;border-radius:4px;display:grid;place-items:center;flex:none;background:linear-gradient(160deg,color-mix(in srgb,var(--rc,var(--r-common)) 85%,#fff 0%),color-mix(in srgb,var(--rc,var(--r-common)) 45%,#000));border:1px solid color-mix(in srgb,var(--rc,var(--r-common)) 70%,#fff)}
+.sq img{width:54px;height:54px;object-fit:contain}
+.por{width:84px;height:84px;border-radius:4px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#4a4256,var(--raise));border:1px solid var(--line);flex:none}
+.por img{width:100%;height:100%;object-fit:cover}
+.ph{font:700 18px var(--f-disp);color:rgba(255,255,255,.75);position:relative}
+/* mesa */
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.side h2{font:600 14px var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0}
+.load{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.perks4{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(3,52px);width:156px;height:156px;flex:none}
+.slot{border:0;background:none;padding:0;cursor:pointer;position:relative;display:grid;place-items:center}
+.perks4 .slot{width:80px;height:80px;margin:-14px}
+.perks4 .s0{grid-column:2;grid-row:1}.perks4 .s1{grid-column:1;grid-row:2}.perks4 .s2{grid-column:3;grid-row:2}.perks4 .s3{grid-column:2;grid-row:3}
+.slot .ghost{position:absolute;inset:16px;transform:rotate(45deg);border:1px dashed var(--faint);background:rgba(255,255,255,.02)}
+.slot.next .ghost{border-color:var(--bone);border-style:solid}
+.slot .dia{width:80px;height:80px}.slot .dia img{width:80px;height:80px}
+.itemcol{display:flex;flex-direction:column;align-items:center;gap:8px}
+.adds2{display:flex;gap:8px}
+.sqslot{width:60px;height:60px;border-radius:4px;border:1px dashed var(--faint);display:grid;place-items:center;color:var(--faint);font-size:11px;text-align:center;line-height:1.1;padding:2px}
+.sqslot.big{width:84px;height:84px}
+.slot.next .sqslot{border:1px solid var(--bone);color:var(--fg)}
+.names{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;font-size:13px;margin:0;padding:0;list-style:none}
+.names li{display:flex;gap:8px;align-items:baseline;min-width:0}
+.names b{font:600 12px var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);width:62px;flex:none}
+.names span{min-width:0;overflow-wrap:anywhere}
+.names .ch{color:#ff8f86;font-size:11px;margin-left:4px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:1px solid var(--line);background:var(--raise);border-radius:6px;padding:8px 12px;cursor:pointer;font:600 14px var(--f-disp);letter-spacing:.06em;text-transform:uppercase}
+.btn.pri{background:var(--bone);color:#1a1620;border-color:var(--bone)}
+.btn:hover{border-color:var(--bone)}
+.msg{font-size:13px;color:var(--dim);min-height:1.2em;margin:0}
+.det{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.det .hd{display:flex;gap:12px;align-items:center}
+.det h3{font:700 19px/1.1 var(--f-disp);margin:0;letter-spacing:.02em}
+.det .en{font-size:12px;color:var(--faint)}
+.det p{margin:0;font-size:14px;white-space:pre-line;overflow-wrap:anywhere}
+.det .chg{border-left:3px solid var(--blood);padding:6px 10px;background:rgba(196,48,43,.08);border-radius:0 4px 4px 0}
+.det .chg strong{display:block;font:700 12px var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:#ff8f86;margin-bottom:2px}
+.det details{font-size:13px;color:var(--dim)}
+.det summary{cursor:pointer}
+.rar{font:600 11px var(--f-disp);letter-spacing:.08em;text-transform:uppercase}
+footer{margin-top:28px;font-size:12px;color:var(--faint)}
+footer a{color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){.card,.chip,.btn{transition:background .12s,border-color .12s}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Builds DBD <span style="color:var(--blood)">10.2.0</span>
+      <small>321 perks con los cambios del 6 de octubre de 2026. Las 57 que cambiaron llevan la marca 10.2.</small></h1>
+    <div class="role" role="group" aria-label="Rol">
+      <button id="r-s" aria-pressed="true">Superviviente</button>
+      <button id="r-k" aria-pressed="false">Asesino</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="cat" aria-label="Catálogo">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="filters" id="filters"></div>
+      <p class="count" id="count"></p>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <aside class="side" aria-label="Tu build">
+      <h2 id="side-title">Tu build</h2>
+      <div class="load" id="load"></div>
+      <ul class="names" id="names"></ul>
+      <div class="acts">
+        <button class="btn pri" id="b-copy">Copiar build <span id="prog" style="font-weight:500;opacity:.7"></span></button>
+        <button class="btn" id="b-rand">Aleatorio</button>
+        <button class="btn" id="b-clear">Vaciar</button>
+      </div>
+      <p class="msg" id="msg" aria-live="polite"></p>
+      <div class="det" id="det"></div>
+    </aside>
+  </div>
+
+  <footer>
+    Datos del juego (10.1.2) de dbd.tricky.lol, con los 57 cambios de la 10.2.0 aplicados a mano desde las notas del parche. Iconos oficiales vía <a href="https://deadbydaylight.wiki.gg" target="_blank" rel="noopener">deadbydaylight.wiki.gg</a>. Down to the Last y Bound by Obsession conservan su nombre en español anterior (Solo quedo yo, Objeto de obsesión) hasta confirmar la traducción nueva.
+  </footer>
+</div>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const IC=D.icons;
+const RAR={common:'Común',uncommon:'Poco común',rare:'Rara',veryrare:'Muy rara',visceral:'Visceral',none:'—'};
+const RORD=['common','uncommon','rare','veryrare','visceral'];
+const TYPES={medkit:'Botiquín',toolbox:'Caja de herramientas',flashlight:'Linterna',key:'Llave',map:'Mapa',fogvial:'Frasco de niebla',firecracker:'Petardo'};
+const NOADD=new Set(['firecracker']);
+const noAdds=()=>{const it=role==='s'&&B.s.item&&byId['items:'+B.s.item];return !!(it&&NOADD.has(it.t))};
+const norm=s=>(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const byId={};for(const g of ['perks','killers','items','adds','addk'])for(const x of D[g])byId[g+':'+x.id]=x;
+const killerByPower={};for(const k of D.killers)killerByPower[k.p]=k;
+const sortN=(a,b)=>a.n.localeCompare(b.n,'es');
+D.perks.sort(sortN);D.killers.sort(sortN);
+
+const blank=()=>({s:{perks:[null,null,null,null],item:null,adds:[null,null]},k:{perks:[null,null,null,null],killer:null,adds:[null,null]}});
+let B=blank();
+try{const v=JSON.parse(localStorage.getItem('dbd-build-1020')||'null');if(v&&v.s&&v.k)B=v}catch(e){}
+const save=()=>{try{localStorage.setItem('dbd-build-1020',JSON.stringify(B))}catch(e){}};
+let role='s', tab='perks', detail=null;
+const F={q:'',changed:false,owner:'',rar:new Set(),type:''};
+
+function img(file,cls,alt=''){
+  if(file&&IC[file])return `<img src="${IC[file]}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+  const ini=esc((alt||'?').replace(/^(Maleficio|Bendición|Gancho flagelante|Invocación|Trabajo en equipo): /i,'').slice(0,2).toUpperCase());
+  return `<span class="ph">${ini}</span>`;
+}
+const perkIcon=p=>`<span class="dia">${img(p.i,'',p.n)}</span>`;
+const sqIcon=(x,big)=>`<span class="sq" style="--rc:var(--r-${x.ev?'event':x.ra||'common'})${big?';width:84px;height:84px':''}">${img(x.i,'',x.n)}</span>`;
+const porIcon=k=>`<span class="por">${img(k.i,'',k.n)}</span>`;
+
+function owners(){
+  const set=new Map();for(const p of D.perks)if(p.r===role)set.set(p.c||'',(p.c||'Genéricas'));
+  return [...set.entries()].sort((a,b)=>a[0]===''?-1:b[0]===''?1:a[1].localeCompare(b[1],'es'));
+}
+function tabsFor(){return role==='s'?[['perks','Perks'],['item','Objeto'],['adds','Accesorios']]:[['killer','Asesino'],['perks','Perks'],['adds','Accesorios']]}
+
+function renderTabs(){
+  const cur=B[role];
+  const n={perks:cur.perks.filter(Boolean).length+'/4',item:cur.item?'1/1':'0/1',killer:cur.killer?'1/1':'0/1',adds:noAdds()?'—':cur.adds.filter(Boolean).length+'/2'};
+  $('tabs').innerHTML=tabsFor().map(([k,l])=>`<button role="tab" aria-selected="${k===tab}" data-tab="${k}">${l}<span class="n">${n[k]}</span></button>`).join('');
+}
+function renderFilters(){
+  let h=`<input class="search" id="q" type="search" placeholder="${tab==='perks'?'Busca perk, personaje o nombre en inglés':tab==='killer'?'Busca asesino':'Busca por nombre'}" value="${esc(F.q)}" aria-label="Buscar">`;
+  if(tab==='perks'){
+    h+=`<button class="chip" id="f-ch" aria-pressed="${F.changed}"><span class="dot" style="background:var(--blood)"></span>Cambiadas en 10.2.0</button>`;
+    h+=`<select id="f-own" aria-label="Personaje"><option value="">Todos los personajes</option>${owners().map(([v,l])=>`<option value="${esc(v||'__gen')}" ${F.owner===(v||'__gen')?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
+  }
+  if(tab==='item'){
+    h+=`<div class="chips">${['',...Object.keys(TYPES)].map(t=>`<button class="chip" data-type="${t}" aria-pressed="${F.type===t}">${t?TYPES[t]:'Todos'}</button>`).join('')}</div>`;
+  }
+  if(tab==='item'||tab==='adds'){
+    h+=`<div class="chips">${RORD.map(r=>`<button class="chip" data-rar="${r}" aria-pressed="${F.rar.has(r)}"><span class="dot" style="background:var(--r-${r})"></span>${RAR[r]}</button>`).join('')}</div>`;
+  }
+  $('filters').innerHTML=h;
+}
+function list(){
+  const q=norm(F.q);const cur=B[role];
+  const hit=(...s)=>!q||s.some(x=>norm(x).includes(q));
+  const rr=x=>!F.rar.size||F.rar.has(x.ra);
+  if(tab==='perks')return D.perks.filter(p=>p.r===role&&(!F.changed||p.ch)&&(!F.owner||(F.owner==='__gen'?!p.c:p.c===F.owner))&&hit(p.n,p.en,p.c||'genérica'));
+  if(tab==='killer')return D.killers.filter(k=>hit(k.n));
+  if(tab==='item')return D.items.filter(i=>(!F.type||i.t===F.type)&&rr(i)&&hit(i.n,i.en,TYPES[i.t])).sort((a,b)=>a.t.localeCompare(b.t)||RORD.indexOf(a.ra)-RORD.indexOf(b.ra));
+  if(tab==='adds'){
+    if(role==='s'){const it=cur.item&&byId['items:'+cur.item];if(!it)return null;if(NOADD.has(it.t))return 'none';return D.adds.filter(a=>a.t===it.t&&rr(a)&&hit(a.n,a.en)).sort((a,b)=>RORD.indexOf(a.ra)-RORD.indexOf(b.ra)||sortN(a,b))}
+    const k=cur.killer&&byId['killers:'+cur.killer];if(!k)return D.addk.filter(a=>rr(a)&&hit(a.n,a.en,killerByPower[a.p]&&killerByPower[a.p].n)).sort((a,b)=>(killerByPower[a.p]?.n||'').localeCompare(killerByPower[b.p]?.n||'','es')||RORD.indexOf(a.ra)-RORD.indexOf(b.ra)||sortN(a,b));
+    return D.addk.filter(a=>a.p===k.p&&rr(a)&&hit(a.n,a.en)).sort((a,b)=>RORD.indexOf(a.ra)-RORD.indexOf(b.ra)||sortN(a,b));
+  }
+  return [];
+}
+function renderCards(){
+  const L=list();const cur=B[role];
+  if(L==='none'){$('count').textContent='';$('cards').innerHTML=`<div class="empty" style="grid-column:1/-1">${esc(byId['items:'+cur.item].n)} es un petardo: no admite accesorios.<br><br><button class="btn" data-go="item">Cambiar objeto</button></div>`;return}
+  if(L===null){
+    $('count').textContent='';
+    $('cards').innerHTML=`<div class="empty" style="grid-column:1/-1">${role==='s'?'Elige primero un objeto: los accesorios dependen de su tipo.':'Elige primero un asesino: cada uno tiene sus 20 accesorios.'}<br><br><button class="btn" data-go="${role==='s'?'item':'killer'}">${role==='s'?'Ir a objetos':'Ir a asesinos'}</button></div>`;return;
+  }
+  const what={perks:'perks',killer:'asesinos',item:'objetos',adds:'accesorios'}[tab];
+  $('count').textContent=`${L.length} ${what}`+(tab==='perks'&&!F.changed?` · ${L.filter(p=>p.ch).length} cambiadas en 10.2.0`:'')+(tab==='adds'?(role==='s'?` para ${byId['items:'+cur.item].n}`:cur.killer?` para ${byId['killers:'+cur.killer].n}`:' de todos los asesinos · al elegir uno se selecciona su asesino'):'');
+  if(!L.length){$('cards').innerHTML=`<div class="empty" style="grid-column:1/-1">Nada coincide con «${esc(F.q)}». Prueba con el nombre en inglés o quita filtros.</div>`;return}
+  $('cards').innerHTML=L.map(x=>{
+    let on,icon,sub='',tag='';
+    if(tab==='perks'){on=cur.perks.includes(x.id);icon=perkIcon(x);sub=x.c||'Genérica';if(x.ch)tag=`<span class="tag ${x.ch==='rework'?'rw':''}">${x.ch==='rework'?'REWORK':'10.2'}</span>`}
+    else if(tab==='killer'){on=cur.killer===x.id;icon=porIcon(x)}
+    else if(tab==='item'){on=cur.item===x.id;icon=sqIcon(x);sub=(x.ev?'Evento · ':'')+RAR[x.ra]}
+    else{on=cur.adds.includes(x.id);icon=sqIcon(x);sub=(role==='k'&&!cur.killer&&killerByPower[x.p]?killerByPower[x.p].n+' · ':'')+RAR[x.ra]}
+    return `<button class="card" data-id="${esc(x.id)}" aria-pressed="${on}">${tag}${icon}<span class="nm">${esc(x.n)}</span>${sub?`<span class="sub">${esc(sub)}</span>`:''}</button>`;
+  }).join('');
+}
+function group(){return tab==='perks'?'perks':tab==='killer'?'killers':tab==='item'?'items':role==='s'?'adds':'addk'}
+function toggle(id){
+  const cur=B[role];let m='';
+  if(tab==='perks'){const i=cur.perks.indexOf(id);if(i>=0)cur.perks[i]=null;else{const j=cur.perks.indexOf(null);if(j<0){m='Ya tienes 4 perks. Quita una pulsando su hueco.';}else cur.perks[j]=id}}
+  else if(tab==='adds'&&role==='k'&&killerByPower[byId['addk:'+id].p].id!==cur.killer){const k=killerByPower[byId['addk:'+id].p];m=cur.adds.some(Boolean)?`Asesino cambiado a ${k.n}: accesorios anteriores quitados.`:`Asesino: ${k.n}.`;cur.killer=k.id;cur.adds=[id,null]}
+  else if(tab==='adds'){const i=cur.adds.indexOf(id);if(i>=0)cur.adds[i]=null;else{const j=cur.adds.indexOf(null);if(j<0)m='Ya tienes 2 accesorios. Quita uno pulsando su hueco.';else cur.adds[j]=id}}
+  else if(tab==='item'){const old=cur.item&&byId['items:'+cur.item];const nw=byId['items:'+id];if(cur.item===id)cur.item=null;else{cur.item=id;if(old&&old.t!==nw.t&&cur.adds.some(Boolean)){cur.adds=[null,null];m=NOADD.has(nw.t)?'Accesorios quitados: los petardos no admiten accesorios.':'Accesorios quitados: no sirven para este tipo de objeto.'}if(NOADD.has(nw.t)){if(!m)m='Los petardos no admiten accesorios.'}else if(!cur.adds.some(Boolean))tab='adds'}}
+  else if(tab==='killer'){if(cur.killer===id)cur.killer=null;else{if(cur.killer!==id&&cur.adds.some(Boolean)){cur.adds=[null,null];m='Accesorios quitados: eran del asesino anterior.'}cur.killer=id;tab='perks'}}
+  detail=[group()==='adds'||group()==='addk'?group():group(),id];
+  save();$('msg').textContent=m;render();
+}
+function renderLoad(){
+  const cur=B[role];
+  const nextP=cur.perks.indexOf(null);
+  const ps=cur.perks.map((id,i)=>{const p=id&&byId['perks:'+id];return `<button class="slot s${i}${!p&&i===nextP?' next':''}" data-slot="p${i}" aria-label="${p?'Quitar '+esc(p.n):'Hueco de perk '+(i+1)}" title="${p?esc(p.n):'Vacío'}">${p?perkIcon(p):'<span class="ghost"></span>'}</button>`}).join('');
+  const ag=role==='s'?'adds':'addk';
+  const na=noAdds();const ad=na?'<span class="sqslot" style="opacity:.5">Sin acc.</span><span class="sqslot" style="opacity:.5">Sin acc.</span>':cur.adds.map((id,i)=>{const a=id&&byId[ag+':'+id];return `<button class="slot${!a&&i===cur.adds.indexOf(null)?' next':''}" data-slot="a${i}" aria-label="${a?'Quitar '+esc(a.n):'Hueco de accesorio'}" title="${a?esc(a.n):'Accesorio'}">${a?sqIcon(a):'<span class="sqslot">Acc.</span>'}</button>`}).join('');
+  let main;
+  if(role==='s'){const it=cur.item&&byId['items:'+cur.item];main=`<button class="slot" data-slot="main" aria-label="${it?'Quitar '+esc(it.n):'Elegir objeto'}" title="${it?esc(it.n):'Objeto'}">${it?sqIcon(it,true):'<span class="sqslot big">Objeto</span>'}</button>`}
+  else{const k=cur.killer&&byId['killers:'+cur.killer];main=`<button class="slot" data-slot="main" aria-label="${k?'Cambiar asesino':'Elegir asesino'}" title="${k?esc(k.n):'Asesino'}">${k?porIcon(k):'<span class="sqslot big">Asesino</span>'}</button>`}
+  $('load').innerHTML=`<div class="perks4">${ps}</div><div class="itemcol">${main}<div class="adds2">${ad}</div></div>`;
+  $('side-title').textContent=role==='s'?'Tu build de superviviente':'Tu build de asesino';
+  const nm=(g,id)=>{const x=id&&byId[g+':'+id];return x?esc(x.n)+(x.ch?`<span class="ch">${x.ch==='rework'?'rework':'10.2'}</span>`:''):'<span style="color:var(--faint)">—</span>'};
+  const rows=[];
+  if(role==='k')rows.push(['Asesino',nm('killers',cur.killer)]);
+  rows.push(['Perks',cur.perks.map(id=>nm('perks',id)).join(' · ')]);
+  if(role==='s')rows.push(['Objeto',nm('items',cur.item)]);
+  rows.push(['Acces.',noAdds()?'<span style="color:var(--faint)">No admite</span>':cur.adds.map(id=>nm(ag,id)).join(' · ')]);
+  const tot=cur.perks.filter(Boolean).length+cur.adds.filter(Boolean).length+((role==='s'?cur.item:cur.killer)?1:0);$('prog').textContent=tot+'/'+(noAdds()?5:7);$('names').innerHTML=rows.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('');
+}
+function renderDetail(){
+  if(!detail||!byId[detail[0]+':'+detail[1]]){$('det').className='det idle';$('det').innerHTML=`<p style="color:var(--dim);font-size:13px">Pulsa una carta para añadirla a la build y ver aquí lo que hace. Las perks con marca roja cambiaron en la 10.2.0.</p>`;return}
+  $('det').className='det';const [g,id]=detail;const x=byId[g+':'+id];let h='';
+  if(g==='perks'){
+    h=`<div class="hd">${perkIcon(x)}<div><h3>${esc(x.n)}</h3><div class="en">${esc(x.en)} · ${esc(x.c||'Genérica')}</div></div></div>`;
+    if(x.ch)h+=`<div class="chg"><strong>${x.ch==='rework'?'Rework en 10.2.0':'Cambiada en 10.2.0'}</strong><p>${esc(x.cd)}.</p></div><details><summary>Texto anterior (10.1.2)</summary><p>${esc(x.d)}</p></details>`;
+    else h+=`<p>${esc(x.d)}</p>`;
+  }else if(g==='killers'){
+    h=`<div class="hd">${porIcon(x)}<div><h3>${esc(x.n)}</h3><div class="en">20 accesorios disponibles</div></div></div>`;
+  }else{
+    const ra=x.ev?'event':x.ra;
+    h=`<div class="hd">${sqIcon(x)}<div><h3>${esc(x.n)}</h3><div class="en">${esc(x.en)}</div><div class="rar" style="color:var(--r-${ra})">${x.ev?'Evento · ':''}${RAR[x.ra]||''}</div></div></div><p>${esc(x.d)}</p>`;
+  }
+  $('det').innerHTML=h;
+}
+function render(){
+  $('r-s').setAttribute('aria-pressed',role==='s');$('r-k').setAttribute('aria-pressed',role==='k');
+  renderTabs();renderFilters();renderCards();renderLoad();renderDetail();
+}
+function buildText(){
+  const cur=B[role];const n=(g,id)=>id&&byId[g+':'+id]?byId[g+':'+id].n:null;
+  const perks=cur.perks.map(id=>n('perks',id)).filter(Boolean);const ag=role==='s'?'adds':'addk';const ad=cur.adds.map(id=>n(ag,id)).filter(Boolean);
+  if(role==='s')return `Build superviviente (10.2.0): ${perks.join(', ')||'sin perks'} | Objeto: ${n('items',cur.item)||'ninguno'}${ad.length?' + '+ad.join(', '):''}`;
+  return `Build ${n('killers',cur.killer)||'asesino'} (10.2.0): ${perks.join(', ')||'sin perks'}${ad.length?' | Accesorios: '+ad.join(', '):''}`;
+}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function randomFill(){
+  const cur=B[role];
+  const pool=D.perks.filter(p=>p.r===role&&!cur.perks.includes(p.id));
+  for(let i=0;i<4;i++)if(!cur.perks[i]){const j=Math.floor(Math.random()*pool.length);cur.perks[i]=pool.splice(j,1)[0].id}
+  if(role==='s'){if(!cur.item){cur.item=pick(D.items.filter(i=>!i.ev&&!NOADD.has(i.t))).id}const t=byId['items:'+cur.item].t;const ap=D.adds.filter(a=>a.t===t&&!cur.adds.includes(a.id));for(let i=0;i<2;i++)if(!cur.adds[i]&&ap.length)cur.adds[i]=ap.splice(Math.floor(Math.random()*ap.length),1)[0].id}
+  else{if(!cur.killer)cur.killer=pick(D.killers).id;const p=byId['killers:'+cur.killer].p;const ap=D.addk.filter(a=>a.p===p&&!cur.adds.includes(a.id));for(let i=0;i<2;i++)if(!cur.adds[i])cur.adds[i]=ap.splice(Math.floor(Math.random()*ap.length),1)[0].id}
+  save();$('msg').textContent='Huecos vacíos rellenados al azar.';render();
+}
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t)return;
+  if(t.id==='r-s'||t.id==='r-k'){role=t.id==='r-s'?'s':'k';tab=role==='s'?'perks':(B.k.killer?'perks':'killer');F.owner='';F.rar.clear();F.type='';F.q='';detail=null;$('msg').textContent='';render();return}
+  if(t.dataset.tab){tab=t.dataset.tab;F.rar.clear();F.q='';render();return}
+  if(t.dataset.go){tab=t.dataset.go;render();return}
+  if(t.id==='f-ch'){F.changed=!F.changed;renderFilters();renderCards();return}
+  if(t.dataset.type!==undefined){F.type=t.dataset.type;renderFilters();renderCards();return}
+  if(t.dataset.rar){F.rar.has(t.dataset.rar)?F.rar.delete(t.dataset.rar):F.rar.add(t.dataset.rar);renderFilters();renderCards();return}
+  if(t.classList.contains('card')){toggle(t.dataset.id);return}
+  if(t.dataset.slot){
+    const cur=B[role];const s=t.dataset.slot;
+    if(s[0]==='p'){const i=+s[1];if(cur.perks[i]){detail=['perks',cur.perks[i]];cur.perks[i]=null;save()}tab='perks'}
+    else if(s[0]==='a'){const i=+s[1];if(cur.adds[i]){cur.adds[i]=null;save()}tab='adds'}
+    else{tab=role==='s'?'item':'killer'}
+    render();return}
+  if(t.id==='b-clear'){B[role]=blank()[role];save();detail=null;$('msg').textContent='Build vaciada.';tab=role==='s'?'perks':'killer';render();return}
+  if(t.id==='b-rand'){randomFill();return}
+  if(t.id==='b-copy'){const txt=buildText();const done=()=>{$('msg').textContent='Copiado: '+txt};
+    try{navigator.clipboard.writeText(txt).then(done,()=>{$('msg').textContent=txt})}catch(err){$('msg').textContent=txt}return}
+});
+document.addEventListener('input',e=>{if(e.target.id==='q'){F.q=e.target.value;renderCards()}});
+document.addEventListener('change',e=>{if(e.target.id==='f-own'){F.owner=e.target.value;renderCards()}});
+document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!c)return;const g=group();const k=[g,c.dataset.id];if(!detail||detail[0]!==k[0]||detail[1]!==k[1]){detail=k;renderDetail()}});
+document.addEventListener('focusin',e=>{const c=e.target.closest('.card');if(c){detail=[group(),c.dataset.id];renderDetail()}});
+render();
+</script>

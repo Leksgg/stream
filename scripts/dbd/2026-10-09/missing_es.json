@@ -1,0 +1,17 @@
+{
+"K44P03": "Cuando dañas un generador, retrocede un 2 % más rápido por cada carga que tenga. Recarga de 55/50/45 s",
+"Brutal_Strength": "Rompes palés y muros y dañas generadores un 10/15/20 % más rápido",
+"K44P02": "Al primer estado de gancho se enciende un tótem apagado. Te avisa cuando un superviviente que corre gana Celeridad a menos de 32 m, y no puede tener más de un 25/20/15 % de Celeridad a la vez",
+"K44P01": "Cada 30 s, si la obsesión está a más de 40 m ves su aura 2/2,5/3 s; si no, el superviviente más lejano pasa a ser la obsesión",
+"S54P03": "Bendice un tótem: en su radio, los generadores retroceden un 50 % más despacio, se reparan un 8/9/10 % más rápido y se ven sus auras",
+"Prove_Thyself": "Por cada superviviente a menos de 4 m de ti, todos reparáis un 6/8/10 % más rápido",
+"S35P01": "En persecución, al hacer un salto medio o rápido, tus saltos son silenciosos durante 4/5/6 s y cada salto reinicia el tiempo. Recarga de 45 s",
+"Distortion": "Ganas 1 distintivo al empezar y tras 15 s de persecución (máx. 2); si el asesino intenta ver tu aura, gastas uno y durante 8/10/12 s no la ve ni dejas arañazos",
+"Diversion": "Tras 30/25/20 s escondido en el radio de terror, agachado y quieto, lanzas una piedra a 20 m que alerta al asesino y deja arañazos",
+"S38P01": "Sano y corriendo, ganas un 25 % de Celeridad 2 s y Agotamiento 60/50/40 s; después ocurre algo al azar: más Celeridad, Vulnerabilidad 12 s, un objeto raro o un grito sin efecto",
+"S27P03": "Tras acertar 5/4/3 pruebas de habilidad de reparación, ves el aura de los generadores que estén retrocediendo",
+"S54P01": "Ganas 1 distintivo por generador completado; al terminar de reparar uno, por cada distintivo ganas un 5 % de Celeridad 2 s y un 10/15/20 % de progreso de curación",
+"LuckyBreak": "Herido, durante 40/50/60 s no dejas charcos de sangre ni arañazos; curar a otros recarga el tiempo segundo a segundo",
+"S54P02": "Cuando el asesino empieza a perseguirte, ves las auras de los demás 1/2/3 s, y quienes no están en persecución ven tu aura y la del asesino 5 s",
+"S45P01": "Invoca en el círculo del sótano: al completarlo, cada vez que el asesino asusta un cuervo con alguien en su radio de terror, todos ven su aura 1/1,5/2 s. Quedas herido y con Quebranto"
+}

@@ -1,0 +1,230 @@
+{
+"Agitation": [
+"valores",
+"Mientras cargas a un superviviente, obtienes un 14/16/18 % de Celeridad (antes 6/12/18 %) y tu radio de terror aumenta 12 metros"
+],
+"Iron_Grasp": [
+"valores",
+"Mientras cargas a un superviviente, forcejea un 10/11/12 % más despacio (antes 4/8/12 %) y su forcejeo es un 75 % más débil"
+],
+"Bitter_Murmur": [
+"valores",
+"Al completarse un generador, ves el aura de los supervivientes a menos de 20 metros durante 8 s (antes 16 m y 5 s); al completarse todos, ves las auras de todos durante 10/12/14 s"
+],
+"Deerstalker": [
+"valores",
+"Cada 40/35/30 s, el superviviente con menos tiempo en persecución ve tu aura durante 4 s (antes 3 s); mientras te vea, tú ves la suya"
+],
+"FireUp": [
+"valores",
+"Por cada generador completado obtienes un distintivo (máx. 5) que acelera un 6/7/8 % (antes 4/5/6 %) romper, dañar generadores, recoger y soltar supervivientes y saltar ventanas"
+],
+"K31P01": [
+"valores",
+"Al perseguir a la obsesión, romper palés o muros o dañar generadores te da un 10 % de Celeridad (antes 7 %) durante 8/9/10 s"
+],
+"Spies_From_The_Shadows": [
+"valores",
+"Recibes una alerta cuando un superviviente asusta a un cuervo a menos de 36/38/40 metros (antes 20/28/36 m); recarga de 3 s (antes 5 s)"
+],
+"K35P01": [
+"valores",
+"Cuando un superviviente sano queda herido, durante 26/28/30 s (antes 24/27/30 s), al saltar una ventana obtienes un 5 % de Celeridad durante 25 s (antes 7 % durante 10 s)"
+],
+"K40P01": [
+"valores",
+"Al dañar un generador queda alterado (hasta 3 a la vez, antes 1) y, sin reparar, retrocede un 150 % más rápido (nuevo); al completarse, la recarga de tus ataques básicos es un 25 % más corta durante 100/110/120 s (antes 40/50/60 s)"
+],
+"K32P03": [
+"valores",
+"Al dañar un generador queda alterado (hasta 3, antes 1); al completarse uno, obtienes un 10 % de Celeridad (antes 8 %) e Indetectable, y los demás generadores dejan de estar alterados"
+],
+"K36P03": [
+"valores",
+"Saltas ventanas un 15/20/25 % más rápido y la recarga de tus ataques básicos fallados u obstaculizados es un 15/20/25 % más corta (los aciertos no); las cegueras y aturdimientos por palé duran un 25 % más (antes 15 %)"
+],
+"DeadMansSwitch": [
+"valores",
+"Tras colgar a alguien, si un superviviente deja de reparar un generador más de 2 s, este se bloquea 30/35/40 s (antes 25/30/35 s); recarga de 30/35/40 s (antes 50 s)"
+],
+"K28P01": [
+"valores",
+"Tras herir a alguien con un ataque básico (ya no cualquier daño), durante 13/14/15 s (antes 12/16/20 s), si un superviviente salta rápido un palé en tu radio de terror, el palé se rompe"
+],
+"HexBloodFavor": [
+"valores",
+"Al herir a alguien con un ataque básico (ya no cualquier daño), los palés en pie a menos de 32 m (antes 24/28/32 m) quedan bloqueados durante 13/14/15 s (antes 15 s)"
+],
+"Distressing": [
+"valores",
+"Tu radio de terror es un 30 % mayor (antes 20/23/30 %) y los supervivientes dentro de él reparan un 6/7/8 % más despacio (nuevo)"
+],
+"K37P03": [
+"valores",
+"Solo tótems (ya no cofres): la primera vez que un superviviente toca un tótem, se bloquea 25 s (antes 8/12/16 s), el superviviente grita y ves su aura durante 3/4/5 s"
+],
+"K39P01": [
+"valores",
+"Se enciende tras 4 golpes con ataque básico (antes 8); cada golpe básico aplica un 5 % de Entorpecimiento y, nuevo, saltar obstáculos es un 10 % más lento"
+],
+"Hex_Thrill_Of_The_Hunt": [
+"rework",
+"Tu primer gancho enciende un tótem apagado. Cada gancho posterior bloquea todos los tótems de maleficio durante 6/7/8 s por cada maleficio encendido. Desaparece la ralentización pasiva al purificar"
+],
+"Insidious": [
+"valores",
+"Tras 2 s quieto (antes 3/2/1 s) obtienes Indetectable; el efecto se mantiene 6/7/8 s después de volver a actuar (nuevo)"
+],
+"InTheDark": [
+"valores",
+"Si un superviviente se aleja 10 m (antes 6 m) de un palé que acaba de tirar, sufre un 20 % de Entorpecimiento (antes 5 %); termina antes si rompes el palé"
+],
+"K41P01": [
+"valores",
+"Al colgar por primera vez a cada superviviente ganas 1 distintivo: cada uno da un 4 % de Celeridad cargando y cuelgas un 4 % más rápido (nuevo); con 4, todos gritan y sufren Vulnerabilidad durante 80/85/90 s (antes 40/50/60 s)"
+],
+"Monstrous_Shrine": [
+"valores",
+"Los ganchos del sótano y 4 aleatorios son flagelantes. Nuevo: si estás a más de 24 m del superviviente colgado en uno, los generadores sin reparar retroceden un 150/175/200 % más rápido"
+],
+"BoonDestroyer": [
+"rework",
+"Apagar una bendición sigue destruyendo el tótem. Además, cuando se bendice, purifica o destruye cualquier tótem, los tótems apagados y de maleficio quedan bloqueados 16/18/20 s y ves las auras de las bendiciones durante ese tiempo"
+],
+"K29P01": [
+"valores",
+"Tras un salto rápido de un superviviente cerca de ti, saltas ventanas un 30/35/40 % más rápido durante 10 s (antes un solo salto); recarga de 20 s (antes 25 s)"
+],
+"K35P03": [
+"rework",
+"Ganas 1 distintivo por gancho (máx. 3). Al dañar un generador los gastas todos: por cada uno pierde un 8/9/10 % de progreso y queda bloqueado 8/9/10 s"
+],
+"Unrelenting": [
+"valores",
+"La recarga de tus ataques básicos fallados es un 30/35/40 % más corta (antes 20/25/30 %) y la de los acertados, un 10 % más corta (nuevo)"
+],
+"Whispers": [
+"valores",
+"Oyes murmullos del Ente si hay un superviviente a menos de 28/26/24 m (antes 48/40/32 m); fuera de ese rango obtienes un 5 % de Celeridad (nuevo)"
+],
+"Kindred": [
+"valores",
+"Mientras alguien está colgado, todos ven las auras de los supervivientes y la del asesino si está a menos de 14/15/16 m del gancho (antes 8/12/16 m)"
+],
+"No_One_Left_Behind": [
+"valores",
+"Con todos los generadores completados, curas y desenganchas a otros un 80/90/100 % más rápido (antes 50/75/100 %), das un 10 % más de Celeridad al desenganchar y ves las auras de tus aliados"
+],
+"Resilience": [
+"valores",
+"Mientras estás herido, reparas, curas, saboteas, desenganchas, saltas, abres puertas y cofres y purificas o bendices un 7/8/9 % más rápido (antes 3/6/9 %)"
+],
+"WellMakeIt": [
+"valores",
+"Tras desenganchar a un superviviente, curas a los demás un 100 % más rápido durante 70/80/90 s (antes 30/60/90 s)"
+],
+"S33P01": [
+"valores",
+"Tras curar a otro superviviente, este cura, abre cofres, bendice y purifica un 40/45/50 % más rápido (antes 12/14/16 %) hasta que vuelva a recibir daño"
+],
+"S30P02": [
+"valores",
+"Curas a otros un 40/45/50 % más rápido (antes 25/30/35 %) y los aliados heridos ven tu aura"
+],
+"S52P01": [
+"valores",
+"Por cada generador completado ganas un distintivo que acelera curación, desenganche y acciones con tótems un 13/14/15 % por distintivo (antes 8/9/10 %)"
+],
+"S35P02": [
+"valores",
+"Al completar un generador con otros, todos reparáis un 10 % más rápido (antes 5 %) durante 80/85/90 s (antes 100/110/120 s)"
+],
+"ObjectOfObsession": [
+"valores",
+"Ahora se llama Bound by Obsession en inglés. Si eres la obsesión, cada 30 s el asesino ve tu aura 4 s (antes 3 s); mientras la ve, tú ves la suya y bendices, purificas, curas y reparas un 8/9/10 % más rápido (antes 2/4/6 %, sin bendecir)"
+],
+"BloodPact": [
+"valores",
+"Si no eres la obsesión, tú y ella veis vuestras auras mientras estéis heridos y ganáis Celeridad al curaros. Nuevo: si te cuelgan siendo la obsesión, la obsesión pasa a otro superviviente"
+],
+"S40P02": [
+"valores",
+"Bendices un tótem un 150/175/200 % más rápido; en su radio, los supervivientes ven las auras de cofres y generadores"
+],
+"Calm_Spirit": [
+"valores",
+"No asustas a los cuervos ni gritas; ahora purificas tótems y abres cofres un 8/9/10 % más rápido y en silencio (antes un 40/35/30 % más lento)"
+],
+"Dark_Sense": [
+"valores",
+"Al completarse un generador, si el asesino se acerca a menos de 24 m ves su aura 8/9/10 s (antes 5/7/10 s); ahora también ves palés, ventanas y al resto de supervivientes"
+],
+"SoleSurvivor": [
+"rework",
+"Ahora se llama Down to the Last en inglés y es genérica. Ganas 1 distintivo al ser colgado o completar un generador (máx. 6); cada uno hace que los demás abran las puertas un 10 % más rápido. Si eres el último y tienes 3 o más, puedes abrir la trampilla sin llave"
+],
+"S46P01": [
+"valores",
+"Al curar a otro, curas un 30/40/50 % más rápido por cada estado de gancho que tenga; la bonificación por pruebas excelentes ahora también escala con sus estados de gancho y hay un 5 % más de probabilidad de prueba de habilidad"
+],
+"S52P03": [
+"valores",
+"En persecución ves las auras de los 5 palés más cercanos (antes palés y ventanas) y te mueves antes tras tirar un palé"
+],
+"Pharmacy": [
+"valores",
+"Abres y registras cofres un 75/100/125 % más rápido; un registro por cofre y garantiza un botiquín en el primero"
+],
+"Plunderers_Instinct": [
+"valores",
+"Ves las auras de cofres cerrados y objetos en el suelo a cualquier distancia (antes 32/48/64 m) y abres cofres un 150/175/200 % más rápido (nuevo)"
+],
+"Premonition": [
+"rework",
+"Si miras hacia el asesino a menos de 32 m (sin cono de 45°), recibes un aviso y ves su aura 3 s. Recarga de 70/65/60 s y no funciona en persecución"
+],
+"S49P01": [
+"rework",
+"Herido y reparando, cada prueba de habilidad excelente te da un distintivo y cada fallo te quita uno; al gastar 6/5/4 distintivos te curas a ti mismo un 100 % más rápido"
+],
+"S25P03": [
+"valores",
+"Cuando cuelgan a otro superviviente, obtienes Esquiva durante 13/14/15 s (antes 20/25/30 s)"
+],
+"S45P03": [
+"valores",
+"Una vez por partida, sin 2 estados de gancho, desenganchas con el botón de habilidad: el rescatado pierde un estado de gancho y tú lo ganas, gritas, quedas herido y sufres Quebranto 160/140/120 s (antes Vulnerabilidad 60/50/40 s)"
+],
+"Slippery_Meat": [
+"rework",
+"Ya no da intentos ni suerte para desengancharte. Los demás te desenganchan un 90/95/100 % más rápido y obtienes un 5 % de Celeridad al ser desenganchado"
+],
+"Small_Game": [
+"rework",
+"Sin cono invisible: ves las auras de los tótems a menos de 10/11/12 m"
+],
+"Solidarity": [
+"valores",
+"Herido y curando a otro, también te curas a ti mismo con una conversión del 65/70/75 % (antes 50/60/70 %); ya no exige ir sin botiquín"
+],
+"Spine_Chill": [
+"rework",
+"Si el asesino te mira a menos de 40 m, recibes un aviso, no gritas durante 12 s y saltas un 10 % más rápido durante 12 s. Recarga de 40/35/30 s"
+],
+"StakeOut": [
+"rework",
+"Los distintivos convierten pruebas de habilidad normales en especiales, más difíciles: dan un 4 % más de progreso y fallarlas cuesta un 4 % más. No activan otras perks de pruebas de habilidad"
+],
+"This_Is_Not_Happening": [
+"rework",
+"Las zonas buenas de las pruebas de habilidad normales son un 150/175/200 % más grandes. El aumento de zona excelente del PTB no llegó a live"
+],
+"WakeUp": [
+"valores",
+"Con todos los generadores completados ves las auras de los interruptores; abres las puertas un 8/9/10 % más rápido, más un 20 % extra por cada otro superviviente vivo"
+],
+"WindowsOfOpportunity": [
+"rework",
+"Solo ventanas: ves sus auras a menos de 24 m y saltas ventanas un 10 % más rápido. Recarga de 40/35/30 s"
+]
+}

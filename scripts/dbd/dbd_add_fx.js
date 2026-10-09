@@ -1,4 +1,4 @@
-// Uso: node scripts/dbd_add_fx.js "D:/Builds DBD" public/dbd/data.json
+// Uso: node scripts/dbd/dbd_add_fx.js "D:/Builds DBD" public/dbd/data.json
 // Ejecutar después de regenerar data.json: sin el campo fx, !perk deja de buscar por efecto.
 // Añade a cada perk de public/dbd/data.json su lista de efectos (fx), detectados en el texto completo de la web Builds DBD.
 const fs=require('fs');
