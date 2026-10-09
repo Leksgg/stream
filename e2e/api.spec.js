@@ -70,3 +70,14 @@ test('GET /dbd/random/* repite el resultado con la misma semilla', async ({ requ
   const killerPick = await (await request.get('/dbd/random/killer?s=7')).text();
   expect(killerPick).toMatch(/^Te toca: /);
 });
+
+test('GET /dbd/pj tolera erratas y lista las perks genéricas', async ({ request }) => {
+  expect(await (await request.get('/dbd/pj?q=trampro')).text()).toMatch(/^El Trampero \(asesino\)/);
+  expect(await (await request.get('/dbd/pj?q=clodet')).text()).toContain('Claudette Morel');
+  expect(await (await request.get('/dbd/pj?q=xyzw')).text()).toMatch(/^No encuentro/);
+
+  expect(await (await request.get('/dbd/pj?q=genericas')).text()).toMatch(/^Perks genéricas de superviviente \(\d+\): /);
+  expect(await (await request.get('/dbd/pj?q=genericas killer')).text()).toMatch(/^Perks genéricas de asesino \(\d+\): /);
+  const card = await request.get('/dbd/pj.svg?q=genericas');
+  expect(card.headers()['content-type']).toContain('image/svg+xml');
+});

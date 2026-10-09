@@ -44,6 +44,9 @@ export async function handleDbd(url, env) {
 
   const result = kind === 'perk' ? findPerk(data, query) : findChar(data, query);
 
+  if (result.generic) {
+    return svg ? svgResponse(await genericCard(env, url.origin, result.generic)) : text(genericMessage(result.generic));
+  }
   if (!svg) return text(chatMessage(kind, query, result, data));
   if (!result.hit) return svgResponse(await notFoundCard(kind, query, result));
   const card = kind === 'perk'
@@ -83,14 +86,73 @@ function search(items, query, keysOf) {
     if (found.length === 1) return { hit: found[0], suggestions: [] };
     if (found.length > 1) return { hit: null, suggestions: found.slice(0, 4) };
   }
-  return { hit: null, suggestions: [] };
+  return fuzzy(items, q, keysOf);
+}
+
+// Erratas: elige el nombre más parecido si queda claramente por delante;
+// si no, devuelve los más cercanos como sugerencias.
+function fuzzy(items, q, keysOf) {
+  if (q.length < 3) return { hit: null, suggestions: [] };
+  const limit = q.length <= 5 ? 1 : q.length <= 9 ? 2 : 3;
+  const scored = items
+    .map(item => ({ item, d: Math.min(...keysOf(item).map(k => distance(q, k))) }))
+    .sort((a, b) => a.d - b.d);
+  const [best, second] = scored;
+  if (best.d <= limit && (!second || second.d > best.d)) return { hit: best.item, suggestions: [] };
+  // Para sugerir basta con compartir buena parte de las parejas de letras
+  // ("clodet" → Claudette), pero no con estar a pocas letras de un nombre corto.
+  const close = items
+    .map(item => ({ item, s: Math.max(...keysOf(item).map(k => similarity(q, k))) }))
+    .filter(x => x.s >= 0.4)
+    .sort((a, b) => b.s - a.s)
+    .slice(0, 3)
+    .map(x => x.item);
+  return { hit: null, suggestions: close };
+}
+
+function similarity(a, b) {
+  const pairs = s => Array.from({ length: Math.max(0, s.length - 1) }, (_, i) => s.slice(i, i + 2));
+  const pa = pairs(a);
+  const pb = pairs(b);
+  if (!pa.length || !pb.length) return 0;
+  const pool = [...pb];
+  let common = 0;
+  for (const p of pa) {
+    const i = pool.indexOf(p);
+    if (i >= 0) { common++; pool.splice(i, 1); }
+  }
+  return (2 * common) / (pa.length + pb.length);
+}
+
+// Distancia de Damerau-Levenshtein (una letra cambiada, sobrante, que falta o dos letras al revés).
+function distance(a, b) {
+  const rows = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) rows[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      rows[i][j] = Math.min(rows[i - 1][j] + 1, rows[i][j - 1] + 1, rows[i - 1][j - 1] + cost);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        rows[i][j] = Math.min(rows[i][j], rows[i - 2][j - 2] + 1);
+      }
+    }
+  }
+  return rows[a.length][b.length];
 }
 
 function findPerk(data, query) {
   return search(data.perks, query, p => [p.k, slug(p.en)]);
 }
 
+const GENERIC = /^(generic[ao]s?|general(es)?)(de)?(killers?|asesin[ao]s?|k|survis?|supervivientes?|s)?$/;
+
 function findChar(data, query) {
+  const q = slug(query);
+  const generic = q.match(GENERIC);
+  if (generic) {
+    const role = /^(killer|asesin|k$)/.test(generic[4] || '') ? 'k' : 's';
+    return { hit: null, generic: { role, perks: data.perks.filter(p => !p.c && p.r === role) }, suggestions: [] };
+  }
   return search(data.chars, query, c => c.a);
 }
 
@@ -101,7 +163,7 @@ function chatMessage(kind, query, result, data) {
   }
   if (!result.hit) {
     const list = result.suggestions.map(x => x.n).join(', ');
-    return list ? `Hay varias opciones para "${query}": ${list}. Escribe ${cmd} con el nombre completo.` : `No encuentro "${query}". Prueba con el nombre en inglés o solo una parte.`;
+    return list ? `No sé cuál es "${query}". ¿Quizá ${list}? Escribe ${cmd} con uno de esos nombres.` : `No encuentro "${query}". Prueba con el nombre en inglés o solo una parte.`;
   }
   if (kind === 'perk') {
     const p = result.hit;
@@ -176,7 +238,8 @@ function wrap(value, maxChars, maxLines) {
   if (line) lines.push(line);
   if (lines.length > maxLines) {
     lines.length = maxLines;
-    lines[maxLines - 1] = lines[maxLines - 1].replace(/\s*\S*$/, '') + '…';
+    const last = lines[maxLines - 1];
+    lines[maxLines - 1] = (last.includes(' ') ? last.replace(/\s*\S*$/, '') : last) + '…';
   }
   return lines;
 }
@@ -241,7 +304,7 @@ async function charCard(env, origin, char, data, eyebrow = '') {
 
 async function notFoundCard(kind, query, result) {
   const list = result.suggestions.map(x => x.n).join(' · ');
-  const body = `<text x="30" y="62" fill="${C.fg}" font-size="30" font-weight="700">${esc(list ? 'Hay varias opciones' : `No encuentro "${query}"`)}</text>`
+  const body = `<text x="30" y="62" fill="${C.fg}" font-size="30" font-weight="700">${esc(list ? `¿Quizá buscas…?` : `No encuentro "${query}"`)}</text>`
     + `<text x="30" y="102" fill="${C.dim}" font-size="21">${esc(list || (kind === 'perk' ? 'Prueba con !perk y el nombre en español o inglés' : 'Prueba con !pj y el nombre del personaje'))}</text>`;
   return frame(900, 140, body);
 }
@@ -358,6 +421,33 @@ async function buildCard(env, origin, build, user) {
     const x = 400 + i * 250;
     body += square(x, 348, 72, addIcons[i], add.ra, 'a' + i);
     body += labelBlock(x + 84, (RARITY[add.ra] || RARITY.common)[1], add.n, 16);
+  });
+  return frame(width, height, body);
+}
+
+// --- Perks genéricas (!pj genericas / !pj genericas killer) -----------------
+
+function genericMessage(group) {
+  const who = group.role === 'k' ? 'asesino' : 'superviviente';
+  return clip(`Perks genéricas de ${who} (${group.perks.length}): ${group.perks.map(p => p.n).join(' · ')}`);
+}
+
+async function genericCard(env, origin, group) {
+  const icons = await Promise.all(group.perks.map(p => dataUri(env, origin, p.i)));
+  const perRow = 5;
+  const rows = Math.ceil(group.perks.length / perRow);
+  const width = 900;
+  const height = 110 + rows * 170;
+  let body = `<text x="30" y="58" fill="${C.fg}" font-size="34" font-weight="700">Perks genéricas</text>`
+    + `<text x="30" y="88" fill="${C.dim}" font-size="19">${group.role === 'k' ? 'Asesino' : 'Superviviente'} · ${group.perks.length} perks que puede usar cualquiera</text>`;
+  group.perks.forEach((perk, i) => {
+    const cx = 105 + (i % perRow) * 172;
+    const cy = 165 + Math.floor(i / perRow) * 170;
+    body += diamond(cx, cy, 96, icons[i], 'g' + i);
+    if (perk.ch) body += `<rect x="${cx + 18}" y="${cy - 52}" width="42" height="20" rx="4" fill="${C.blood}"/><text x="${cx + 39}" y="${cy - 37}" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">10.2</text>`;
+    wrap(perk.n, 20, 3).forEach((line, j) => {
+      body += `<text x="${cx}" y="${cy + 66 + j * 20}" fill="${C.fg}" font-size="16" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
+    });
   });
   return frame(width, height, body);
 }
