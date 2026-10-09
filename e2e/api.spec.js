@@ -53,10 +53,14 @@ test('GET /dbd/pj.svg devuelve una tarjeta con los iconos embebidos', async ({ r
   expect((svg.match(/data:image\/webp;base64,/g) || []).length).toBe(4);
 });
 
-test('GET /dbd/random/* anuncia la ruleta en el chat y la tarjeta repite resultado con la misma semilla', async ({ request }) => {
-  expect(await (await request.get('/dbd/random/build?s=42&u=Prueba')).text()).toMatch(/^🎰 Girando la ruleta de build para Prueba/);
-  expect(await (await request.get('/dbd/random/survi?s=7')).text()).toMatch(/^🎰 Girando la ruleta de superviviente/);
-  expect(await (await request.get('/dbd/random/killer?s=7')).text()).toMatch(/^🎰 Girando la ruleta de asesino/);
+test('GET /dbd/random/* da solo el resultado en el chat y la tarjeta coincide con la misma semilla', async ({ request }) => {
+  const chat = await (await request.get('/dbd/random/build?s=42&u=Prueba')).text();
+  expect(chat).toMatch(/^[^|]+ · [^|]+ \| .+/);
+  expect(chat).not.toContain('Prueba');
+  expect(await (await request.get('/dbd/random/build?r=killer&s=42')).text()).toMatch(/^[^|]+ \| [^|]+ · .+ \| /);
+  const survi = await (await request.get('/dbd/random/survi?s=7')).text();
+  const name = survi.split(':')[0];
+  expect(await (await request.get('/dbd/random/survi.svg?s=7')).text()).toContain(name.replace(/&/g, '&amp;').replace(/'/g, '&#39;'));
 
   const a = await (await request.get('/dbd/random/build.svg?s=42&u=Prueba')).text();
   const b = await (await request.get('/dbd/random/build.svg?s=42&u=Prueba')).text();

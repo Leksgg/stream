@@ -31,14 +31,14 @@ export async function handleDbd(url, env) {
     if (kind === 'random/build') {
       const killer = /^(k|killer|asesino|asesina)$/i.test((url.searchParams.get('r') || '').trim());
       const build = randomBuild(data, rng, killer);
-      return svg ? svgResponse(await buildCard(env, url.origin, build, user, rng, data)) : text(spinMessage(kind, user));
+      return svg ? svgResponse(await buildCard(env, url.origin, build, user, rng, data)) : text(buildMessage(build));
     }
     const role = kind === 'random/survi' ? 's' : 'k';
     const pool = data.chars.filter(c => c.r === role);
     const char = pool[Math.floor(rng() * pool.length)];
     const eyebrow = user ? `Te toca, ${user}` : 'Te toca';
     if (svg) return svgResponse(await charSpinCard(env, url.origin, char, data, eyebrow, rng));
-    return text(spinMessage(kind, user));
+    return text(clip(`${char.n}: ${char.p.map(k => data.perkByKey[k]?.n).filter(Boolean).join(' · ')}`));
   }
 
   const result = kind === 'perk' ? findPerk(data, query) : findChar(data, query);
@@ -456,9 +456,12 @@ function badge102(x, y) {
   return `<rect x="${x}" y="${y}" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${x + 24}" y="${y + 16}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
 }
 
-function spinMessage(kind, user) {
-  const what = kind === 'random/build' ? 'build' : kind === 'random/survi' ? 'superviviente' : 'asesino';
-  return `🎰 Girando la ruleta de ${what}${user ? ' para ' + user : ''}… ¡mira el stream!`;
+// Solo el resultado, sin texto alrededor: el mensaje lo arma cada comando en Leksimus.
+function buildMessage(build) {
+  const perks = build.perks.map(p => p.n + (p.ch ? ' (10.2)' : '')).join(' · ');
+  const adds = build.adds.map(a => a.n).join(' + ');
+  if (build.role === 'k') return clip(`${build.killer.n} | ${perks}${adds ? ' | ' + adds : ''}`);
+  return clip(`${perks} | ${build.item.n}${adds ? ' + ' + adds : ''}`);
 }
 
 async function buildCard(env, origin, build, user, rng, data) {
