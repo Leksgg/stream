@@ -53,22 +53,21 @@ test('GET /dbd/pj.svg devuelve una tarjeta con los iconos embebidos', async ({ r
   expect((svg.match(/data:image\/webp;base64,/g) || []).length).toBe(4);
 });
 
-test('GET /dbd/random/* repite el resultado con la misma semilla', async ({ request }) => {
-  const a = await (await request.get('/dbd/random/build?s=42&u=Prueba')).text();
-  const b = await (await request.get('/dbd/random/build?s=42&u=Prueba')).text();
+test('GET /dbd/random/* anuncia la ruleta en el chat y la tarjeta repite resultado con la misma semilla', async ({ request }) => {
+  expect(await (await request.get('/dbd/random/build?s=42&u=Prueba')).text()).toMatch(/^🎰 Girando la ruleta de build para Prueba/);
+  expect(await (await request.get('/dbd/random/survi?s=7')).text()).toMatch(/^🎰 Girando la ruleta de superviviente/);
+  expect(await (await request.get('/dbd/random/killer?s=7')).text()).toMatch(/^🎰 Girando la ruleta de asesino/);
+
+  const a = await (await request.get('/dbd/random/build.svg?s=42&u=Prueba')).text();
+  const b = await (await request.get('/dbd/random/build.svg?s=42&u=Prueba')).text();
   expect(a).toBe(b);
-  expect(a).toMatch(/^Build para Prueba: .+ \| Objeto: /);
+  expect(a).toContain('class="spin"');
+  expect(a.match(/class="land"/g).length).toBe(7);
 
-  const killer = await (await request.get('/dbd/random/build?r=killer&s=42')).text();
-  expect(killer).toMatch(/^Build aleatoria con .+ \| Accesorios: /);
-
-  const survi = await (await request.get('/dbd/random/survi?s=7')).text();
-  const card = await (await request.get('/dbd/random/survi.svg?s=7')).text();
-  const name = survi.match(/^Te toca: (.+?) \(/)[1];
-  expect(card).toContain(name.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'));
-
-  const killerPick = await (await request.get('/dbd/random/killer?s=7')).text();
-  expect(killerPick).toMatch(/^Te toca: /);
+  const killer = await (await request.get('/dbd/random/build.svg?r=killer&s=42')).text();
+  expect(killer).toContain('Ruleta de asesino');
+  const pick = await (await request.get('/dbd/random/killer.svg?s=7')).text();
+  expect(pick.match(/class="land"/g).length).toBeGreaterThanOrEqual(2);
 });
 
 test('GET /dbd/pj tolera erratas y lista las perks genéricas', async ({ request }) => {

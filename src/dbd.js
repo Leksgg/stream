@@ -31,15 +31,14 @@ export async function handleDbd(url, env) {
     if (kind === 'random/build') {
       const killer = /^(k|killer|asesino|asesina)$/i.test((url.searchParams.get('r') || '').trim());
       const build = randomBuild(data, rng, killer);
-      return svg ? svgResponse(await buildCard(env, url.origin, build, user)) : text(buildMessage(build, user));
+      return svg ? svgResponse(await buildCard(env, url.origin, build, user, rng, data)) : text(spinMessage(kind, user));
     }
     const role = kind === 'random/survi' ? 's' : 'k';
     const pool = data.chars.filter(c => c.r === role);
     const char = pool[Math.floor(rng() * pool.length)];
     const eyebrow = user ? `Te toca, ${user}` : 'Te toca';
-    if (svg) return svgResponse(await charCard(env, url.origin, char, data, eyebrow));
-    const names = char.p.map(k => data.perkByKey[k]?.n).filter(Boolean);
-    return text(clip(`${user ? user + ', te toca' : 'Te toca'}: ${char.n} (${names.join(' · ')})`));
+    if (svg) return svgResponse(await charSpinCard(env, url.origin, char, data, eyebrow, rng));
+    return text(spinMessage(kind, user));
   }
 
   const result = kind === 'perk' ? findPerk(data, query) : findChar(data, query);
@@ -389,14 +388,6 @@ function randomBuild(data, rng, killer) {
   };
 }
 
-function buildMessage(build, user) {
-  const perks = build.perks.map(p => p.n + (p.ch ? ' (10.2)' : '')).join(' · ');
-  const adds = build.adds.map(a => a.n).join(' + ');
-  const who = user ? `Build para ${user}` : 'Build aleatoria';
-  if (build.role === 'k') return clip(`${who} con ${build.killer.n}: ${perks} | Accesorios: ${adds}`);
-  return clip(`${who}: ${perks} | Objeto: ${build.item.n}${adds ? ' + ' + adds : ''}`);
-}
-
 const RARITY = {
   common: ['#8a6a4b', 'Común'],
   uncommon: ['#b89b2c', 'Poco común'],
@@ -421,7 +412,56 @@ function labelBlock(x, label, name, chars = 20) {
   return out;
 }
 
-async function buildCard(env, origin, build, user) {
+// --- Ruleta ------------------------------------------------------------------
+// Las tarjetas de los sorteos giran como una ruleta: cada hueco pasa iconos al
+// azar durante SPIN_START segundos y luego se detiene un hueco por segundo.
+// La animación es CSS dentro del propio SVG, así que funciona en el <img> del overlay.
+
+const SPIN_START = 6;     // segundo en que se para el primer hueco
+const SPIN_FRAMES = 8;    // iconos que pasan por cada hueco en bucle
+const SPIN_STEP = 0.09;   // segundos que se ve cada icono al girar
+
+const SPIN_CSS = `<style>`
+  + `.f{opacity:0;animation:cyc ${(SPIN_FRAMES * SPIN_STEP).toFixed(2)}s step-end infinite}`
+  + `@keyframes cyc{0%{opacity:1}${(100 / SPIN_FRAMES).toFixed(2)}%{opacity:0}100%{opacity:0}}`
+  + `.spin{animation:out .01s linear forwards}@keyframes out{to{opacity:0;visibility:hidden}}`
+  + `.land{opacity:0;transform-box:fill-box;transform-origin:center;animation:land .35s ease-out forwards}`
+  + `@keyframes land{0%{opacity:0;transform:scale(1.3)}100%{opacity:1;transform:scale(1)}}`
+  + `</style>`;
+
+// Iconos señuelo: se incrustan una vez como <symbol> y cada hueco los reutiliza con <use>.
+async function decoySymbols(env, origin, items, prefix, slice = false) {
+  const uris = await Promise.all(items.map(x => dataUri(env, origin, x.i)));
+  const ids = [];
+  let defs = '';
+  uris.forEach((uri, i) => {
+    if (!uri) return;
+    const id = `${prefix}${i}`;
+    ids.push(id);
+    defs += `<symbol id="${id}" viewBox="0 0 100 100"><image href="${uri}" width="100" height="100"${slice ? ' preserveAspectRatio="xMidYMid slice"' : ''}/></symbol>`;
+  });
+  return { defs: `<defs>${defs}</defs>`, ids };
+}
+
+// Un hueco de la ruleta: los señuelos giran hasta `stopAt` y entonces aparece `final`.
+function spinSlot(ids, offset, box, stopAt, final, clip = '') {
+  const frames = Array.from({ length: Math.min(SPIN_FRAMES, ids.length) }, (_, k) => ids[(offset + k) % ids.length]);
+  const period = SPIN_FRAMES * SPIN_STEP;
+  const uses = frames.map((id, k) => `<use class="f" href="#${id}" x="${box.x}" y="${box.y}" width="${box.w}" height="${box.h}" style="animation-delay:-${(period - k * SPIN_STEP).toFixed(2)}s"/>`).join('');
+  return `<g class="spin" style="animation-delay:${stopAt}s"${clip ? ` clip-path="url(#${clip})"` : ''}>${uses}</g>`
+    + `<g class="land" style="animation-delay:${stopAt}s">${final}</g>`;
+}
+
+function badge102(x, y) {
+  return `<rect x="${x}" y="${y}" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${x + 24}" y="${y + 16}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
+}
+
+function spinMessage(kind, user) {
+  const what = kind === 'random/build' ? 'build' : kind === 'random/survi' ? 'superviviente' : 'asesino';
+  return `🎰 Girando la ruleta de ${what}${user ? ' para ' + user : ''}… ¡mira el stream!`;
+}
+
+async function buildCard(env, origin, build, user, rng, data) {
   const head = build.role === 'k' ? build.killer : build.item;
   const [headIcon, ...icons] = await Promise.all([
     dataUri(env, origin, head.i),
@@ -430,35 +470,78 @@ async function buildCard(env, origin, build, user) {
   ]);
   const perkIcons = icons.slice(0, build.perks.length);
   const addIcons = icons.slice(build.perks.length);
+  const others = (list, taken) => pickMany(list.filter(x => !taken.includes(x)), 12, rng);
+  const [perkDecoys, headDecoys, addDecoys] = await Promise.all([
+    decoySymbols(env, origin, others(data.perks.filter(p => p.r === build.role), build.perks), 'dp'),
+    build.role === 'k'
+      ? decoySymbols(env, origin, others(data.chars.filter(c => c.r === 'k'), [build.killer]).slice(0, 8), 'dh', true)
+      : decoySymbols(env, origin, others(data.items.filter(i => !i.ev && ITEM_TYPES[i.t]), [build.item]).slice(0, 8), 'dh'),
+    decoySymbols(env, origin, others(build.role === 'k' ? data.adds.filter(a => a.kl) : data.adds.filter(a => ITEM_TYPES[a.t]), build.adds).slice(0, 8), 'da'),
+  ]);
   const width = 900;
   const height = 450;
-  const title = build.role === 'k' ? build.killer.n : 'Superviviente';
-  let body = `<text x="30" y="58" fill="${C.fg}" font-size="34" font-weight="700">${esc(title)}</text>`
+  let stop = SPIN_START;
+  let body = SPIN_CSS + perkDecoys.defs + headDecoys.defs + addDecoys.defs
+    + `<text x="30" y="58" fill="${C.fg}" font-size="34" font-weight="700">${build.role === 'k' ? 'Ruleta de asesino' : 'Ruleta de superviviente'}</text>`
     + `<text x="30" y="88" fill="${C.dim}" font-size="19">${esc(user ? `Build aleatoria para ${user}` : 'Build aleatoria')}</text>`;
   build.perks.forEach((perk, i) => {
     const cx = 120 + i * 220;
-    body += diamond(cx, 170, 130, perkIcons[i], 'b' + i);
-    if (perk.ch) body += `<rect x="${cx + 30}" y="104" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${cx + 54}" y="120" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
+    body += diamond(cx, 170, 130, null, 'b' + i);
+    let final = `<image href="${perkIcons[i] || ''}" x="${cx - 65}" y="105" width="130" height="130"/>`;
+    if (perk.ch) final += badge102(cx + 30, 104);
     wrap(perk.n, 20, 2).forEach((line, j) => {
-      body += `<text x="${cx}" y="${262 + j * 23}" fill="${C.fg}" font-size="18" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
+      final += `<text x="${cx}" y="${262 + j * 23}" fill="${C.fg}" font-size="18" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });
+    body += spinSlot(perkDecoys.ids, i * 3, { x: cx - 65, y: 105, w: 130, h: 130 }, stop++, final);
   });
   body += `<line x1="30" y1="318" x2="${width - 30}" y2="318" stroke="${C.line}" stroke-width="1.5"/>`;
   // Fila inferior: el objeto (o el retrato del asesino) y sus dos accesorios.
+  body += `<clipPath id="kp"><rect x="30" y="336" width="96" height="96" rx="6"/></clipPath><rect x="30" y="336" width="96" height="96" rx="6" fill="${C.panel}"/>`;
   if (build.role === 'k') {
-    body += `<clipPath id="kp"><rect x="30" y="336" width="96" height="96" rx="6"/></clipPath><rect x="30" y="336" width="96" height="96" rx="6" fill="${C.panel}"/>`
-      + (headIcon ? `<image href="${headIcon}" x="30" y="336" width="96" height="96" clip-path="url(#kp)" preserveAspectRatio="xMidYMid slice"/>` : '');
-    body += labelBlock(140, 'Asesino', build.killer.n);
+    const final = (headIcon ? `<image href="${headIcon}" x="30" y="336" width="96" height="96" clip-path="url(#kp)" preserveAspectRatio="xMidYMid slice"/>` : '')
+      + labelBlock(140, 'Asesino', build.killer.n);
+    body += spinSlot(headDecoys.ids, 0, { x: 30, y: 336, w: 96, h: 96 }, stop++, final, 'kp');
   } else {
-    body += square(30, 336, 96, headIcon, build.item.ra, 'it');
-    body += labelBlock(140, ITEM_TYPES[build.item.t] || 'Objeto', build.item.n);
+    const final = square(30, 336, 96, headIcon, build.item.ra, 'it') + labelBlock(140, ITEM_TYPES[build.item.t] || 'Objeto', build.item.n);
+    body += spinSlot(headDecoys.ids, 0, { x: 34, y: 340, w: 88, h: 88 }, stop++, final);
   }
   build.adds.forEach((add, i) => {
     const x = 400 + i * 250;
-    body += square(x, 348, 72, addIcons[i], add.ra, 'a' + i);
-    body += labelBlock(x + 84, (RARITY[add.ra] || RARITY.common)[1], add.n, 16);
+    body += `<rect x="${x}" y="348" width="72" height="72" rx="6" fill="${C.panel}" stroke="${C.line}" stroke-width="2"/>`;
+    const final = square(x, 348, 72, addIcons[i], add.ra, 'a' + i) + labelBlock(x + 84, (RARITY[add.ra] || RARITY.common)[1], add.n, 16);
+    body += spinSlot(addDecoys.ids, i * 4, { x: x + 4, y: 352, w: 64, h: 64 }, stop++, final);
   });
   return frame(width, height, body);
+}
+
+// Personaje al azar: gira el retrato, aparece el nombre y luego sus perks, una por segundo.
+async function charSpinCard(env, origin, char, data, eyebrow, rng) {
+  const perks = char.p.map(k => data.perkByKey[k]).filter(Boolean);
+  const [portrait, ...icons] = await Promise.all([
+    dataUri(env, origin, char.i),
+    ...perks.map(p => dataUri(env, origin, p.i)),
+  ]);
+  const decoys = await decoySymbols(env, origin, pickMany(data.chars.filter(c => c.r === char.r && c !== char), 10, rng), 'dc', true);
+  let stop = SPIN_START;
+  let body = SPIN_CSS + decoys.defs
+    + `<clipPath id="pc"><rect x="30" y="30" width="220" height="260" rx="10"/></clipPath>`
+    + `<rect x="30" y="30" width="220" height="260" rx="10" fill="${C.panel}"/>`;
+  const head = (portrait ? `<image href="${portrait}" x="10" y="40" width="260" height="260" clip-path="url(#pc)" preserveAspectRatio="xMidYMid slice"/>` : '')
+    + `<text x="280" y="74" fill="${C.fg}" font-size="38" font-weight="700">${esc(char.n)}</text>`
+    + `<text x="280" y="104" fill="${C.dim}" font-size="19">${eyebrow ? esc(eyebrow) + ' · ' : ''}${char.r === 's' ? 'Superviviente' : 'Asesino'}${char.en && char.en !== char.n ? ' · ' + esc(char.en) : ''}</text>`;
+  body += `<text x="280" y="74" fill="${C.dim}" font-size="38" font-weight="700" class="spin" style="animation-delay:${stop}s">${char.r === 's' ? 'Ruleta de superviviente' : 'Ruleta de asesino'}</text>`;
+  body += spinSlot(decoys.ids, 0, { x: 10, y: 40, w: 260, h: 260 }, stop++, head, 'pc');
+  perks.forEach((perk, i) => {
+    const cx = 370 + i * 200;
+    body += diamond(cx, 182, 120, null, 'c' + i);
+    let final = `<image href="${icons[i] || ''}" x="${cx - 60}" y="122" width="120" height="120"/>`;
+    wrap(perk.n, 20, 3).forEach((line, j) => {
+      final += `<text x="${cx}" y="${266 + j * 24}" fill="${C.fg}" font-size="19" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
+    });
+    if (perk.ch) final += badge102(cx + 26, 122);
+    body += `<g class="land" style="animation-delay:${stop++}s">${final}</g>`;
+  });
+  return frame(900, 340, body);
 }
 
 // --- Perks genéricas (!pj genericas / !pj genericas killer) -----------------
