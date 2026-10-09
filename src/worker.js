@@ -1,3 +1,5 @@
+import { isDbdRoute, handleDbd } from './dbd.js';
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -20,6 +22,10 @@ export default {
       return new Response(manifest, {
         headers: corsHeaders('application/json; charset=utf-8'),
       });
+    }
+
+    if (isDbdRoute(url.pathname)) {
+      return handleDbd(url, env);
     }
 
     // If not a .txt file, serve static asset as-is

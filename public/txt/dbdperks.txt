@@ -5,15 +5,15 @@ agilidad | Agilidad: Otorga un 50 % de Celeridad durante 3 segundos tras realiza
 alerta | Alerta: Revela el aura del asesino durante 5 segundos cuando este rompe un palé, muro o daña un generador — Feng Min
 arrebato | Arrebato: Aumenta la fuerza del forcejeo, oculta ganchos cercanos al asesino y otorga progreso si este cae desde una altura — Kate Denson
 asenlamanga | As en la Manga: Garantiza accesorios al encontrar objetos en cofres y permite conservarlos al escapar — Ace Visconti
-autoconservacion | Autoconservación: Otorga el efecto de Esquiva durante 30 segundos cada vez que otro superviviente sea colgado — Lee Yun-Jin
+autoconservacion | Autoconservación: Cuando cuelgan a otro superviviente, obtienes Esquiva durante 13/14/15 s (antes 20/25/30 s) — Lee Yun-Jin
 autocuracion | Autocuración: Permite curarse a uno mismo sin necesidad de un botiquín a un 35 % de la velocidad de curación normal — Claudette Morel
 autodidacta | Autodidacta: Comienzas con una penalización de curación que se convierte en una gran bonificación progresiva al acumular distintivos con pruebas de habilidad — Adam Francis
 badabadabum | Bada Bada Bum: Tras reparar un generador, permite colocar en una ventana una trampa que aplica Entorpecimiento al asesino — Dustin Henderson
 bailaconmigo | Baila Conmigo: Oculta tus marcas de arañazos durante 5 segundos tras saltar obstáculos o salir rápido de una taquilla — Kate Denson
-bajovigilancia | Bajo Vigilancia: Acumula distintivos por estar cerca del asesino que convierten pruebas de habilidad buenas en excelentes con progreso extra — Detective Tapp
+bajovigilancia | Bajo Vigilancia: Los distintivos convierten pruebas de habilidad normales en especiales, más difíciles: dan un 4 % más de progreso y fallarlas cuesta un 4 % más. No activan otras perks de pruebas de habilidad — Detective Tapp
 bendicioncirculodecuracion | Bendición: Círculo de Curación: Crea un tótem benefactor que permite curar a otros un 100 % más rápido y revela el aura de heridos dentro de su radio — Mikaela Reid
 bendicionexponencial | Bendición: Exponencial: Crea un tótem benefactor que permite a los supervivientes derribados recuperarse por completo y un 100 % más rápido — Jonah Vasquez
-bendicioniluminacion | Bendición: Iluminación: Crea un tótem que revela auras de cofres y generadores a los supervivientes, y acelera la purificación o bendición de otros tótems — Alan Wake
+bendicioniluminacion | Bendición: Iluminación: Bendices un tótem un 150/175/200 % más rápido; en su radio, los supervivientes ven las auras de cofres y generadores — Alan Wake
 bendicionpasosombrio | Bendición: Paso Sombrío: Crea un tótem benefactor que oculta las marcas de arañazos y las auras de los supervivientes dentro de su radio — Mikaela Reid
 bendicionteoriaoscura | Bendición: Teoría Oscura: Crea un tótem benefactor que otorga un 2 % de Celeridad a los supervivientes que estén dentro de su radio de alcance — Yoichi Asakawa
 bulo | Bulo: Al entrar en una taquilla, crea una falsa alerta de ruido en el último generador que hayas reparado — Zarina Kassir
@@ -22,16 +22,16 @@ camaderia | Camaradería: Pausa el cronómetro de la fase de lucha en el gancho 
 cambiodeplanes | Cambio de Planes: Permite transformar una caja de herramientas en un botiquín de la misma rareza al esconderte en una taquilla — Dustin Henderson
 campeondelaluz | Campeón de la Luz: Otorga un 50 % de Celeridad al usar una linterna y aplica Entorpecimiento al asesino tras cegarlo — Alan Wake
 canguro | Canguro: Al desenganchar, el superviviente recibe Celeridad y oculta sus rastros, mientras tú ves el aura del asesino — Steve Harrington
-cargasobreloshombros | Carga sobre los hombros: Tomas el estado de gancho de un aliado para reducir el suyo, a cambio de gritar y sufrir Vulnerabilidad — Taurie Cain
-carneresbaladiza | Carne resbaladiza: Otorga 3 intentos adicionales para desengancharte por ti mismo y aumenta un 4 % la probabilidad de éxito — genérica
-cazamenor | Caza menor: Emite una alerta sonora al mirar hacia un tótem cercano y reduce su área de detección por cada tótem purificado — genérica
+cargasobreloshombros | Carga sobre los hombros: Una vez por partida, sin 2 estados de gancho, desenganchas con el botón de habilidad: el rescatado pierde un estado de gancho y tú lo ganas, gritas, quedas herido y sufres Quebranto 160/140/120 s (antes Vulnerabilidad 60/50/40 s) — Taurie Cain
+carneresbaladiza | Carne resbaladiza: Ya no da intentos ni suerte para desengancharte. Los demás te desenganchan un 90/95/100 % más rápido y obtienes un 5 % de Celeridad al ser desenganchado — genérica
+cazamenor | Caza menor: Sin cono invisible: ves las auras de los tótems a menos de 10/11/12 m — genérica
 caidaequilibrada | Caída equilibrada: Al caer desde una altura, obtienes un impulso de velocidad del 50 %, reduces el tambaleo y el ruido de la caída — Nea Karlsson
-cincopasospordelante | Cinco pasos por delante: Revela auras de palés y ventanas cercanas en persecución, y te permite moverte antes tras derribar un palé — Kwon Tae-Young
+cincopasospordelante | Cinco pasos por delante: En persecución ves las auras de los 5 palés más cercanos (antes palés y ventanas) y te mueves antes tras tirar un palé — Kwon Tae-Young
 clarividencia | Clarividencia: Tras interactuar con un tótem, puedes ver auras de cofres, puertas, generadores, ganchos y la trampilla si no llevas un objeto — Mikaela Reid
 compañerodeescena | Compañero de escena: Gritas al mirar al asesino en su radio de terror para revelar su aura, con probabilidad de gritar de nuevo y ampliar la visión — Nicolas Cage
 concalle | Con calle: Revela el aura del asesino al agotar un objeto por primera vez y aumenta las cargas de los objetos encontrados en cofres — Nea Karlsson
 concentracioninterna | Concentración interna: Revela el aura del asesino durante 10 segundos cuando hiere a otro aliado y te permite ver las marcas de arañazos de otros supervivientes — Haddie Kaur
-conexionempatica | Conexión empática: Aumenta la velocidad con la que curas a otros un 35 % y permite que los aliados heridos vean tu aura — Yoichi Asakawa
+conexionempatica | Conexión empática: Curas a otros un 40/45/50 % más rápido (antes 25/30/35 %) y los aliados heridos ven tu aura — Yoichi Asakawa
 conocimientosdebotanica | Conocimientos de botánica: Aumenta la velocidad de curación un 50 % — Claudette Morel
 consejopaterno | Consejo paterno: Al aturdir al asesino, dejas de emitir gruñidos de dolor y de dejar rastros de sangre o marcas de arañazos durante 7 segundos — Yoichi Asakawa
 construccionduradera | Construcción duradera: Al esconderte en una taquilla con un objeto agotado, este se recarga un porcentaje que disminuye con cada uso — Felix Richter
@@ -51,22 +51,22 @@ embrujada | Embrujada: Te permite desengancharte por tus propios medios en el s�
 empatia | Empatía: Revela las auras de los aliados heridos en un radio de 128 metros — Claudette Morel
 energiapotencial | Energía potencial: Te permite acumular progreso de reparación en forma de distintivos para aplicarlos instantáneamente más tarde, pero los pierdes si sufres daño — Vittorio Toscano
 engano | Engaño: Al intentar entrar rápido en una taquilla, no entras pero generas una alerta de ruido y dejas de dejar marcas de arañazos durante 5 segundos — Élodie Rakoto
-escalofrios | Escalofríos: Recibes un aviso sonoro y realizas acciones un 6 % más rápido cuando el asesino te mira directamente dentro de un radio de 36 metros — genérica
+escalofrios | Escalofríos: Si el asesino te mira a menos de 40 m, recibes un aviso, no gritas durante 12 s y saltas un 10 % más rápido durante 12 s. Recarga de 40/35/30 s — genérica
 especialista | Especialista: Al abrir o rebuscar en cofres obtienes distintivos que se consumen al lograr una prueba de habilidad excelente, otorgando progreso permanente al generador — Lara Croft
 espejismo | Espejismo: Tras reparar un 20 %, permite crear una copia estática de ti mismo junto a objetos clave para distraer al asesino durante 60 segundos — Aestri Yazar
 esperanza | Esperanza: Al completarse todos los generadores, obtienes un 5 % de Celeridad de forma permanente — genérica
 esprint | Esprint: Al empezar a correr, obtienes un 50 % de Celeridad durante 3 segundos, lo que provoca Agotamiento — Meg Thomas
-espiritucalmado | Espíritu calmado: Evitas asustar a los cuervos y gritar, además de realizar acciones de interacción en silencio a cambio de una menor velocidad — Jake Park
-estadofluido | Estado fluido: Por cada generador completado obtienes un distintivo que aumenta la velocidad de curación, desenganche y acciones con tótems un 10 % — Kwon Tae-Young
-estonepuedestarpasando | Esto no puede estar pasando: Mientras estés herido, las zonas de éxito excelente en las pruebas de habilidad básicas aumentan un 30 % — genérica
+espiritucalmado | Espíritu calmado: No asustas a los cuervos ni gritas; ahora purificas tótems y abres cofres un 8/9/10 % más rápido y en silencio (antes un 40/35/30 % más lento) — Jake Park
+estadofluido | Estado fluido: Por cada generador completado ganas un distintivo que acelera curación, desenganche y acciones con tótems un 13/14/15 % por distintivo (antes 8/9/10 %) — Kwon Tae-Young
+estonepuedestarpasando | Esto no puede estar pasando: Las zonas buenas de las pruebas de habilidad normales son un 150/175/200 % más grandes. El aumento de zona excelente del PTB no llegó a live — genérica
 estrelladelasuerte | Estrella de la suerte: Suprime los gruñidos de dolor en taquillas y, al salir, revela auras de aliados y del generador cercano sin dejar rastro de sangre ni ruido por 30 segundos — Ellen Ripley
 evaluacion | Evaluación: Empiezas con 4 distintivos que permiten rebuscar en cofres ya abiertos un 80 % más rápido para obtener nuevos objetos — Élodie Rakoto
 evasionurbana | Evasión urbana: Aumenta tu velocidad de movimiento al estar agachado en un 100 % — Nea Karlsson
 extraoficial | Extraoficial: Tras ser desenganchado, obtienes Resistencia, silencio total en gruñidos de dolor e inmunidad a la lectura de aura por 40 segundos — Zarina Kassir
 exultacion | Exultación: Al aturdir al asesino con un palé, aumenta la rareza de tu objeto al siguiente nivel y recarga un 75 % de sus cargas — Trevor Belmont
 fajador | Fajador: Tras ser desenganchado, te permite obtener Resistencia durante 0.5 segundos mientras corres herido, provocando Agotamiento — David King
-familia | Familia: Mientras alguien esté colgado, revela las auras de todos los supervivientes y la del asesino si este se encuentra cerca del gancho — genérica
-farmacia | Farmacia: Desbloqueas cofres un 125 % más rápido y con menos ruido, garantizando un botiquín raro en el primero que abras — Quentin Smith
+familia | Familia: Mientras alguien está colgado, todos ven las auras de los supervivientes y la del asesino si está a menos de 14/15/16 m del gancho (antes 8/12/16 m) — genérica
+farmacia | Farmacia: Abres y registras cofres un 75/100/125 % más rápido; un registro por cofre y garantiza un botiquín en el primero — Quentin Smith
 fechalimite | Fecha límite: Mientras estés herido, las pruebas de habilidad básicas aparecen un 10 % más a menudo y en lugares aleatorios; fallarlas penaliza un 50 % el progreso — Alan Wake
 fijación | Fijación: Caminas un 20 % más rápido y puedes ver tus propias marcas de arañazos en todo momento — Nancy Wheeler
 fuerzaenlassombras | Fuerza en las sombras: En el sótano, puedes curarte sin botiquín a un 70 % de velocidad; al terminar, ves el aura del asesino por 10 segundos — Sable Ward
@@ -81,13 +81,13 @@ hiperconcentracion | Hiperconcentración: Ganar pruebas de habilidad excelentes 
 ingenioapocaliptico | Ingenio apocalíptico: Ves auras de palés rotos a 32 metros y, tras abrir o rebuscar en 2 cofres, puedes crear un palé frágil en el lugar de uno roto — Rick Grimes
 inquebrantable | Inquebrantable: Te recuperas un 35 % más rápido estando en el suelo y te permite levantarte por tu cuenta una vez por partida — William "Bill" Overbeck
 inspiraciónbárdica | Inspiración bárdica: Al actuar para otros supervivientes, lanzas un dado de 20 para otorgar una bonificación de progreso (1 %, 2 % o 3 %) en las pruebas de habilidad durante 90 segundos — Aestri Yazar
-instintodesaqueador | Instinto de saqueador: Revela las auras de cofres cerrados y objetos en el suelo a 64 metros, aumentando un 50 % la probabilidad de hallar objetos raros — genérica
+instintodesaqueador | Instinto de saqueador: Ves las auras de cofres cerrados y objetos en el suelo a cualquier distancia (antes 32/48/64 m) y abres cofres un 150/175/200 % más rápido (nuevo) — genérica
 interceptor | Interceptor: Tras reparar un 40 %, puedes colocar una trampa en un generador que revela su aura a aliados y muestra el aura del asesino si este se acerca — Ada Wong
 invocacionarañastejedoras | Invocación: Arañas tejedoras: Realiza un ritual en el sótano para reducir permanentemente el progreso requerido de todos los generadores, quedando herido y con Desesperanza — Sable Ward
 jugadorsecundario | Jugador secundario: Cuando el asesino recoge a otro superviviente, tienes 10 segundos para empezar a correr y obtener un 50 % de Celeridad durante 5 segundos, provocando Agotamiento — Renato Lyra
 liberacion | Liberación: Tras desenganchar a un aliado de forma segura, tu próximo intento de desenganche propio tendrá un 100 % de éxito, pero sufrirás Desesperanza por 60 segundos — Adam Francis
 ligeradepies | Ligera de pies: Mientras estés ileso, el asesino no oirá tus pisadas al correr; tras realizar una acción rápida, la habilidad entra en recarga durante 10 segundos — Ellen Ripley
-loconseguiremos | Lo conseguiremos: Tras desenganchar a un superviviente, curas a los demás un 100 % más rápido durante 90 segundos — genérica
+loconseguiremos | Lo conseguiremos: Tras desenganchar a un superviviente, curas a los demás un 100 % más rápido durante 70/80/90 s (antes 30/60/90 s) — genérica
 luchaintensa | Lucha intensa: Mientras el asesino te carga, si tienes un 15 % de forcejeo y pasas junto a un palé en vertical, puedes derribarlo para aturdirlo y escapar; ves las auras de los palés estando en el suelo — Élodie Rakoto
 lider | Líder: Aumentas un 30 % la velocidad de tus aliados cercanos al curar, sabotear, purificar, desenganchar, abrir cofres y abrir puertas de salida — Dwight Fairfield
 manifestaciónresidual | Manifestación residual: Al cegar al asesino, este sufre el estado de Ceguera por 30 segundos; además, te permite rebuscar en un cofre abierto para obtener una linterna — Haddie Kaur
@@ -95,33 +95,33 @@ melapela | Me la pela: Comienzas la partida herido y con Desesperanza de forma p
 medidacorrectiva | Medida correctiva: Comienzas con 3 distintivos (máximo 5); cuando un aliado falla una prueba de habilidad básica cerca de ti, se consume un distintivo para convertir el fallo en un acierto y revelas su aura — Jonah Vasquez
 medidasdesesperadas | Medidas desesperadas: Por cada superviviente herido, derribado o colgado, aumentas un 20 % tu velocidad al curar y desenganchar — Felix Richter
 mejorjuntos | Mejor juntos: Mientras reparas un generador, su aura se revela a otros supervivientes; si el asesino derriba a alguien, ves las auras de todos tus aliados por 30 segundos — Nancy Wheeler
-mejorquenuevo | Mejor que nuevo: Tras curar a otro superviviente, este obtiene un 16 % de velocidad adicional al curar, desbloquear cofres, bendecir y purificar tótems hasta que vuelva a sufrir daño — Rebecca Chambers
+mejorquenuevo | Mejor que nuevo: Tras curar a otro superviviente, este cura, abre cofres, bendice y purifica un 40/45/50 % más rápido (antes 12/14/16 %) hasta que vuelva a recibir daño — Rebecca Chambers
 minaexplosiva | Mina explosiva: Tras reparar un 40 %, puedes colocar una trampa en un generador que revela su aura a aliados; si el asesino lo patea, la mina explota, aturdiéndolo por 4 segundos y causando Ceguera — Jill Valentine
 momentodegloria | Momento de gloria: Tras abrir o rebuscar en 2 cofres, la próxima vez que te hieran sufrirás Desesperanza; si no recibes daño durante los siguientes 60 segundos, te curarás un estado de salud al instante — Trevor Belmont
-nadiesequedaatras | Nadie se queda atrás: Cuando se completan los generadores, curas y desenganchas un 100 % más rápido, otorgas un 10 % de Celeridad a quienes desenganches y ves las auras de tus aliados — genérica
+nadiesequedaatras | Nadie se queda atrás: Con todos los generadores completados, curas y desenganchas a otros un 80/90/100 % más rápido (antes 50/75/100 %), das un 10 % más de Celeridad al desenganchar y ves las auras de tus aliados — genérica
 neblinoso | Neblinoso: Al reparar, cada vez que logres una prueba de habilidad básica excelente, verás el aura del asesino durante 6 segundos — Vittorio Toscano
-nohacerdaño | No hacer daño: Al curar a otros, tu velocidad aumenta un 50 % por cada estado de gancho que tengan; las pruebas de habilidad excelentes otorgan un 3 % de progreso adicional — Orela Rose
+nohacerdaño | No hacer daño: Al curar a otro, curas un 30/40/50 % más rápido por cada estado de gancho que tenga; la bonificación por pruebas excelentes ahora también escala con sus estados de gancho y hay un 5 % más de probabilidad de prueba de habilidad — Orela Rose
 notasfantasmales | Notas fantasmales: Mientras sufres Agotamiento, tus marcas de arañazos desaparecen un 50 % más rápido; además, recuperas el Agotamiento un 10 % más rápido — Vee Boonyasak
-objetodeobsesion | Objeto de obsesión: Si eres la obsesión, el asesino ve tu aura cada 30 segundos; mientras él te ve, tú ves la suya y obtienes un 6 % de velocidad en reparación, curación y purificación — Laurie Strode
+objetodeobsesion | Objeto de obsesión: Ahora se llama Bound by Obsession en inglés. Si eres la obsesión, cada 30 s el asesino ve tu aura 4 s (antes 3 s); mientras la ve, tú ves la suya y bendices, purificas, curas y reparas un 8/9/10 % más rápido (antes 2/4/6 %, sin bendecir) — Laurie Strode
 ojosdebelmont | Ojos de Belmont: Cuando se completa un generador, ves el aura del asesino durante 3 segundos; además, cualquier efecto que te permita ver su aura durará 2 segundos más — Trevor Belmont
-oportunidades | Oportunidades: Ves las auras de palés, ventanas y muros destruibles en un radio de 32 metros — Kate Denson
-pactodesangre | Pacto de sangre: Si no eres la obsesión, tú y ella veis vuestras auras mientras estéis heridos; al terminar de curaros mutuamente, ambos obtenéis un 7 % de Celeridad si permanecéis cerca — Cheryl Mason
+oportunidades | Oportunidades: Solo ventanas: ves sus auras a menos de 24 m y saltas ventanas un 10 % más rápido. Recarga de 40/35/30 s — Kate Denson
+pactodesangre | Pacto de sangre: Si no eres la obsesión, tú y ella veis vuestras auras mientras estéis heridos y ganáis Celeridad al curaros. Nuevo: si te cuelgan siendo la obsesión, la obsesión pasa a otro superviviente — Cheryl Mason
 pasion | Pasión: Al bendecir o purificar un tótem, reparas un 10 % más rápido hasta que sufras daño; si el tótem era de maleficio, el bono de velocidad se duplica — Haddie Kaur
 percepciónextrasensorial | Percepción extrasensorial: Tras agacharte 4 segundos, revelas auras en un radio de hasta 44 metros y obtienes Esquiva e Inconsciencia; la habilidad se agota al levantarte o tras 11 segundos y tiene 40 segundos de recarga — Eleven
-percepciónoscura | Percepción oscura: Cada vez que se completa un generador, si el asesino está en un radio de 24 metros de ti, verás su aura durante 10 segundos — genérica
+percepciónoscura | Percepción oscura: Al completarse un generador, si el asesino se acerca a menos de 24 m ves su aura 8/9/10 s (antes 5/7/10 s); ahora también ves palés, ventanas y al resto de supervivientes — genérica
 perfilbajo | Perfil bajo: Cuando eres el único superviviente que no está derribado o colgado, ocultas tus marcas de arañazos, charcos de sangre y gruñidos de dolor durante 90 segundos — Ada Wong
 periciatécnica | Pericia técnica: Al reparar, reduces el ruido de reparación en 8 metros; si fallas una prueba de habilidad, el generador no explota, pero pierde un 3 % de progreso adicional — Feng Min
 porlosdemas | Por los demas: Mientras estes ileso, puedes curar instantaneamente a otro superviviente un estado de salud; a cambio, sufres daño, recibes Desesperanza por 60 segundos y te conviertes en la obsesion — Zarina Kassir
 periciatecnica | Pericia tecnica: Al reparar, el ruido del generador se reduce 8 metros; si fallas una prueba de habilidad, el generador no explota pero pierde un 3 % de progreso adicional — Feng Min
 porlosdemas | Por los demas: Mientras estes ileso, puedes curar instantaneamente a otro superviviente un estado de salud; a cambio, sufres daño, recibes Desesperanza por 60 segundos y te conviertes en la obsesion — Zarina Kassir
 postratamiento | Postratamiento: Hasta 3 supervivientes y tu vereis vuestras auras mutuamente cada vez que os desengancheis o cureis entre si; el efecto persiste hasta que seas colgado — Jeff Johansen
-premonicion | Premonicion: Cuando el asesino esta en un radio de 36 metros y miras en su direccion (area conica de 45 grados), escucharas una alerta sonora; tiene un tiempo de recarga de 30 segundos — generica
+premonicion | Premonicion: Si miras hacia el asesino a menos de 32 m (sin cono de 45°), recibes un aviso y ves su aura 3 s. Recarga de 70/65/60 s y no funciona en persecución — generica
 primeralinea | Primera linea: Obtienes 3 distintivos (maximo 9) cuando cuelgan a otro superviviente; al lograr una prueba de habilidad excelente reparando, consumes los distintivos para otorgar un 2 % de progreso permanente por cada uno — Lee Yun-Jin
 reafirmacion | Reafirmacion: Una vez por cada estado de gancho, al estar a menos de 6 metros de un superviviente colgado, puedes pausar su progreso de sacrificio durante 30 segundos — Rebecca Chambers
-resiliencia | Resiliencia: Mientras estes herido, obtienes un 9 % de velocidad adicional al reparar, curar, sabotear, desenganchar, saltar, abrir puertas, desbloquear cofres y purificar o bendecir totems — generica
+resiliencia | Resiliencia: Mientras estás herido, reparas, curas, saboteas, desenganchas, saltas, abres puertas y cofres y purificas o bendices un 7/8/9 % más rápido (antes 3/6/9 %) — generica
 respuestarapida | Respuesta rapida: Al salir rapidamente de una taquilla sufres Agotamiento por 20 segundos; mientras sufras Agotamiento, veras el aura del asesino durante 2 segundos — Orela Rose
 resurgimiento | Resurgimiento: Cada vez que te desenganchen, obtendras un 70 % de progreso de curacion al instante — Jill Valentine
-rivalidadamistosa | Rivalidad amistosa: Al terminar de reparar un generador con al menos otro superviviente, todos los involucrados reparais un 5 % mas rapido durante 120 segundos — Thalita Lyra
+rivalidadamistosa | Rivalidad amistosa: Al completar un generador con otros, todos reparáis un 10 % más rápido (antes 5 %) durante 80/85/90 s (antes 100/110/120 s) — Thalita Lyra
 ruptura | Ruptura: Cuando te desenganchen, el gancho se rompe durante 180 segundos y veras el aura del asesino durante 6 segundos — Jeff Johansen
 sabotear | Sabotear: Cuando el asesino carga a un superviviente en un radio de 56 metros, ves las auras de los ganchos y ganchos flagelantes; permite sabotear ganchos con un tiempo de recarga de 60 segundos — Jake Park
 salvaguardadealma | Salvaguarda de alma: Mientras estes maldito, puedes recuperarte por completo del estado de agonia; al levantarte, obtienes Resistencia durante 30 segundos; tiene un tiempo de recarga de 8 segundos — Cheryl Mason
@@ -129,8 +129,8 @@ segundoaliento | Segundo aliento: Tras curar a un superviviente, la proxima vez 
 separacionlimpia | Separacion limpia: Al terminar de curar a alguien o mientras te curan, puedes activar Desesperanza; tras 60 segundos, si no te han derribado, te curas al instante — Taurie Cain
 serenidad | Serenidad: La primera vez que empiezas a reparar cada generador, ves el aura del asesino durante 8 segundos; cuando se completa un generador, no dejas marcas de arañazos durante 30 segundos — Jane Romero
 sobreponerse | Sobreponerse: Cuando sufres daño, mantienes el aumento de velocidad durante 2 segundos mas y sufres Agotamiento por 40 segundos — Jonah Vasquez
-solidaridad | Solidaridad: Estando herido y curando a otro superviviente sin botiquin, tambien obtendras progreso de curacion para ti mismo con una conversion del 70 % — Jane Romero
-soloquedoyo | Solo quedo yo: Obtienes 1 distintivo por cada superviviente muerto; cada uno impide que el asesino vea tu aura en un radio de 24 metros. Si eres el ultimo vivo, reparas un 75 % mas rapido y abres puertas o trampilla un 50 % mas rapido — Laurie Strode
+solidaridad | Solidaridad: Herido y curando a otro, también te curas a ti mismo con una conversión del 65/70/75 % (antes 50/60/70 %); ya no exige ir sin botiquín — Jane Romero
+soloquedoyo | Solo quedo yo: Ahora se llama Down to the Last en inglés y es genérica. Ganas 1 distintivo al ser colgado o completar un generador (máx. 6); cada uno hace que los demás abran las puertas un 10 % más rápido. Si eres el último y tienes 3 o más, puedes abrir la trampilla sin llave — genérica
 solucionadordeproblemas | Solucionador de problemas: Mientras el asesino te persiga, ves el aura del generador con mas progreso; al derribar un pale, ves el aura del asesino durante 6 segundos. El efecto dura hasta 10 segundos tras finalizar la persecucion — Gabriel Soma
 subirlasapuestas | Subir las apuestas: Por cada superviviente con vida, todos obtienen un 3 % de suerte adicional; ademas, permite que todos los supervivientes intenten desengancharse por sus propios medios — Ace Visconti
 sujetate | Sujetate: Al curar a un superviviente derribado, ambos veis el aura del asesino; el superviviente curado obtiene un 50 % de Celeridad y no deja marcas de arañazos durante 5 segundos — Ashley J. Williams
@@ -153,7 +153,7 @@ unodostrescuatro | ¡Uno, dos, tres, cuatro!: Mientras estés inactivo, activa l
 venapormi | ¡Ven a por mí!: Cada vez que desenganches a un superviviente, si estás de cuclillas e inactivo, puedes activar la habilidad para que los supervivientes derribados y heridos en un radio de 24 metros no dejen marcas ni sangre durante 15 segundos; después gritas y el asesino ve tu aura durante 5 segundos — Rick Grimes
 vamosavivirparasiempre | Vamos a vivir para siempre: Curas a supervivientes derribados un 100 % más rápido; al terminar de curarlos, estos obtienen Resistencia durante 10 segundos (tiempo de recarga de 30 segundos) — David King
 velocidadsilenciosa | Velocidad silenciosa: Te escondes en taquillas y saltas obstáculos sin hacer ruido ni dar una alerta al asesino; tiene un tiempo de recarga de 15 segundos — Meg Thomas
-vidaenlacarretera | Vida en la carretera: Estando herido, sin Desesperanza y reparando un generador, obtienes 1 distintivo por cada prueba de habilidad excelente (pierdes 1 al fallar); al llegar a 4, se consumen para curarte un 100 % más rápido hasta terminar la curación — Vee Boonyasak
+vidaenlacarretera | Vida en la carretera: Herido y reparando, cada prueba de habilidad excelente te da un distintivo y cada fallo te quita uno; al gastar 6/5/4 distintivos te curas a ti mismo un 100 % más rápido — Vee Boonyasak
 vigilia | Vigilia: Todos los supervivientes en un radio de 16 metros se recuperan un 66 % más rápido de los estados de Ceguera, Desesperanza, Agotamiento, Vulnerabilidad, Hemorragia, Entorpecimiento, Laceración e Inconsciencia; el efecto persiste 15 segundos al salir del radio — Quentin Smith
 visiondefuturo | Visión de futuro: Ves las auras de los generadores en un radio de 32 metros; cuando se completa un generador, la habilidad entra en recarga durante 16 segundos — Felix Richter
 visiónestatica | Visión estática: Tras estar inactivo durante 2 segundos, ves las auras del asesino, de los cofres y de los generadores en un radio de 24 metros hasta que vuelvas a moverte — Aestri Yazar
@@ -173,7 +173,18 @@ desesperanza | Desesperanza: Impide que los supervivientes afectados puedan ser 
 resistencia | Resistencia: Efecto de estado que evita el derribo al recibir un golpe, otorgando Herida profunda en su lugar — Efecto de estado
 ceguera | Ceguera: Efecto de estado que impide a asesinos o supervivientes ver auras esenciales — Efecto de estado
 inconsciencia | Inconsciencia: Efecto de estado que impide al superviviente escuchar el radio de terror del asesino — Mecánica de juego
-despierta | ¡Despierta!: Cuando se completan todos los generadores, ves las auras de los interruptores de las puertas; al abrirlas, los demás ven tu aura y lo haces un 12.5 % más rápido por cada superviviente vivo — Quentin Smith
+despierta | ¡Despierta!: Con todos los generadores completados ves las auras de los interruptores; abres las puertas un 8/9/10 % más rápido, más un 20 % extra por cada otro superviviente vivo — Quentin Smith
+bendiciondecision | Bendición: Decisión: Bendice un tótem: en su radio, los generadores retroceden un 50 % más despacio, se reparan un 8/9/10 % más rápido y se ven sus auras — Aurora Stardotter
+demuestraloquevales | Demuestra lo que vales: Por cada superviviente a menos de 4 m de ti, todos reparáis un 6/8/10 % más rápido — Dwight Fairfield
+desatame | Desátame: En persecución, al hacer un salto medio o rápido, tus saltos son silenciosos durante 4/5/6 s y cada salto reinicia el tiempo. Recarga de 45 s — Thalita Lyra
+distorsion | Distorsión: Ganas 1 distintivo al empezar y tras 15 s de persecución (máx. 2); si el asesino intenta ver tu aura, gastas uno y durante 8/10/12 s no la ve ni dejas arañazos — Jeff Johansen
+distraccion | Distracción: Tras 30/25/20 s escondido en el radio de terror, agachado y quieto, lanzas una piedra a 20 m que alerta al asesino y deja arañazos — Adam Francis
+dramaturgia | Dramaturgia: Sano y corriendo, ganas un 25 % de Celeridad 2 s y Agotamiento 60/50/40 s; después ocurre algo al azar: más Celeridad, Vulnerabilidad 12 s, un objeto raro o un grito sin efecto — Nicolas Cage
+espiritudenovato | Espíritu de novato: Tras acertar 5/4/3 pruebas de habilidad de reparación, ves el aura de los generadores que estén retrocediendo — Leon S. Kennedy
+frutosdetuesfuerzo | Frutos de tu esfuerzo: Ganas 1 distintivo por generador completado; al terminar de reparar uno, por cada distintivo ganas un 5 % de Celeridad 2 s y un 10/15/20 % de progreso de curación — Aurora Stardotter
+golpedesuerte | Golpe de suerte: Herido, durante 40/50/60 s no dejas charcos de sangre ni arañazos; curar a otros recarga el tiempo segundo a segundo — Yui Kimura
+gritodesalvacion | Grito de salvación: Cuando el asesino empieza a perseguirte, ves las auras de los demás 1/2/3 s, y quienes no están en persecución ven tu aura y la del asesino 5 s — Aurora Stardotter
+invocacioncuervostraicioneros | Invocación: Cuervos traicioneros: Invoca en el círculo del sótano: al completarlo, cada vez que el asesino asusta un cuervo con alguien en su radio de terror, todos ven su aura 1/1,5/2 s. Quedas herido y con Quebranto — Taurie Cain
 Ace | A mano descubierta — As en la manga — Subir las apuestas
 Ada | Curación reactiva — Interceptor — Perfil bajo
 Adam | Autodidacta — Distracción — Liberación
@@ -228,20 +239,21 @@ Yui | Cueste lo que cueste — Fuga — Golpe de suerte
 Yun-Jin | Autoconservación — Primera línea — Éxito aplastante
 Zarina | Bulo — Extraoficial — Por los demás
 Generica | Carne resbaladiza — Caza menor — De pies ligeros — Déjà vu — Escalofríos — Esperanza — Esto no puede estar pasando — Familia — Instinto de saqueador — Lo conseguiremos — Nadie se queda atrás — Percepción oscura — Premonición — Resiliencia
+Aurora | Frutos de tu esfuerzo — Grito de salvación — Bendición: Decisión
 acaparadora | Acaparadora: Al inicio de la partida aparecen 2 cofres adicionales y recibes una alerta cuando un superviviente recoja un objeto o empiece a abrir un cofre en un radio de 64 metros — Los Mellizos
-acechadordeciervos | Acechador de Ciervos: Cada 30 segundos, el superviviente con menos tiempo en persecución verá tu aura por 3 segundos; mientras un superviviente vea tu aura, tú verás la suya — genérica
+acechadordeciervos | Acechador de Ciervos: Cada 40/35/30 s, el superviviente con menos tiempo en persecución ve tu aura durante 4 s (antes 3 s); mientras te vea, tú ves la suya — genérica
 acecholetal | Acecho Letal: Al empezar la partida, ves las auras de todos los supervivientes por 9 segundos; además, cualquier lectura de aura de supervivientes durará 2 segundos más — Némesis
 acogidanefasta | Acogida Nefasta: Obtienes distintivos al colgar supervivientes por primera vez; al alejarte 16 metros, bloqueas generadores por 10 segundos. Con 4 distintivos, los bloqueas por 40 segundos y ves el aura de la obsesión por 10 segundos — La Artista
 agarredeldragon | Agarre del Dragón: Tras patear un generador, el primer superviviente que lo toque gritará, revelará su posición por 4 segundos y sufrirá Vulnerabilidad por 60 segundos (recarga 30 s) — El Deterioro
-agitacion | Agitación: Mientras cargas a un superviviente, obtienes un 18 % de Celeridad y tu radio de terror aumenta 12 metros — El Trampero
+agitacion | Agitación: Mientras cargas a un superviviente, obtienes un 14/16/18 % de Celeridad (antes 6/12/18 %) y tu radio de terror aumenta 12 metros — El Trampero
 aliento | Aliento: Los sonidos de respiración de los supervivientes son un 25 % más fuertes y sus gruñidos de dolor un 50 % más fuertes — La Enfermera
 amigosparasiempre | Amigos para Siempre: Al colgar a quien no sea la obsesión, esta sufre Vulnerabilidad por 20 segundos y ves su aura por 10 segundos; al colgar a la obsesión, otro superviviente grita y se convierte en la nueva obsesión — Good Guy
-anatomiasuperior | Anatomía Superior: Tras un salto rápido de un superviviente a menos de 12 metros de ti, tu próximo salto de ventana es un 40 % más rápido (recarga 25 s) — El Cerebro
-aprendizajedemaquina | Aprendizaje de Máquina: Al dañar un generador queda alterado; cuando se completa, obtienes un 8 % de Celeridad e Indetectable durante 60 segundos — La Singularidad
+anatomiasuperior | Anatomía Superior: Tras un salto rápido de un superviviente cerca de ti, saltas ventanas un 30/35/40 % más rápido durante 10 s (antes un solo salto); recarga de 20 s (antes 25 s) — El Cerebro
+aprendizajedemaquina | Aprendizaje de Máquina: Al dañar un generador queda alterado (hasta 3, antes 1); al completarse uno, obtienes un 10 % de Celeridad (antes 8 %) e Indetectable, y los demás generadores dejan de estar alterados — La Singularidad
 indetectable | Indetectable: El asesino no tiene radio de terror ni marca roja, y los supervivientes no pueden ver su aura — Efecto de estado
-apretondehierro | Apretón de Hierro: Mientras cargues con un superviviente, este forcejeará un 12 % más despacio y su forcejeo será un 75 % más débil — genérica
+apretondehierro | Apretón de Hierro: Mientras cargas a un superviviente, forcejea un 10/11/12 % más despacio (antes 4/8/12 %) y su forcejeo es un 75 % más débil — genérica
 armadefinitiva | Arma Definitiva: Al inspeccionar una taquilla, los supervivientes en un radio de 40 metros gritarán y sufrirán Ceguera durante 30 segundos (recarga 45 s) — El Xenomorfo
-arroganciatenebrosa | Arrogancia Tenebrosa: Realizas saltos básicos por ventanas un 25 % más rápido, pero la duración de cegueras y aturdimientos por palé aumenta un 15 % — El Liche
+arroganciatenebrosa | Arrogancia Tenebrosa: Saltas ventanas un 15/20/25 % más rápido y la recarga de tus ataques básicos fallados u obstaculizados es un 15/20/25 % más corta (los aciertos no); las cegueras y aturdimientos por palé duran un 25 % más (antes 15 %) — El Liche
 averia | Avería: Los interruptores de las puertas de salida con un progreso mínimo del 80 % retroceden al 100 % de velocidad y hacen parpadear las luces — El Animatrónico
 barbacoaychile | Barbacoa y Chile: Tras colgar a un superviviente, ves las auras de todos los demás que estén a más de 40 metros de distancia durante 5 segundos — El Caníbal
 bestiadepresa | Bestia de Presa: Cada vez que obtengas Sed de sangre, obtendrás el estado de Indetectable durante 40 segundos — La Cazadora
@@ -253,21 +265,21 @@ hemorragia | Hemorragia: Mientras no se estén curando, los supervivientes pierd
 laceracion | Laceración: Los supervivientes afectados se curan más despacio — Efecto de estado
 coulrofobia | Coulrofobia: Los supervivientes dentro de tu radio de terror se curan un 50 % más despacio y las pruebas de habilidad básicas de curación se mueven un 50 % más rápido — El Payaso
 depredacion | Depredación: Cuando dejes de perseguir a un superviviente, verás su aura durante 4 segundos (tiempo de recarga de 40 segundos) — El Espectro
-desasosiego | Desasosiego: Tu radio de terror aumenta un 30 % — genérica
+desasosiego | Desasosiego: Tu radio de terror es un 30 % mayor (antes 20/23/30 %) y los supervivientes dentro de él reparan un 6/7/8 % más despacio (nuevo) — genérica
 desconcierto | Desconcierto: Realizas saltos básicos por ventanas un 15 % más rápido y bloqueas la ventana saltada para los supervivientes durante 16 segundos — El Payaso
 deslumbrado | Deslumbrado: Mientras cargues con un superviviente, los demás dentro de tu radio de terror sufren Vulnerabilidad; el efecto termina 30 segundos después de alejarse o colgar al superviviente (tiempo de recarga de 60 segundos) — El Traicionero
 devocionoscura | Devoción Oscura: Cuando la obsesión sufre daño, tu radio de terror se fija en 40 metros en su posición y tú obtienes Indetectable durante 45 segundos — La Plaga
 discordancia | Discordancia: Los generadores reparados por 2 o más supervivientes a menos de 128 metros activan una alerta y revelan su aura; el efecto persiste 4 segundos tras dejar de repararlo — La Legión
-disolucion | Disolución: 3 segundos después de herir a alguien y durante 20 segundos, si un superviviente hace un salto rápido sobre un palé en tu radio de terror, el palé se rompe — La Draga
-dominacion | Dominación: La primera vez que un superviviente intenta abrir un cofre o interactuar con un tótem, el objeto se bloquea durante 16 segundos — El Señor Oscuro
+disolucion | Disolución: Tras herir a alguien con un ataque básico (ya no cualquier daño), durante 13/14/15 s (antes 12/16/20 s), si un superviviente salta rápido un palé en tu radio de terror, el palé se rompe — La Draga
+dominacion | Dominación: Solo tótems (ya no cofres): la primera vez que un superviviente toca un tótem, se bloquea 25 s (antes 8/12/16 s), el superviviente grita y ves su aura durante 3/4/5 s — El Señor Oscuro
 doncelladehierro | Doncella de Hierro: Abres taquillas un 50 % más rápido; los supervivientes que salen de una sufren Vulnerabilidad por 30 segundos y revelan su posición por 4 segundos — La Legión
 dudaimpuesta | Duda Impuesta: Al derribar a un superviviente, los demás en un radio de 16 metros sufren un 20 % de Entorpecimiento durante 10 segundos (recarga 30 s) — La Singularidad
 ecosangriento | Eco Sangriento: Cada vez que cuelgues a un superviviente, durante 30 segundos todos los supervivientes heridos sufren los estados de Agotamiento y Hemorragia — El Oni
-empleodisponible | Empleo Disponible: Al dañar un generador queda alterado; cuando los supervivientes lo completan, tus tiempos de recarga de ataques básicos son un 25 % más breves durante 60 segundos — El Animatrónico
-enfurecimiento | Enfurecimiento: Por cada generador completado obtienes un distintivo (máx. 5) que aumenta un 6 % la velocidad de romper, dañar generadores, recoger/soltar supervivientes y saltar ventanas — La Pesadilla
+empleodisponible | Empleo Disponible: Al dañar un generador queda alterado (hasta 3 a la vez, antes 1) y, sin reparar, retrocede un 150 % más rápido (nuevo); al completarse, la recarga de tus ataques básicos es un 25 % más corta durante 100/110/120 s (antes 40/50/60 s) — El Animatrónico
+enfurecimiento | Enfurecimiento: Por cada generador completado obtienes un distintivo (máx. 5) que acelera un 6/7/8 % (antes 4/5/6 %) romper, dañar generadores, recoger y soltar supervivientes y saltar ventanas — La Pesadilla
 erupcion | Erupción: Tras dañar generadores, al derribar a un superviviente estos explotan perdiendo un 10 % de progreso y revelan el aura de quienes los reparaban por 12 segundos (recarga 30 s) — Némesis
-esperanzadestruida | Esperanza Destruida: Al apagar un tótem benefactor, ves las auras de los supervivientes en su radio por 8 segundos y el tótem se destruye — genérica
-espiasdelassombras | Espías de las Sombras: Recibes una alerta cada vez que un superviviente asusta a un cuervo en un radio de 36 metros (recarga 5 s) — genérica
+esperanzadestruida | Esperanza Destruida: Apagar una bendición sigue destruyendo el tótem. Además, cuando se bendice, purifica o destruye cualquier tótem, los tótems apagados y de maleficio quedan bloqueados 16/18/20 s y ves las auras de las bendiciones durante ese tiempo — genérica
+espiasdelassombras | Espías de las Sombras: Recibes una alerta cuando un superviviente asusta a un cuervo a menos de 36/38/40 metros (antes 20/28/36 m); recarga de 3 s (antes 5 s) — genérica
 fuerzabruta | Fuerza Bruta: Dañas generadores y rompes palés y muros destruibles un 20 % más rápido — El Trampero
 furiaciega | Furia Ciega: Mientras cargas a un superviviente, fallar ataques básicos tiene una recarga un 100 % más breve; si golpeas a otro superviviente, el que cargas no progresa en su forcejeo por 4 segundos — La Legión
 furiaespiritual | Furia Espiritual: Tras romper 2 palés, el siguiente palé con el que te aturdan se destruirá automáticamente — El Espíritu
@@ -275,22 +287,22 @@ ganchoflagelantebrujulaserrada | Gancho Flagelante: Brújula Serrada: 4 ganchos 
 ganchoflagelantedolorretumbante | Gancho Flagelante: Dolor Retumbante: 4 ganchos aleatorios se vuelven flagelantes; al colgar por primera vez (4 distintivos), el generador con más progreso pierde un 20 % y los supervivientes gritan — La Artista
 ganchoflagelanteobsequiodoloroso | Gancho Flagelante: Obsequio Doloroso: Al desenganchar de un gancho flagelante, el superviviente sufre Hemorragia y Laceración por 90 segundos, y repara o cura un 16 % más lento hasta volver a ser herido — El Cenobita
 ganchoflagelanteoleadadeira | Gancho Flagelante: Oleada de Ira: Al desenganchar a un superviviente de un gancho flagelante, ves las auras de todos los demás supervivientes durante 7 segundos — La Onryō
-ganchoflagelantesantuariomonstruoso | Gancho Flagelante: Santuario Monstruoso: 4 ganchos aleatorios y los del sótano se vuelven flagelantes; los supervivientes se sacrifican un 20 % más rápido si estás a al menos 24 metros — genérica
+ganchoflagelantesantuariomonstruoso | Gancho Flagelante: Santuario Monstruoso: Los ganchos del sótano y 4 aleatorios son flagelantes. Nuevo: si estás a más de 24 m del superviviente colgado en uno, los generadores sin reparar retroceden un 150/175/200 % más rápido — genérica
 ganchoflagelantetrucodelverdugo | Gancho Flagelante: Truco del Verdugo: Mientras cargas a un superviviente, ves las auras de otros en un radio de 16 metros de ganchos flagelantes; recibes una alerta si sabotean cualquier gancho — La Cerda
 golpedegracia | Golpe de Gracia: Al completarse un generador obtienes 2 distintivos (máx. 5); consumes uno al realizar un ataque de embestida para que su distancia aumente un 80 % — Los Mellizos
 guardiandesangre | Guardián de Sangre: Si cuelgas a un superviviente tras abrirse una puerta de salida, ambas se bloquean 60 segundos; ves las auras de los supervivientes en las salidas — La Pesadilla
 hijodelaluz | Hijo de la Luz: Eres inmune a la ceguera; cada vez que un superviviente intente cegarte, verás su aura durante 10 segundos — El Pueblerino
 hijodelassombras | Hijo de las Sombras: Cada vez que te cieguen, obtendrás un 10 % de Celeridad durante 10 segundos — El Espectro
 histeria | Histeria: Cada vez que un superviviente ileso acabe herido, todos los supervivientes heridos sufren Inconsciencia durante 40 segundos (tiempo de recarga de 20 segundos) — Némesis
-implacable | Implacable: El tiempo de recarga de los ataques básicos que no aciertes se reduce un 30 % — genérica
+implacable | Implacable: La recarga de tus ataques básicos fallados es un 30/35/40 % más corta (antes 20/25/30 %) y la de los acertados, un 10 % más corta (nuevo) — genérica
 imposiciondepenitencia | Imposición de Penitencia: Los supervivientes que reciben un golpe por protección sufren Desesperanza durante 80 segundos — El Verdugo
 imprevisto | Imprevisto: Al dañar un generador obtienes Indetectable y tu radio de terror se transfiere a ese generador durante 30 segundos (tiempo de recarga de 30 segundos) — Lo Desconocido
-incompleto | Incompleto: Ganas 3 distintivos (máx. 30) cuando fallan pruebas de habilidad; al dañar un generador, consume los distintivos para que pierda un 1 % de progreso y se bloquee 1 segundo por cada uno (tiempo de recarga de 60 segundos) — Lo Desconocido
+incompleto | Incompleto: Ganas 1 distintivo por gancho (máx. 3). Al dañar un generador los gastas todos: por cada uno pierde un 8/9/10 % de progreso y queda bloqueado 8/9/10 s — Lo Desconocido
 influencia | Influencia: Cada vez que un superviviente se desenganche o desenganche a otro, curará un 30 % más despacio durante 60 segundos — La Comerciante de Calaveras
-insidia | Insidia: Tras permanecer inactivo durante 1 segundo, obtienes el estado de Indetectable hasta que realices una acción — genérica
+insidia | Insidia: Tras 2 s quieto (antes 3/2/1 s) obtienes Indetectable; el efecto se mantiene 6/7/8 s después de volver a actuar (nuevo) — genérica
 instintoalienigena | Instinto Alienígena: Al colgar a un superviviente, el superviviente herido más lejano sufre Inconsciencia por 60 segundos y ves su aura durante 8 segundos — El Xenomorfo
 instintoterritorial | Instinto Territorial: Ves el aura de los supervivientes que entran al sótano durante 6 segundos si estás a más de 24 metros de distancia (recarga 45 s) — La Cazadora
-interruptordelhombremuerto | Interruptor del Hombre Muerto: Tras colgar a un superviviente, el primer generador que dejen de reparar se bloqueará durante 35 segundos (recarga 35 s) — El Arponero
+interruptordelhombremuerto | Interruptor del Hombre Muerto: Tras colgar a alguien, si un superviviente deja de reparar un generador más de 2 s, este se bloquea 30/35/40 s (antes 25/30/35 s); recarga de 30/35/40 s (antes 50 s) — El Arponero
 intervencioncorrupta | Intervención Corrupta: Al inicio de la partida, los 3 generadores más alejados se bloquean por 120 segundos o hasta que derribes a un superviviente — La Plaga
 jugarconlacomida | Jugar con la Comida: Al dejar de perseguir a la obsesión obtienes 1 distintivo (máx. 3; recarga 10 s) que otorga un 5 % de Celeridad cada uno; pierdes un distintivo por cada ataque — La Forma
 limitacionesgeneticas | Limitaciones Genéticas: Cuando un superviviente sufra daño, sufrirá Agotamiento durante 8 segundos — La Singularidad
@@ -308,12 +320,12 @@ maleficiooberturadelmal | Maleficio: Obertura del Mal: Se activa un tótem que m
 maleficiopentimento | Maleficio: Pentimento: Permite reavivar tótems purificados; 1 tótem reduce un 20 % la velocidad de reparación y curación, aumentando un 3 % por cada tótem extra; con 5 tótems activos, el Ente los bloquea todos — La Artista
 maleficiorepresalias | Maleficio: Represalias: Se enciende un tótem al inicio; cualquier superviviente que empiece a bendecir o purificar un tótem sufrirá Inconsciencia por 60 s; si purifican o bendicen un tótem de maleficio, ves las auras de todos por 20 s — El Arponero
 maleficioruina | Maleficio: Ruina: Se activa un tótem que hace que todos los generadores que no se estén reparando retrocedan automáticamente a un 150 % de la velocidad de regresión — La Bruja
-maleficiosolohaymiseria | Maleficio: Solo hay Miseria: Tras herir a supervivientes 8 veces con ataques básicos se enciende un tótem; cada ataque básico posterior aplica un 5 % de Entorpecimiento durante 15 segundos — El Ghoul
+maleficiosolohaymiseria | Maleficio: Solo hay Miseria: Se enciende tras 4 golpes con ataque básico (antes 8); cada golpe básico aplica un 5 % de Entorpecimiento y, nuevo, saltar obstáculos es un 10 % más lento — El Ghoul
 maleficiotierraembrujada | Maleficio: Tierra Embrujada: Se activan 2 tótems al inicio; si uno es purificado o bendecido, todos los supervivientes sufren Vulnerabilidad durante 60 segundos y el otro tótem se apaga — El Espíritu
 manitas | Manitas: La primera vez que cada generador alcanza el 70 % de progreso, recibes una alerta y obtienes el estado de Indetectable durante 16 segundos — El Pueblerino
-murmullos | Murmullos: Oirás murmullos del Ente de forma aleatoria cuando te encuentres en un radio de 32 metros de al menos un superviviente — genérica
+murmullos | Murmullos: Oyes murmullos del Ente si hay un superviviente a menos de 28/26/24 m (antes 48/40/32 m); fuera de ese rango obtienes un 5 % de Celeridad (nuevo) — genérica
 nadieeslibre | Nadie es Libre: Ganas distintivos por cada primer cuelgue; al completarse los motores, los palés y ventanas se bloquean 16 s por cada distintivo obtenido — El Ghoul
-noqueo | Noqueo: Si un superviviente se aleja 6 metros de un palé que acaba de tirar, sufrirá un 5 % de Entorpecimiento durante 5 segundos — El Caníbal
+noqueo | Noqueo: Si un superviviente se aleja 10 m (antes 6 m) de un palé que acaba de tirar, sufre un 20 % de Entorpecimiento (antes 5 %); termina antes si rompes el palé — El Caníbal
 nemesis | Némesis: Quien te ciegue o aturda será la obsesión; al cambiar la obsesión, esta sufre Inconsciencia por 60 s y ves su aura durante 8 s — El Oni
 opresion | Opresión: Al dañar un generador, hasta otros 4 generadores aleatorios empiezan a retroceder y activan una prueba de habilidad especial (recarga 35 s) — Los Mellizos
 oscuridadexpuesta | Oscuridad Expuesta: Al inspeccionar una taquilla, ves las auras de los supervivientes a 8 metros de cualquier taquilla durante 8 segundos (tiempo de recarga: 30 segundos) — La Draga
@@ -335,7 +347,7 @@ retrasaelreloj | Retrasa el Reloj: Tras colgar a un superviviente, durante los p
 sabuesodesangre | Sabueso de Sangre: Los charcos de sangre de los supervivientes son mucho más brillantes y permanecen rastreables durante 4 segundos más — El Espectro
 salmuera | Salmuera: Tras dañar un generador, este retrocede un 50 % más rápido durante 70 segundos y recibes una alerta cada vez que un superviviente logre una prueba de habilidad en él — La Onryō
 sindescanso | Sin Descanso: Los supervivientes con un 75 % de progreso de curación reciben pruebas de habilidad especiales; si fallan o interrumpen la acción, sufren Desesperanza por 30 segundos — La Adiestradora Canina
-separacion | Separación: Tras herir a un superviviente, durante 30 segundos obtendrás un 7 % de Celeridad por 10 segundos cada vez que realices un salto básico por ventana — Lo Desconocido
+separacion | Separación: Cuando un superviviente sano queda herido, durante 26/28/30 s (antes 24/27/30 s), al saltar una ventana obtienes un 5 % de Celeridad durante 25 s (antes 7 % durante 10 s) — Lo Desconocido
 sinescapatoria | Sin Escapatoria: Al colgar a un superviviente por primera vez obtienes un distintivo; cuando se completan los generadores y alguien intenta abrir una puerta, esta se bloquea por 12 segundos (más 12 s adicionales por cada distintivo) — El Traicionero
 sinescondite | Sin Escondite: Tras dañar un generador, ves las auras de los supervivientes en un radio de 24 metros durante 5 segundos — El Caballero
 sintoniaconlaurdimbre | Sintonía con la Urdimbre: Los objetos agotados se caen; ves el aura de los supervivientes a menos de 12 metros de un objeto soltado y quienes lo recojan sufren Inconsciencia por 30 segundos — El Liche
@@ -355,24 +367,28 @@ tormentavil | Tormenta Vil: La primera vez que cada generador llega al 90 % de p
 truenoensordecedor | Trueno Ensordecedor: Tras caer desde una altura de al menos 1.2 metros, tus embestidas duran un 75 % más durante los siguientes 25 segundos (recarga 5 s) — La Adiestradora Canina
 tacticasdezanshin | Tácticas de Zanshin: Ves las auras de palés y ventanas en un radio de 32 metros; además, ves el aura del superviviente que derribe un palé durante 5 segundos — El Oni
 unidoseternamente | Unidos Eternamente: Obtienes distintivos (máximo 8) cuando un superviviente sufre daño; cada uno aumenta la velocidad de colgar, recoger y soltar supervivientes un 4 % — El Ghoul
-vedaabierta | Veda Abierta: Al perseguir a la obsesión, romper objetos u obstáculos otorga un 7 % de Celeridad por 10 s; herir con ataque básico al superviviente con más tiempo de persecución lo convierte en la obsesión — La Comerciante de Calaveras
+vedaabierta | Veda Abierta: Al perseguir a la obsesión, romper palés o muros o dañar generadores te da un 10 % de Celeridad (antes 7 %) durante 8/9/10 s — La Comerciante de Calaveras
 vocaciondeenfermera | Vocación de Enfermera: Verás las auras de los supervivientes en un radio de 32 metros que se estén curando o a quienes estén curando — La Enfermera
-voraz | Voraz: La primera vez que cuelgas a cada superviviente obtienes 1 distintivo; al llegar a 4, todos los supervivientes gritan y sufren Vulnerabilidad durante 60 segundos — La Krasue
+voraz | Voraz: Al colgar por primera vez a cada superviviente ganas 1 distintivo: cada uno da un 4 % de Celeridad cargando y cuelgas un 4 % más rápido (nuevo); con 4, todos gritan y sufren Vulnerabilidad durante 80/85/90 s (antes 40/50/60 s) — La Krasue
 vinculomortal | Vínculo Mortal: Cuando un superviviente termina de curar a otro, este grita; además, mientras esté a menos de 4 metros del superviviente curado, sufrirá Inconsciencia y verás su aura hasta que reciba daño — El Verdugo
 plaf | ¡Plaf!: Empiezas con 3 distintivos (máximo 3) y ganas uno al colgar supervivientes; al romper un palé o muro consumes uno para que los supervivientes en un radio de 36 metros griten y revelen su aura por 6 segundos — La Comerciante de Calaveras
 maleficioenfrentatealaoscuridad | Maleficio: Enfréntate a la Oscuridad: Al herir a un superviviente se activa un tótem; cada 25 s los demás supervivientes fuera de tu radio de terror gritan y revelan su aura por 2 s hasta que el maldito sea derribado o curado — El Caballero
-maleficiofavordesangre | Maleficio: Favor de Sangre: Al herir a un superviviente, los palés en vertical en un radio de 32 metros de este quedan bloqueados por el Ente durante 15 segundos — El Deterioro
+maleficiofavordesangre | Maleficio: Favor de Sangre: Al herir a alguien con un ataque básico (ya no cualquier daño), los palés en pie a menos de 32 m (antes 24/28/32 m) quedan bloqueados durante 13/14/15 s (antes 15 s) — El Deterioro
 maleficioinmortal | Maleficio: Inmortal: Si purifican o bendicen otro tótem de maleficio activo, este se transfiere a la posición de Inmortal manteniendo sus distintivos; ves el aura de supervivientes a menos de 4 metros de tótems apagados — El Deterioro
 maleficiojuguete | Maleficio: Juguete: Al colgar a cada superviviente por primera vez, este sufre Inconsciencia y se activa un tótem que solo él puede purificar durante 90 s; el maldito ve el aura de su tótem a menos de 16 metros — El Cenobita
-maleficiolaemociondelacaza | Maleficio: La Emoción de la Caza: Obtienes un distintivo por cada tótem restante en el mapa; cada uno ralentiza la velocidad de purificación y bendición de los supervivientes un 12 % — genérica
+maleficiolaemociondelacaza | Maleficio: La Emoción de la Caza: Tu primer gancho enciende un tótem apagado. Cada gancho posterior bloquea todos los tótems de maleficio durante 6/7/8 s por cada maleficio encendido. Desaparece la ralentización pasiva al purificar — genérica
 miedofantasmal | Miedo Fantasmal: Cada vez que un superviviente te mire dentro de tu radio de terror, este gritará y verás su aura durante 2 segundos (recarga 60 s) — El Animatrónico
 miradaerrante | Mirada Errante: Al empezar una persecución, verás las auras de los demás supervivientes heridos en un radio de 20 metros durante 5 segundos (recarga 30 s) — La Krasue
 monitorizacionyabuso | Monitorización y Abuso: Tu radio de terror aumenta un 15 % mientras estás en persecución y disminuye un 25 % cuando no estás persiguiendo a nadie — El Doctor
 muertedefranklin | Muerte de Franklin: Tus ataques básicos hacen que el superviviente suelte su objeto y te permite ver el aura de los objetos soltados en un radio de 64 metros — El Caníbal
-murmulloamargo | Murmullo Amargo: Al completarse un generador, ves el aura de los supervivientes a menos de 16 metros de este por 5 s; al completarse todos, ves las auras de todos por 10 s — genérica
+murmulloamargo | Murmullo Amargo: Al completarse un generador, ves el aura de los supervivientes a menos de 20 metros durante 8 s (antes 16 m y 5 s); al completarse todos, ves las auras de todos durante 10/12/14 s — genérica
 hexscaredtodeath | Maleficio: Terror Hasta la Muerte: Tras colgar a 3 supervivientes distintos, se enciende un tótem apagado; durante una persecución, al romper un palé con un ataque básico, los supervivientes a 13 metros gritan y sufren un 11/12/13 % de Entorpecimiento durante 3 segundos — The Slasher (Jason)
 silentshadow | Sombra Silenciosa: Cada vez que cuelgas a un superviviente, obtienes Indetectable durante 11/12/13 segundos; al completarse todos los generadores, obtienes Indetectable — The Slasher (Jason)
 rampage | Matanza: Al romper con un ataque básico un palé o muro destruible, obtienes 1 distintivo (máximo 13); si te ciegan o aturden con un palé, durante 13 segundos obtienes un 1 % de Celeridad por cada distintivo (recarga de 30/25/20 s) — The Slasher (Jason)
+aniquilacion | Aniquilación: Cuando dañas un generador, retrocede un 2 % más rápido por cada carga que tenga. Recarga de 55/50/45 s — La Sentencia
+fuerzabrutal | Fuerza brutal: Rompes palés y muros y dañas generadores un 10/15/20 % más rápido — El Trampero
+maleficioatumerced | Maleficio: A tu merced: Al primer estado de gancho se enciende un tótem apagado. Te avisa cuando un superviviente que corre gana Celeridad a menos de 32 m, y no puede tener más de un 25/20/15 % de Celeridad a la vez — La Sentencia
+testigocelestial | Testigo celestial: Cada 30 s, si la obsesión está a más de 40 m ves su aura 2/2,5/3 s; si no, el superviviente más lejano pasa a ser la obsesión — La Sentencia
 Animatronico | Avería — Empleo Disponible — Miedo Fantasmal
 Freddys | Avería — Empleo Disponible — Miedo Fantasmal
 Arponero | Interruptor del Hombre Muerto — Maleficio: Represalias — Oído para la Maquinaria
@@ -436,3 +452,4 @@ Singularidad | Aprendizaje de Máquina — Duda Impuesta — Limitaciones Genét
 Desconocido | Imprevisto — Incompleto — Separación
 Mellizos | Acaparadora — Golpe de Gracia — Opresión
 Nemesis | Acecho Letal — Erupción
+Sentencia | Testigo celestial — Maleficio: A tu merced — Aniquilación
