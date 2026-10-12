@@ -13,7 +13,8 @@ Fuentes (scripts/dbd/fuentes/):
   surv_portraits.json retrato de la wiki de cada superviviente
   public/txt/dbdperks.txt  textos cortos de las perks para el chat
 
-Si falta un WebP en public/dbd, se descarga de la wiki y se convierte (necesita `pip install pillow`).
+Si falta un WebP en public/dbd, se descarga de la wiki y se convierte (necesita Pillow:
+`pip install -r scripts/dbd/requirements.txt`).
 
 Uso:  python -I scripts/dbd/generate.py [--salida DIR]
 """
