@@ -39,6 +39,23 @@ test('los ids del builder son únicos por grupo y cada entrada tiene su icono', 
   expect(missing).toEqual([]);
 });
 
+test('cada asesino trae el icono de su poder y el de cada estado', async ({ request }) => {
+  const d = await (await request.get('/dbd/builder.json')).json();
+  const missing = [];
+  const seen = new Set();
+  for (const k of d.killers) {
+    expect(k.pn, `poder sin nombre: ${k.id}`).toBeTruthy();
+    expect(Array.isArray(k.ps) && k.ps.length > 0, `poder sin iconos: ${k.id}`).toBeTruthy();
+    expect(k.pi).toBe(k.ps[0]);
+    for (const rel of k.ps) {
+      if (!rel || !iconExists(rel)) missing.push(`${k.id}:${rel}`);
+      expect(seen.has(rel), `icono de poder repetido: ${rel}`).toBeFalsy();
+      seen.add(rel);
+    }
+  }
+  expect(missing).toEqual([]);
+});
+
 test('data.json del bot tiene icono en cada perk, personaje, objeto y accesorio', async ({ request }) => {
   const d = await (await request.get('/dbd/data.json')).json();
   const missing = ['perks', 'chars', 'items', 'adds'].flatMap(g => d[g].filter(x => !x.i || !iconExists(x.i)).map(x => `${g}:${x.k}`));
@@ -47,7 +64,7 @@ test('data.json del bot tiene icono en cada perk, personaje, objeto y accesorio'
 
 test('los iconos de DBD se sirven con CORS y caché larga', async ({ request }) => {
   const d = await (await request.get('/dbd/builder.json')).json();
-  for (const rel of [d.perks[0].i, d.killers[0].i, d.items[0].i, d.addk[0].i]) {
+  for (const rel of [d.perks[0].i, d.killers[0].i, d.killers[0].pi, d.items[0].i, d.addk[0].i]) {
     const res = await request.get('/dbd/' + rel);
     expect(res.ok(), rel).toBeTruthy();
     expect(res.headers()['access-control-allow-origin']).toBe('*');

@@ -9,14 +9,16 @@ Fuentes (scripts/dbd/fuentes/):
   changes_es.json     cambios del último parche, a mano: {id: [tipo, texto]}
   ajustes.json        correcciones que tricky no trae (nombres nuevos, perks sin personaje, apodos de !pj, parche)
   iconos_wiki.json    archivo de deadbydaylight.wiki.gg de cada icono, por grupo e id
+                      (en `powers`, una lista por poder: el icono principal y el de cada estado)
   surv_portraits.json retrato de la wiki de cada superviviente
   public/txt/dbdperks.txt  textos cortos de las perks para el chat
 
-Si falta un WebP en public/dbd, se descarga de la wiki y se convierte (necesita `pip install pillow`).
+Si falta un WebP en public/dbd, se descarga de la wiki y se convierte (necesita Pillow:
+`pip install -r scripts/dbd/requirements.txt`).
 
 Uso:  python -I scripts/dbd/generate.py [--salida DIR]
 """
-import argparse, html, json, os, re, sys, unicodedata, urllib.parse, urllib.request
+import argparse, html, json, os, re, sys, time, unicodedata, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -25,7 +27,7 @@ PUBLIC = os.path.join(RAIZ, 'public', 'dbd')
 SCHEMA_VERSION = 1
 
 ITEM_TYPES = ('toolbox', 'medkit', 'flashlight', 'map', 'key', 'fogvial', 'firecracker')
-ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80}
+ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80, 'powers': 128}
 
 # Efectos de estado: se detectan en la descripción (sin tildes; con mayúscula, como los escribe el juego).
 FX = [
@@ -131,11 +133,19 @@ class Icons:
             self.missing.append(path)
             return None
         try:
-            from PIL import Image  # solo hace falta si hay que crear iconos nuevos
+            from PIL import Image, ImageFile  # solo hace falta si hay que crear iconos nuevos
             import io
+            ImageFile.LOAD_TRUNCATED_IMAGES = True  # algún PNG de la wiki trae un bloque iCCP con la suma mal
             req = urllib.request.Request('https://deadbydaylight.wiki.gg/images/' + urllib.parse.quote(wiki_file),
                                          headers={'User-Agent': 'Mozilla/5.0 (Digital Bite DBD data)'})
-            data = urllib.request.urlopen(req, timeout=30).read()
+            for wait in (0, 30, 90):  # la wiki responde 429 si se le piden muchos seguidos
+                time.sleep(1 + wait)
+                try:
+                    data = urllib.request.urlopen(req, timeout=30).read()
+                    break
+                except urllib.error.HTTPError as e:
+                    if e.code != 429 or wait == 90:
+                        raise
             im = Image.open(io.BytesIO(data)).convert('RGBA')
             size = ICON_SIZE[path.split('/')[0]]
             im.thumbnail((size, size), Image.LANCZOS)
@@ -184,6 +194,14 @@ def build(icons):
                     i=icons.ensure(f'pj/{slug(v["name"])}.webp', wiki['killers'].get(cid)))
                for cid, v in chS.items() if v['role'] == 'killer']
     killer_by_power = {k['p']: k for k in killers}
+
+    # Icono del poder en cada uno de sus estados; el primero de la lista es el principal.
+    for k in killers:
+        files = wiki['powers'].get(k['p'], [])
+        states = [icons.ensure(f'powers/{slug(re.sub(r"^.*?iconPowers_", "", f[:-4], flags=re.I))}.webp', f) for f in files]
+        if not files:
+            icons.missing.append(f'powers/{k["p"]}')
+        k.update(pn=ie[k['p']]['name'], pi=states[0] if states else None, ps=states)
 
     # --- Objetos y accesorios ----------------------------------------------
     item_keys = set()
