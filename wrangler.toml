@@ -7,7 +7,7 @@ directory = "./public"
 binding = "ASSETS"
 # Todo pasa por el Worker salvo los estáticos de DBD (iconos, retratos, objetos y JSON),
 # que se sirven directamente con las cabeceras de public/_headers (CORS y caché) para la web.
-run_worker_first = ["/*", "!/dbd/icons/*", "!/dbd/items/*", "!/dbd/pj/*", "!/dbd/*.json"]
+run_worker_first = ["/*", "!/dbd/icons/*", "!/dbd/items/*", "!/dbd/pj/*", "!/dbd/powers/*", "!/dbd/*.json"]
 
 [observability]
 enabled = true
