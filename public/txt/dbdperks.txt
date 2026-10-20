@@ -253,7 +253,7 @@ aprendizajedemaquina | Aprendizaje de Máquina: Al dañar un generador queda alt
 indetectable | Indetectable: El asesino no tiene radio de terror ni marca roja, y los supervivientes no pueden ver su aura — Efecto de estado
 apretondehierro | Apretón de Hierro: Mientras cargas a un superviviente, forcejea un 10/11/12 % más despacio (antes 4/8/12 %) y su forcejeo es un 75 % más débil — genérica
 armadefinitiva | Arma Definitiva: Al inspeccionar una taquilla, los supervivientes en un radio de 40 metros gritarán y sufrirán Ceguera durante 30 segundos (recarga 45 s) — El Xenomorfo
-arroganciatenebrosa | Arrogancia Tenebrosa: Saltas ventanas un 15/20/25 % más rápido y la recarga de tus ataques básicos fallados u obstaculizados es un 15/20/25 % más corta (los aciertos no); las cegueras y aturdimientos por palé duran un 25 % más (antes 15 %) — El Liche
+arroganciatenebrosa | Arrogancia Tenebrosa: Saltas ventanas un 15/20/25 % más rápido y la recarga de tus ataques básicos es un 10 % más corta (falles, te obstaculicen o aciertes); las cegueras y aturdimientos por palé duran un 25 % más (antes 15 %) — El Liche
 averia | Avería: Los interruptores de las puertas de salida con un progreso mínimo del 80 % retroceden al 100 % de velocidad y hacen parpadear las luces — El Animatrónico
 barbacoaychile | Barbacoa y Chile: Tras colgar a un superviviente, ves las auras de todos los demás que estén a más de 40 metros de distancia durante 5 segundos — El Caníbal
 bestiadepresa | Bestia de Presa: Cada vez que obtengas Sed de sangre, obtendrás el estado de Indetectable durante 40 segundos — La Cazadora
