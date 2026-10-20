@@ -2748,7 +2748,7 @@
     "K36P03": {
         "categories": null,
         "name": "Dark Arrogance",
-        "description": "You basic-vault Windows {Tunable.K36P03.VaultSpeedIncrease%}% faster.<br><br>Whenever you are blinded or Pallet-stunned, the duration is {Tunable.K36P03.ExtraBlindStunDuration%}% longer.",
+        "description": "You basic-vault Windows {Tunable.K36P03.VaultSpeedIncrease%}% faster.<br><br>Your basic-attack cooldown is 10% shorter.<br><br>Whenever you are blinded or Pallet-stunned, the duration is {Tunable.K36P03.ExtraBlindStunDuration%}% longer.",
         "role": "killer",
         "character": 268435491,
         "tunables": {
