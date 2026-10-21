@@ -1,0 +1,179 @@
+# Apodos de asesinos. Rellena 'apodos' (lista, separados por coma o uno por línea).
+# 'alias_actuales' son los que el bot ya reconoce; no hace falta repetirlos.
+asesinos:
+  - nombre: "El Trampero"
+    en: "The Trapper"
+    alias_actuales: [chuckles, eltrampero, thetrapper, trampero, trapper]
+    apodos: []
+  - nombre: "El Espectro"
+    en: "The Wraith"
+    alias_actuales: [bob, elespectro, espectro, patitas, campanita, thewraith, wraith]
+    apodos: []
+  - nombre: "El Pueblerino"
+    en: "The Hillbilly"
+    alias_actuales: [billy, elpueblerino, hillbilly, pueblerino, thehillbilly]
+    apodos: []
+  - nombre: "La Enfermera"
+    en: "The Nurse"
+    alias_actuales: [enfermera, laenfermera, nurse, thenurse]
+    apodos: []
+  - nombre: "La Bruja"
+    en: "The Hag"
+    alias_actuales: [bruja, hag, labruja, thehag, witch]
+    apodos: []
+  - nombre: "La Forma"
+    en: "The Shape"
+    alias_actuales: [forma, laforma, mayers, michael, michaelmyers, myers, shape, theshape]
+    apodos: []
+  - nombre: "El Doctor"
+    en: "The Doctor"
+    alias_actuales: [doctor, eldoctor, killer07, thedoctor, proctologo]
+    apodos: []
+  - nombre: "La Cazadora"
+    en: "The Huntress"
+    alias_actuales: [bear, cazadora, huntress, coneja, lacazadora, thehuntress]
+    apodos: []
+  - nombre: "El Caníbal"
+    en: "The Cannibal"
+    alias_actuales: [bubba, canibal, cannibal, elcanibal, leatherface, thecannibal]
+    apodos: []
+  - nombre: "La Pesadilla"
+    en: "The Nightmare"
+    alias_actuales: [freddy, federico ,freddykrueger, lapesadilla, nightmare, pesadilla, thenightmare]
+    apodos: []
+  - nombre: "La Cerda"
+    en: "The Pig"
+    alias_actuales: [cerda, lacerda, pig, thepig]
+    apodos: []
+  - nombre: "El Payaso"
+    en: "The Clown"
+    alias_actuales: [clown, elpayaso, payaso, theclown]
+    apodos: []
+  - nombre: "El Espíritu"
+    en: "The Spirit"
+    alias_actuales: [elespiritu, espiritu, la pelos, spirit, thespirit]
+    apodos: []
+  - nombre: "La Legión"
+    en: "The Legion"
+    alias_actuales: [lalegion, legion, thelegion]
+    apodos: []
+  - nombre: "La Plaga"
+    en: "The Plague"
+    alias_actuales: [laplaga, plaga, vomitos,plague, theplague]
+    apodos: []
+  - nombre: "Ghost Face"
+    en: "The Ghost Face"
+    alias_actuales: [ghostface, scarymovie,theghostface]
+    apodos: []
+  - nombre: "El Demogorgon"
+    en: "The Demogorgon"
+    alias_actuales: [demo, demogorgon, demochocho, demoperro ,eldemogorgon, thedemogorgon]
+    apodos: []
+  - nombre: "El Oni"
+    en: "The Oni"
+    alias_actuales: [eloni, oni, theoni]
+    apodos: []
+  - nombre: "El Arponero"
+    en: "The Deathslinger"
+    alias_actuales: [arponero, deathslinger, elarponero, gunslinger, pistoler, thedeathslinger]
+    apodos: []
+  - nombre: "El Verdugo"
+    en: "The Executioner"
+    alias_actuales: [cabezapiramide, doritos, elverdugo, executioner, k20, piramid, pyramidhead, theexecutioner, verdugo]
+    apodos: []
+  - nombre: "El Deterioro"
+    en: "The Blight"
+    alias_actuales: [blight, deterioro, eldeterioro, k21, theblight]
+    apodos: []
+  - nombre: "Los Mellizos"
+    en: "The Twins"
+    alias_actuales: [k22, losmellizos, mellizos, thetwins, twins, victor, charlotte, victorcharlotte]
+    apodos: []
+  - nombre: "El Traicionero"
+    en: "The Trickster"
+    alias_actuales: [eltraicionero, k23, kpopper, thetrickster, traicionero, trickster]
+    apodos: []
+  - nombre: "Némesis"
+    en: "The Nemesis"
+    alias_actuales: [k24, nemesis, nemesio, thenemesis]
+    apodos: []
+  - nombre: "El Cenobita"
+    en: "The Cenobite"
+    alias_actuales: [cenobita, cenobite, elcenobita, k25, pinhead, thecenobite]
+    apodos: []
+  - nombre: "La Artista"
+    en: "The Artist"
+    alias_actuales: [artist, artista, k26, laartista, cuervos, cuervo, theartist]
+    apodos: []
+  - nombre: "La Onryō"
+    en: "The Onryō"
+    alias_actuales: [k27, laonryo, onryo, sadako, theonryo]
+    apodos: []
+  - nombre: "La Draga"
+    en: "The Dredge"
+    alias_actuales: [draga, dredge, k28, ladraga, thedredge]
+    apodos: []
+  - nombre: "El Cerebro"
+    en: "The Mastermind"
+    alias_actuales: [cerebro, elcerebro, k29, mastermind, themastermind, wesker]
+    apodos: []
+  - nombre: "El Caballero"
+    en: "The Knight"
+    alias_actuales: [caballero, elcaballero, k30, knight, theknight]
+    apodos: []
+  - nombre: "La Comerciante de Calaveras"
+    en: "The Skull Merchant"
+    alias_actuales: [comerciante, comerciantedecalaveras, k31, lacomerciantedecalaveras, pasarelas, skullmerchant, theskullmerchant]
+    apodos: []
+  - nombre: "La Singularidad"
+    en: "The Singularity"
+    alias_actuales: [k32, lasingularidad, singularidad, c3po de combate, singularity, thesingularity]
+    apodos: []
+  - nombre: "El Xenomorfo"
+    en: "The Xenomorph"
+    alias_actuales: [alien, elxenomorfo, k33, thexenomorph, xeno, xenomorfo, xenomorph]
+    apodos: []
+  - nombre: "Good Guy"
+    en: "The Good Guy"
+    alias_actuales: [chucky, chuky, goodguy, k34, thegoodguy]
+    apodos: []
+  - nombre: "Lo Desconocido"
+    en: "The Unknown"
+    alias_actuales: [desconocido, k35, lodesconocido, theunknown, unknown]
+    apodos: []
+  - nombre: "El Liche"
+    en: "The Lich"
+    alias_actuales: [elliche, k36, lich, liche, thelich, vecna, vecnadnd]
+    apodos: []
+  - nombre: "El Señor Oscuro"
+    en: "The Dark Lord"
+    alias_actuales: [darklord, dracula, elsenoroscuro, k37, senoroscuro, furro, thedarklord]
+    apodos: []
+  - nombre: "La Adiestradora Canina"
+    en: "The Houndmaster"
+    alias_actuales: [adiestradoracanina, houndmaster, k38, laadiestradoracanina, thehoundmaster]
+    apodos: []
+  - nombre: "El Ghoul"
+    en: "The Ghoul"
+    alias_actuales: [elghoul, ghoul, k39, kaneki, theghoul]
+    apodos: []
+  - nombre: "El Animatrónico"
+    en: "The Animatronic"
+    alias_actuales: [animatronic, animatronico, elanimatronico, fnaf, freddys, k40, springtrap, theanimatronic]
+    apodos: []
+  - nombre: "La Krasue"
+    en: "The Krasue"
+    alias_actuales: [k41, krasue, lakrasue, tripas, thekrasue]
+    apodos: []
+  - nombre: "El Primero"
+    en: "The First"
+    alias_actuales: [elprimero, first, k42, primero, thefirst, henry,vecnastranger]
+    apodos: []
+  - nombre: "El Rajador"
+    en: "The Slasher"
+    alias_actuales: [elrajador, k43, rajador, slasher, jason,theslasher]
+    apodos: []
+  - nombre: "La Sentencia"
+    en: "The Judgment"
+    alias_actuales: [judgment, k44, lasentencia, sentencia, thejudgment]
+    apodos: []
