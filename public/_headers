@@ -18,3 +18,11 @@
 /dbd/powers/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/dbd/maps/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/dbd/outlines/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400

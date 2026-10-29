@@ -1,0 +1,317 @@
+{
+ "_nota": "Datos del PTB 10.3.0 (capítulo Terrifier: Art el Payaso y Sienna Shaw), a mano desde las notas oficiales. Misma forma que dl/*.json (es y en). El generador solo los usa si tricky aún no trae ese id; al salir en live, borrar este archivo. Los nombres en español son provisionales.",
+ "perks": {
+  "Laughingstock": {
+   "es": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "duration": [
+      3,
+      4,
+      5
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_Laughingstock",
+    "name": "Hazmerreír",
+    "description": "Los supervivientes a menos de 12 metros de un generador completado sufren <b>Agotamiento</b> e <b>Inconsciencia</b>.<br>El efecto persiste 3/4/5 segundos después de salir del alcance.<br><br>Ves las auras de los generadores completados."
+   },
+   "en": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "duration": [
+      3,
+      4,
+      5
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_Laughingstock",
+    "name": "Laughingstock",
+    "description": "Survivors within 12 metres of a completed Generator gain Exhausted and Oblivious.<br>The effect lingers for 3/4/5 seconds after they leave the range.<br><br>You see the Auras of completed Generators."
+   }
+  },
+  "Kill_Spree": {
+   "es": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "duration": [
+      6,
+      8,
+      10
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_KillSpree",
+    "name": "Racha asesina",
+    "description": "Cuando todos los supervivientes restantes tengan 2 estados de gancho y todos los generadores estén completados, puedes matar a los supervivientes.<br>Ambos interruptores de las puertas de salida quedan bloqueados mientras lo haces.<br><br>El efecto termina 6/8/10 segundos después de completar una muerte."
+   },
+   "en": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "duration": [
+      6,
+      8,
+      10
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_KillSpree",
+    "name": "Kill Spree",
+    "description": "Once all remaining Survivors have 2 Hook States and all Generators are completed, you can kill Survivors.<br>Both Exit Gate Switches are blocked while you do so.<br><br>The effect ends 6/8/10 seconds after you finish a kill."
+   }
+  },
+  "Funny_Business": {
+   "es": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "cooldown": [
+      60,
+      50,
+      40
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_FunnyBusiness",
+    "name": "Negocios graciosos",
+    "description": "Al dañar un generador obtienes un 10 % de <b>Celeridad</b> durante 10 segundos y un resultado aleatorio: 5 segundos más de Celeridad, un aturdimiento de 2 segundos, el bloqueo del generador durante 30 segundos o una broma sin efecto.<br>Enfriamiento de 60/50/40 segundos.<br><br>El mismo resultado no puede repetirse dos veces seguidas."
+   },
+   "en": {
+    "categories": [],
+    "role": "killer",
+    "character": 268435500,
+    "tunables": {
+     "cooldown": [
+      60,
+      50,
+      40
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_FunnyBusiness",
+    "name": "Funny Business",
+    "description": "Damaging a Generator grants 10% Haste for 10 seconds, plus one random outcome: extra Haste for 5 seconds, a 2 second stun, a 30 second block on the Generator, or a no-effect joke.<br>Cooldown is 60/50/40 seconds.<br><br>The same outcome cannot occur twice in a row."
+   }
+  },
+  "Valkyries_Rage": {
+   "es": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "chase": [
+      40,
+      35,
+      30
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_ValkyriesRage",
+    "name": "Furia de valquiria",
+    "description": "Tras ser perseguido durante 40/35/30 segundos, el siguiente aturdimiento con un palé al asesino dura un 75 % más."
+   },
+   "en": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "chase": [
+      40,
+      35,
+      30
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_ValkyriesRage",
+    "name": "Valkyrie's Rage",
+    "description": "After being chased for 40/35/30 seconds, your next pallet stun on the Killer lasts 75% longer."
+   }
+  },
+  "Shared_Trauma": {
+   "es": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "duration": [
+      30,
+      35,
+      40
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_SharedTrauma",
+    "name": "Trauma compartido",
+    "description": "Cuando recibes un golpe de protección, los supervivientes a menos de 12 metros recuperan el <b>Agotamiento</b> mientras corren durante 30/35/40 segundos.<br>A menos de 32 metros ves las auras de los supervivientes agotados."
+   },
+   "en": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "duration": [
+      30,
+      35,
+      40
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_SharedTrauma",
+    "name": "Shared Trauma",
+    "description": "When you take a protection hit, Survivors within 12 metres recover from Exhausted while running for 30/35/40 seconds.<br>Within 32 metres, you see the Auras of Exhausted Survivors."
+   }
+  },
+  "Best_Gift_Ever": {
+   "es": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "tokens": [
+      4,
+      5,
+      6
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_BestGiftEver",
+    "name": "El mejor regalo",
+    "description": "Empiezas con 4/5/6 fichas.<br>La primera vez que sueltas cada tipo de objeto, gastas una ficha y el objeto se consume. Cada tipo de objeto concede una bonificación: linterna, vial de niebla, llave, mapa, botiquín o caja de herramientas."
+   },
+   "en": {
+    "categories": [],
+    "role": "survivor",
+    "character": 54,
+    "tunables": {
+     "tokens": [
+      4,
+      5,
+      6
+     ]
+    },
+    "teachable": 40,
+    "image": "T_UI_iconsPerks_BestGiftEver",
+    "name": "Best Gift Ever",
+    "description": "You start with 4/5/6 Tokens.<br>The first time you drop each item type, you spend a Token and the item is consumed. Each item type then grants a bonus: Flashlight, Fog Vial, Key, Map, Medkit or Toolbox."
+   }
+  }
+ },
+ "items": {
+  "Item_K45Power": {
+   "es": {
+    "type": "power",
+    "item_type": null,
+    "role": "killer",
+    "rarity": null,
+    "bloodweb": 0,
+    "event": null,
+    "parents": null,
+    "name": "Bolsa de juguetes",
+    "description": "<b>BOLSA DE JUGUETES</b><br><br>Mantén pulsado el botón de poder para abrir la bolsa y elegir uno de dos juguetes aleatorios. Después, la bolsa entra en enfriamiento.<br><br>Juguetes (de un solo uso): botella de ácido, mangual, pistola, lanzallamas y bocina. Dañan a los supervivientes sanos e infligen Tortura a los heridos. Cada Tortura añade un punto de Letalidad y, con la Letalidad al máximo, el juguete puede derribar a supervivientes heridos. La bocina al máximo también interrumpe reparaciones y curaciones y hace retroceder el progreso.<br><br><b>BURLA</b><br>Burlarte de un superviviente Aterrado, colgado o derribado, da 1 de Letalidad a todos los juguetes y elimina Aterrado."
+   },
+   "en": {
+    "type": "power",
+    "item_type": null,
+    "role": "killer",
+    "rarity": null,
+    "bloodweb": 0,
+    "event": null,
+    "parents": null,
+    "name": "Bag of Toys",
+    "description": "<b>BAG OF TOYS</b><br><br>Hold the power button to open the bag and pick one of two random Toys. The bag then goes on cooldown.<br><br>Toys (single use): Acid Bottle, Flail, Handgun, Flamethrower and Bike Horn. They damage healthy Survivors and inflict Torture on injured ones. Each Torture adds one point of Deadliness and, at maximum Deadliness, a Toy can down injured Survivors. At maximum Deadliness the Bike Horn also interrupts repairs and healing and regresses progress.<br><br><b>TAUNT</b><br>Taunting a Terrified Survivor who is hooked or downed grants 1 Deadliness to all Toys and removes Terrified."
+   }
+  }
+ },
+ "characters": {
+  "268435500": {
+   "es": {
+    "id": "K45",
+    "role": "killer",
+    "difficulty": "intermediate",
+    "gender": null,
+    "height": null,
+    "image": null,
+    "abilities": null,
+    "tunables": null,
+    "item": "Item_K45Power",
+    "outfit": null,
+    "dlc": null,
+    "perks": [
+     "Laughingstock",
+     "Kill_Spree",
+     "Funny_Business"
+    ],
+    "name": "El Terrifier"
+   },
+   "en": {
+    "id": "K45",
+    "role": "killer",
+    "difficulty": "intermediate",
+    "gender": null,
+    "height": null,
+    "image": null,
+    "abilities": null,
+    "tunables": null,
+    "item": "Item_K45Power",
+    "outfit": null,
+    "dlc": null,
+    "perks": [
+     "Laughingstock",
+     "Kill_Spree",
+     "Funny_Business"
+    ],
+    "name": "The Terrifier"
+   }
+  },
+  "54": {
+   "es": {
+    "id": "S55",
+    "role": "survivor",
+    "difficulty": "none",
+    "gender": null,
+    "height": null,
+    "image": null,
+    "abilities": null,
+    "tunables": null,
+    "item": null,
+    "outfit": null,
+    "dlc": null,
+    "perks": [
+     "Valkyries_Rage",
+     "Shared_Trauma",
+     "Best_Gift_Ever"
+    ],
+    "name": "Sienna Shaw"
+   },
+   "en": {
+    "id": "S55",
+    "role": "survivor",
+    "difficulty": "none",
+    "gender": null,
+    "height": null,
+    "image": null,
+    "abilities": null,
+    "tunables": null,
+    "item": null,
+    "outfit": null,
+    "dlc": null,
+    "perks": [
+     "Valkyries_Rage",
+     "Shared_Trauma",
+     "Best_Gift_Ever"
+    ],
+    "name": "Sienna Shaw"
+   }
+  }
+ }
+}

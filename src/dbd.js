@@ -1,9 +1,10 @@
-// Comandos de Dead by Daylight para el chat y el overlay (!perk, !pj).
+// Comandos de Dead by Daylight para el chat y el overlay (!perk, !pj, !mapas).
 // Datos e iconos en public/dbd/ (data.json + icons/ + pj/).
 //   /dbd/perk?q=adrenalina      → texto para el chat
 //   /dbd/pj?q=jake              → texto para el chat
 //   /dbd/perk.svg?q=adrenalina  → tarjeta para el overlay (evento image)
 //   /dbd/pj.svg?q=jake          → tarjeta para el overlay (evento image)
+//   /dbd/mapa?q=macmillan       → reino o mapa con sus variantes para el chat (también .svg)
 //   /dbd/random/build?r=killer&s=12  → build al azar (!randomperks); sin r, de superviviente
 //   /dbd/random/survi?s=12            → superviviente al azar (!randomsurvi)
 //   /dbd/random/killer?s=12           → asesino al azar (!randomkiller)
@@ -17,7 +18,7 @@ export function isDbdRoute(pathname) {
   return ROUTE.test(pathname);
 }
 
-const ROUTE = /^\/dbd\/(perk|pj|random\/build|random\/survi|random\/killer)(\.svg)?$/;
+const ROUTE = /^\/dbd\/(perk|pj|mapa|random\/build|random\/survi|random\/killer)(\.svg)?$/;
 
 export async function handleDbd(url, env) {
   const [, kind, svg] = url.pathname.match(ROUTE);
@@ -39,6 +40,13 @@ export async function handleDbd(url, env) {
     const eyebrow = user ? `Te toca, ${user}` : 'Te toca';
     if (svg) return svgResponse(await charSpinCard(env, url.origin, char, data, eyebrow, rng));
     return text(clip(`${char.n}: ${char.p.map(k => data.perkByKey[k]?.n).filter(Boolean).join(' · ')}`));
+  }
+
+  if (kind === 'mapa') {
+    const found = findMap(data, query);
+    if (!svg) return text(mapMessage(query, found, data));
+    if (!found.hit) return svgResponse(await notFoundCard(kind, query, found));
+    return svgResponse(await mapCard(env, url.origin, found.hit, data));
   }
 
   const result = kind === 'perk' ? findPerk(data, query) : findChar(data, query);
@@ -63,6 +71,8 @@ async function loadData(env, origin) {
   if (!res.ok) return null;
   const data = await res.json();
   data.perkByKey = Object.fromEntries(data.perks.map(p => [p.k, p]));
+  data.mapByKey = Object.fromEntries(data.maps.map(m => [m.r + '/' + m.k, m]));
+  data.realmByKey = Object.fromEntries(data.realms.map(r => [r.k, r]));
   dataCache = data;
   return data;
 }
@@ -177,6 +187,33 @@ function findPerk(data, query) {
     return { hit: null, suggestions: [], effect: { ...effect, perks } };
   }
   return search(data.perks, query, p => [p.k, slug(p.en)]);
+}
+
+// Reinos y mapas se buscan juntos; un reino trae la lista de sus mapas (`m`).
+function findMap(data, query) {
+  const items = [...data.realms, ...data.maps];
+  return search(items, query, x => x.a || [x.k, slug(x.en)]);
+}
+
+function mapsOf(data, realm) {
+  return realm.m.map(k => data.mapByKey[realm.k + '/' + k]).filter(Boolean);
+}
+
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const mapLabel = m => (m.v > 1 ? `${m.n} (${m.v} variantes)` : m.n);
+
+function mapMessage(query, found, data) {
+  if (!slug(query)) return 'Uso: !mapas <mapa o reino>, por ejemplo !mapas macmillan o !mapas torre de carbón';
+  if (!found.hit) {
+    const list = found.suggestions.map(x => x.n).join(', ');
+    return list ? `No sé cuál es "${query}". ¿Quizá ${list}? Escribe !mapas con uno de esos nombres.` : `No encuentro "${query}". Prueba con el nombre del reino (macmillan, granja, pantano…) o del mapa.`;
+  }
+  const hit = found.hit;
+  if (hit.m) return clip(`${hit.n} (${plural(hit.m.length, 'mapa', 'mapas')}): ${mapsOf(data, hit).map(mapLabel).join(' · ')}`);
+  const realm = data.realmByKey[hit.r];
+  const others = mapsOf(data, realm).filter(m => m !== hit).map(m => m.n);
+  const variants = hit.v > 1 ? `, ${hit.v} variantes` : '';
+  return clip(`${hit.n} (${realm.n}${variants})${others.length ? `. Otros mapas del reino: ${others.join(' · ')}` : ''}`);
 }
 
 const GENERIC = /^(generic[ao]s?|general(es)?)(de)?(killers?|asesin[ao]s?|k|survis?|supervivientes?|s)?$/;
@@ -337,10 +374,81 @@ async function charCard(env, origin, char, data, eyebrow = '') {
   return frame(width, height, body);
 }
 
+async function mapCard(env, origin, hit, data) {
+  const realm = hit.m ? hit : data.realmByKey[hit.r];
+  const list = mapsOf(data, realm);
+  const shown = hit.m ? list : [hit, ...list.filter(m => m !== hit)];
+  const [icons, plans] = await Promise.all([
+    Promise.all(shown.map(m => dataUri(env, origin, m.i))),
+    Promise.all(shown.map(m => Promise.all((m.o || []).slice(0, hit.m ? 1 : 2).map(f => dataUri(env, origin, f))))),
+  ]);
+  const subtitle = hit.m
+    ? `Reino · ${plural(list.length, 'mapa', 'mapas')}${realm.en !== realm.n ? ' · ' + realm.en : ''}`
+    : `${realm.n}${hit.v > 1 ? ` · ${hit.v} variantes` : ''}${hit.en !== hit.n ? ' · ' + hit.en : ''}`;
+  let body = `<text x="30" y="62" fill="${C.fg}" font-size="38" font-weight="700">${esc(hit.n)}</text>`
+    + `<text x="30" y="94" fill="${C.dim}" font-size="19">${esc(subtitle)}</text>`;
+
+  // Foto del mapa con la etiqueta de variantes y, si hay, el plano en miniatura en una esquina.
+  const tileCard = (m, x, y, w, h, icon, plan, i, thumb) => {
+    let t = `<clipPath id="m${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/></clipPath>`
+      + `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${C.panel}" stroke="${C.line}" stroke-width="2"/>`
+      + (icon ? `<image href="${icon}" x="${x}" y="${y}" width="${w}" height="${h}" clip-path="url(#m${i})" preserveAspectRatio="xMidYMid slice"/>` : '');
+    if (m.v > 1) t += `<rect x="${x + w - 96}" y="${y + 8}" width="88" height="24" rx="4" fill="${C.blood}"/><text x="${x + w - 52}" y="${y + 25}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">${m.v} variantes</text>`;
+    if (thumb && plan?.[0]) {
+      t += `<rect x="${x + 6}" y="${y + h - 78}" width="72" height="72" rx="6" fill="#000" fill-opacity="0.72"/>`
+        + `<image href="${plan[0]}" x="${x + 6}" y="${y + h - 78}" width="72" height="72"/>`;
+    }
+    return t;
+  };
+
+  if (hit.m) {
+    const perRow = Math.min(list.length, 4);
+    const tile = 205;
+    const th = 125;
+    const width = Math.max(900, 30 + perRow * (tile + 20) + 10);
+    shown.forEach((m, i) => {
+      const x = 30 + (i % perRow) * (tile + 20);
+      const y = 124 + Math.floor(i / perRow) * (th + 70);
+      body += tileCard(m, x, y, tile, th, icons[i], plans[i], i, true);
+      wrap(m.n, 24, 2).forEach((line, j) => {
+        body += `<text x="${x + tile / 2}" y="${y + th + 22 + j * 20}" fill="${C.fg}" font-size="16" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
+      });
+    });
+    return frame(width, 124 + Math.ceil(list.length / perRow) * (th + 70) + 6, body);
+  }
+
+  // Mapa suelto: foto y plano(s) arriba, el resto del reino debajo.
+  body += tileCard(hit, 30, 124, 340, 210, icons[0], null, 0, false);
+  const plan = plans[0];
+  let bottom = 124 + 210;
+  if (plan.length) {
+    const size = plan.length === 1 ? 210 : 150;
+    plan.forEach((uri, i) => {
+      const x = 390 + i * (size + 12);
+      body += `<rect x="${x}" y="124" width="${size}" height="${size}" rx="8" fill="#050407" stroke="${C.line}" stroke-width="2"/>`
+        + `<image href="${uri}" x="${x}" y="124" width="${size}" height="${size}"/>`;
+    });
+    const caption = ['Plano', plan.length > 1 && 'planta baja y planta alta', hit.v > 1 && 'de una de las variantes'].filter(Boolean).join(' · ');
+    body += `<text x="390" y="${124 + (plan.length === 1 ? 210 : 150) + 26}" fill="${C.dim}" font-size="16">${caption}</text>`;
+  } else {
+    body += `<text x="390" y="150" fill="${C.dim}" font-size="18">Sin plano todavía</text>`;
+  }
+  const others = shown.slice(1);
+  if (others.length) {
+    body += `<text x="30" y="${bottom + 40}" fill="${C.dim}" font-size="19">Otros mapas del reino</text>`;
+    others.forEach((m, i) => {
+      const col = i % 2;
+      body += `<text x="${30 + col * 430}" y="${bottom + 74 + Math.floor(i / 2) * 32}" fill="${C.fg}" font-size="22">${esc(m.n)}${m.v > 1 ? ` · ${m.v} variantes` : ''}</text>`;
+    });
+    bottom += 74 + Math.floor((others.length - 1) / 2) * 32;
+  }
+  return frame(900, bottom + 28, body);
+}
+
 async function notFoundCard(kind, query, result) {
   const list = result.suggestions.map(x => x.n).join(' · ');
   const body = `<text x="30" y="62" fill="${C.fg}" font-size="30" font-weight="700">${esc(list ? `¿Quizá buscas…?` : `No encuentro "${query}"`)}</text>`
-    + `<text x="30" y="102" fill="${C.dim}" font-size="21">${esc(list || (kind === 'perk' ? 'Prueba con !perk y el nombre en español o inglés' : 'Prueba con !pj y el nombre del personaje'))}</text>`;
+    + `<text x="30" y="102" fill="${C.dim}" font-size="21">${esc(list || (kind === 'perk' ? 'Prueba con !perk y el nombre en español o inglés' : kind === 'mapa' ? 'Prueba con !mapas y el reino o el mapa' : 'Prueba con !pj y el nombre del personaje'))}</text>`;
   return frame(900, 140, body);
 }
 

@@ -96,3 +96,25 @@ test('GET /dbd/perk busca también por efecto de estado', async ({ request }) =>
   const card = await (await request.get('/dbd/perk.svg?q=ceguera')).text();
   expect(card).toContain('Perks con Ceguera');
 });
+
+test('GET /dbd/mapa da el reino con sus variantes, el mapa suelto o una sugerencia', async ({ request }) => {
+  const realm = await (await request.get('/dbd/mapa?q=mcmillan')).text();
+  expect(realm).toMatch(/^La finca Macmillan \(5 mapas\): Torre de carbón \(2 variantes\)/);
+  expect(await (await request.get('/dbd/mapa?q=granja')).text()).toMatch(/^Granja Coldwind \(5 mapas\)/);
+  expect(await (await request.get('/dbd/mapa?q=pantano')).text()).toContain('La rosa pálida');
+  const map = await (await request.get('/dbd/mapa?q=torre de carbon')).text();
+  expect(map).toMatch(/^Torre de carbón \(La finca Macmillan, 2 variantes\)\. Otros mapas del reino: /);
+  expect(await (await request.get('/dbd/mapa?q=badham')).text()).toContain('5 variantes');
+  expect(await (await request.get('/dbd/mapa')).text()).toMatch(/^Uso: !mapa/);
+  expect(await (await request.get('/dbd/mapa?q=zzzzzz')).text()).toMatch(/^No encuentro/);
+  const card = await request.get('/dbd/mapa.svg?q=macmillan');
+  expect(card.headers()['content-type']).toContain('image/svg+xml');
+  expect(await card.text()).toContain('2 variantes');
+});
+
+test('GET /dbd/mapa.svg incluye el plano cuando el mapa lo tiene', async ({ request }) => {
+  const withPlan = await (await request.get('/dbd/mapa.svg?q=casa de los thompson')).text();
+  expect(withPlan).toContain('>Plano<');
+  const without = await (await request.get('/dbd/mapa.svg?q=almacen quejumbroso')).text();
+  expect(without).toContain('Sin plano todavía');
+});
