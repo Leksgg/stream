@@ -94,6 +94,64 @@
     ],
     "elrajador": [
       "jason"
+    ],
+    "elterrifier": [
+      "art",
+      "arttheclown",
+      "artelpayaso",
+      "terrifier"
+    ]
+  },
+  "aliasMapas": {
+    "lafincamacmillan": [
+      "mcmillan",
+      "mcmilan",
+      "macmillan",
+      "finca",
+      "estate"
+    ],
+    "granjacoldwind": [
+      "granja",
+      "farm",
+      "coldwind"
+    ],
+    "pantanodeaguasestancadas": [
+      "pantano",
+      "swamp",
+      "backwater"
+    ],
+    "psiquiatricocrotusprenn": [
+      "asilo",
+      "manicomio",
+      "psiquiatrico",
+      "asylum"
+    ],
+    "desguaceautohaven": [
+      "desguace",
+      "chatarreria",
+      "junkyard",
+      "autohaven"
+    ],
+    "islamarchita": [
+      "witheredisle",
+      "isla"
+    ],
+    "residenciayamaoka": [
+      "yamaoka",
+      "japon"
+    ],
+    "springwood": [
+      "pesadilla",
+      "elmstreet",
+      "guarderia"
+    ],
+    "raccooncity": [
+      "raccoon",
+      "resident",
+      "comisaria"
+    ],
+    "burgodiezmado": [
+      "borgo"
     ]
   }
 }

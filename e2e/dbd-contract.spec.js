@@ -31,7 +31,7 @@ test('builder.json cumple el esquema v1 y se sirve con CORS', async ({ request }
 test('los ids del builder son únicos por grupo y cada entrada tiene su icono', async ({ request }) => {
   const d = await (await request.get('/dbd/builder.json')).json();
   const missing = [];
-  for (const g of ['perks', 'killers', 'items', 'adds', 'addk']) {
+  for (const g of ['perks', 'killers', 'items', 'adds', 'addk', 'maps']) {
     const ids = d[g].map(x => x.id);
     expect(new Set(ids).size, `ids repetidos en ${g}`).toBe(ids.length);
     for (const x of d[g]) if (!x.i || !iconExists(x.i)) missing.push(`${g}:${x.id}`);
@@ -58,7 +58,7 @@ test('cada asesino trae el icono de su poder y el de cada estado', async ({ requ
 
 test('data.json del bot tiene icono en cada perk, personaje, objeto y accesorio', async ({ request }) => {
   const d = await (await request.get('/dbd/data.json')).json();
-  const missing = ['perks', 'chars', 'items', 'adds'].flatMap(g => d[g].filter(x => !x.i || !iconExists(x.i)).map(x => `${g}:${x.k}`));
+  const missing = ['perks', 'chars', 'items', 'adds', 'maps', 'realms'].flatMap(g => d[g].filter(x => !x.i || !iconExists(x.i)).map(x => `${g}:${x.k}`));
   expect(missing).toEqual([]);
 });
 

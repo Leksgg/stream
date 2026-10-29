@@ -8,6 +8,8 @@ Fuentes (scripts/dbd/fuentes/):
   dl/                 descarga de dbd.tricky.lol (es + en)
   changes_es.json     cambios del último parche, a mano: {id: [tipo, texto]}
   ajustes.json        correcciones que tricky no trae (nombres nuevos, perks sin personaje, apodos de !pj, parche)
+  ptb_terrifier.json  datos del PTB a mano (es y en); solo entran los ids que tricky aún no trae
+  dl/maps*.json       mapas por reino; las variantes (mismo nombre o «II», «III»…) se agrupan en un solo mapa
   iconos_wiki.json    archivo de deadbydaylight.wiki.gg de cada icono, por grupo e id
                       (en `powers`, una lista por poder: el icono principal y el de cada estado)
   surv_portraits.json retrato de la wiki de cada superviviente
@@ -27,7 +29,7 @@ PUBLIC = os.path.join(RAIZ, 'public', 'dbd')
 SCHEMA_VERSION = 1
 
 ITEM_TYPES = ('toolbox', 'medkit', 'flashlight', 'map', 'key', 'fogvial', 'firecracker')
-ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80, 'powers': 128}
+ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80, 'powers': 128, 'maps': 256}
 
 # Efectos de estado: se detectan en la descripción (sin tildes; con mayúscula, como los escribe el juego).
 FX = [
@@ -39,6 +41,7 @@ FX = [
     ('Debilidad', r'Debilidad'), ('Sed de sangre', r'Sed de sangre'), ('Gritar', r'[Gg]rit(a|o)'), ('Auras', r'\bauras?\b'),
 ]
 FX = [(name, re.compile(rx)) for name, rx in FX]
+
 
 KW_ES = {'haste': 'Celeridad', 'exhausted': 'Agotamiento', 'broken': 'Quebranto', 'exposed': 'Vulnerabilidad',
          'undetectable': 'Indetectable', 'oblivious': 'Inconsciencia', 'endurance': 'Resistencia',
@@ -94,6 +97,16 @@ def fx_of(*texts):
 def load(name):
     with open(os.path.join(FUENTES, name), encoding='utf-8') as f:
         return json.load(f)
+
+
+def load_dl(ptb, name, group):
+    """dl/<name>.json de tricky más lo que solo está en el PTB (idioma según el sufijo _es)."""
+    data = load(f'dl/{name}.json')
+    lang = 'es' if name.endswith('_es') else 'en'
+    for k, v in ptb[group].items():
+        if k not in data:
+            data[k] = v[lang]
+    return data
 
 
 def short_texts():
@@ -159,10 +172,13 @@ class Icons:
 
 
 def build(icons):
-    pe, pn = load('dl/perks_es.json'), load('dl/perks.json')
-    ie, ine = load('dl/items_es.json'), load('dl/items.json')
+    ptb = load('ptb_terrifier.json')
+    pe, pn = load_dl(ptb, 'perks_es', 'perks'), load_dl(ptb, 'perks', 'perks')
+    ie, ine = load_dl(ptb, 'items_es', 'items'), load_dl(ptb, 'items', 'items')
     ae, ane = load('dl/addons_es.json'), load('dl/addons.json')
-    chS, chE = load('dl/characters_es.json'), load('dl/characters.json')
+    chS, chE = load_dl(ptb, 'characters_es', 'characters'), load_dl(ptb, 'characters', 'characters')
+    ptb_perks = {k for k in ptb['perks'] if k not in load('dl/perks.json')}
+    ptb_chars = {k for k in ptb['characters'] if k not in load('dl/characters.json')}
     changes, adj, wiki, surv = load('changes_es.json'), load('ajustes.json'), load('iconos_wiki.json'), load('surv_portraits.json')
     txt, labels = short_texts()
 
@@ -185,6 +201,7 @@ def build(icons):
             d=plain(render(v['description'], v['tunables'])),
             ch=ch[0] if ch else None, cd=ch[1] if ch else None,
             i=icons.ensure(f'icons/{k}.webp', wiki['perks'].get(pid)),
+            **({'ptb': True} if pid in ptb_perks else {}),
         ))
     for p in perks:
         p['fx'] = fx_of(p['d'], p['cd'])
@@ -234,8 +251,8 @@ def build(icons):
             addk.append(dict(id=aid, k=k, n=v['name'], en=ane[aid]['name'], p=v['parents'][0], ra=v['rarity'], d=d,
                              fx=fx_of(d), i=icons.ensure(f'items/{k}.webp', wiki['addk'].get(aid))))
 
-    # --- Personajes (solo bot) ---------------------------------------------
     strip = {'the', 'el', 'la', 'los', 'lo', 'las'}
+    # --- Personajes (solo bot) ---------------------------------------------
     chars = []
     for cid, v in chS.items():
         en, n = chE[cid]['name'], v['name']
@@ -255,15 +272,39 @@ def build(icons):
         src = surv.get(cid) if v['role'] == 'survivor' else wiki['killers'].get(cid)
         chars.append(dict(k=slug(n), n=n, en=en, r='s' if v['role'] == 'survivor' else 'k', a=sorted(aliases),
                           p=[perk_key[x] for x in (v['perks'] or []) if x in perk_key],
-                          i=icons.ensure(f'pj/{slug(n)}.webp', src)))
+                          i=icons.ensure(f'pj/{slug(n)}.webp', src), **({'ptb': True} if cid in ptb_chars else {})))
+
+    # --- Mapas y reinos ----------------------------------------------------
+    mapsS, mapsE = load('dl/maps_es.json'), load('dl/maps.json')
+    base = lambda n: re.sub(r' (I|II|III|IV|V)$', '', n.replace('’', "'").replace('®', '').strip())
+    realms, maps = {}, {}
+    for mid, v in mapsS.items():
+        if not v['image'] or v['name'].startswith('@#'):
+            continue  # entradas del juego sin nombre ni imagen todavía
+        rn, mn, men = v['realm'], base(v['name']), base(mapsE[mid]['name'])
+        rk = slug(rn)
+        realm = realms.setdefault(rk, dict(k=rk, n=rn, en=mapsE[mid]['realm'], m=[], a=set()))
+        m = maps.setdefault((rk, slug(mn)), dict(k=slug(mn), n=mn, en=men, r=rk, v=0, ids=[],
+                                                 d=plain(v['description']), i=icons.ensure(f'maps/{slug(mn)}.webp', wiki['maps'].get(mid))))
+        m['v'] += 1
+        m['ids'].append(mid)
+        if m['k'] not in realm['m']:
+            realm['m'].append(m['k'])
+    for r in realms.values():
+        words = [x for x in re.split(r"[\s']+", r['n'] + ' ' + r['en']) if len(slug(x)) >= 4 and slug(x) not in strip | {'estate', 'psiquiatrico'}]
+        r['a'] = sorted({slug(r['n']), slug(r['en']), *map(slug, words), *adj['aliasMapas'].get(r['k'], [])} - {''})
+        r['i'] = maps[(r['k'], r['m'][0])]['i']
+    maps = list(maps.values())
 
     # --- Salidas -----------------------------------------------------------
     bot = dict(
         patch=adj['patch'],
         perks=[dict(k=p['k'], n=p['n'], en=p['en'], c=p['c'],
                     t=p['cd'] if p['ch'] else txt.get(slug(p['n'])) or p['d'].replace('\n', ' ').replace('• ', ''),
-                    ch=p['ch'], i=p['i'], r=p['r'], **({'fx': p['fx']} if p['fx'] else {})) for p in perks],
+                    ch=p['ch'], i=p['i'], r=p['r'], **({'fx': p['fx']} if p['fx'] else {}), **({'ptb': True} if p.get('ptb') else {})) for p in perks],
         chars=chars,
+        realms=[dict(k=r['k'], n=r['n'], en=r['en'], a=r['a'], m=r['m'], i=r['i']) for r in realms.values()],
+        maps=[dict(k=m['k'], n=m['n'], en=m['en'], r=m['r'], v=m['v'], i=m['i']) for m in maps],
         items=[dict(k=x['k'], n=x['n'], t=x['t'], ra=x['ra'], ev=bool(x['ev']), i=x['i']) for x in items],
         adds=[dict(k=x['k'], n=x['n'], t=x['t'], ra=x['ra'], i=x['i']) for x in adds]
         + [dict(k=x['k'], n=x['n'], kl=slug(killer_by_power[x['p']]['n']), ra=x['ra'], i=x['i']) for x in addk],
@@ -273,6 +314,7 @@ def build(icons):
         schemaVersion=SCHEMA_VERSION, patch=adj['patch'], date=adj['date'],
         generated=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         perks=[drop(p, 'k') for p in perks], killers=killers,
+        maps=[dict(id=f"{m['r']}/{m['k']}", realm=m['r'], n=m['n'], en=m['en'], variants=m['ids'], d=m['d'], i=m['i']) for m in maps],
         items=[drop(x, 'k') for x in items], adds=[drop(x, 'k') for x in adds], addk=[drop(x, 'k') for x in addk],
     )
     return bot, builder
@@ -289,7 +331,7 @@ def main():
         with open(os.path.join(args.salida, name), 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     print(f"perks {len(builder['perks'])} · asesinos {len(builder['killers'])} · objetos {len(builder['items'])} · "
-          f"accesorios {len(builder['adds'])}+{len(builder['addk'])} · personajes {len(bot['chars'])}")
+          f"accesorios {len(builder['adds'])}+{len(builder['addk'])} · personajes {len(bot['chars'])} · mapas {len(bot['maps'])} en {len(bot['realms'])} reinos")
     if icons.missing:
         print('SIN ICONO:', *icons.missing, sep='\n  ')
         sys.exit(1)

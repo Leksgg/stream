@@ -46,6 +46,7 @@ depiesligeros | De pies ligeros: Tus marcas de arañazos aparecen más dispersas
 detripascorazon | De tripas corazón: Suprime el ruido y los gruñidos de dolor al curar, y penaliza mínimamente los fallos en pruebas de habilidad sin alertar al asesino — Leon S. Kennedy
 deberdesocorro | Deber de socorro: Al recibir un golpe por protección estando ileso, otorgas un 25 % de Celeridad a los aliados cercanos durante 6 segundos — Orela Rose
 dejavu | Déjà Vu: Revela las auras de los 3 generadores más cercanos entre sí y aumenta tu velocidad de reparación en ellos un 6 % — genérica
+elmejorregalo | El mejor regalo: Empiezas con 4/5/6 fichas; la primera vez que sueltas cada tipo de objeto gastas una ficha y recibes una bonificación según el objeto — Sienna Shaw
 eltempledelhombre | El temple del hombre: Tras recibir 3 golpes por protección, evitas el siguiente derribo, pero el asesino verá tu aura cuando estés ileso y lejos de él — Ashley J. Williams
 embrujada | Embrujada: Te permite desengancharte por tus propios medios en el sótano y revela el aura del asesino durante 20 segundos tras ser desenganchada — Sable Ward
 empatia | Empatía: Revela las auras de los aliados heridos en un radio de 128 metros — Claudette Morel
@@ -72,6 +73,7 @@ fijación | Fijación: Caminas un 20 % más rápido y puedes ver tus propias mar
 fuerzaenlassombras | Fuerza en las sombras: En el sótano, puedes curarte sin botiquín a un 70 % de velocidad; al terminar, ves el aura del asesino por 10 segundos — Sable Ward
 fuerzainterior | Fuerza interior: Tras purificar un tótem, esconderte en una taquilla durante 8 segundos mientras estás herido te cura automáticamente — Nancy Wheeler
 fuga | Fuga: Al estar cerca de un superviviente cargado por el asesino, obtienes un 10 % de Celeridad y permites que el aliado forcejee un 25 % más rápido — Yui Kimura
+furiadevalquiria | Furia de valquiria: Tras ser perseguido 40/35/30 s, tu siguiente aturdimiento con un palé al asesino dura un 75 % más — Sienna Shaw
 giroargumental | Giro argumental: Te permite entrar en estado de agonía voluntariamente y en silencio para recuperarte por completo, obteniendo Celeridad y curación instantánea al levantarte — Nicolas Cage
 golpedecisivo | Golpe decisivo: Tras ser desenganchado, si el asesino te recoge en los siguientes 60 segundos, puedes superar una prueba de habilidad para aturdirlo 4 segundos y escapar — Laurie Strode
 granadaaturdidora | Granada aturdidora: Tras reparar un 40 %, puedes fabricar una granada en una taquilla que al detonar ciega a quienes estén cerca y alerta al asesino — Leon S. Kennedy
@@ -148,6 +150,7 @@ trabajoenequiposigilo| Trabajo en equipo: Sigilo colectivo: Cuando otro superviv
 trabajoenequipotonosuave | Trabajo en equipo: Tono suave: Por cada superviviente que repare un generador junto a ti, el alcance de los ruidos por reparar disminuye un 25 %; además, reparas un 5 % más rápido mientras lo hagas con al menos otro compañero — Eleven
 trampaquimica | Trampa química: Tras reparar un 20 % de progreso en generadores, puedes colocar una trampa en un palé derribado durante 60 segundos; si el asesino lo rompe, sufrirá un 50 % de Entorpecimiento durante 4 segundos — Ellen Ripley
 tacticaveloz | Táctica veloz: Mientras el asesino te persiga, ves las auras de otros supervivientes y estos reparan un 5 % más rápido; si sufres daño, la habilidad entra en recarga durante 40 segundos — Vittorio Toscano
+traumacompartido | Trauma compartido: Al recibir un golpe de protección, los supervivientes a menos de 12 m recuperan el Agotamiento mientras corren 30/35/40 s — Sienna Shaw
 unlugarparanosotros | Un lugar para nosotros: Mientras curas a otro superviviente, ambos obtenéis Esquiva; si terminas de curar a la obsesión, los dos obtenéis Esquiva durante 30 segundos. Reduce las probabilidades de ser la obsesión — Kwon Tae-Young
 unodostrescuatro | ¡Uno, dos, tres, cuatro!: Mientras estés inactivo, activa la habilidad para potenciar a los supervivientes en un radio de 16 metros durante 15 segundos; esto aumenta la probabilidad de pruebas de habilidad un 20 % y el efecto dura 90 segundos tras completar la actuación (recarga de 90 s) — Vee Boonyasak
 venapormi | ¡Ven a por mí!: Cada vez que desenganches a un superviviente, si estás de cuclillas e inactivo, puedes activar la habilidad para que los supervivientes derribados y heridos en un radio de 24 metros no dejen marcas ni sangre durante 15 segundos; después gritas y el asesino ve tu aura durante 5 segundos — Rick Grimes
@@ -250,6 +253,7 @@ aliento | Aliento: Los sonidos de respiración de los supervivientes son un 25 %
 amigosparasiempre | Amigos para Siempre: Al colgar a quien no sea la obsesión, esta sufre Vulnerabilidad por 20 segundos y ves su aura por 10 segundos; al colgar a la obsesión, otro superviviente grita y se convierte en la nueva obsesión — Good Guy
 anatomiasuperior | Anatomía Superior: Tras un salto rápido de un superviviente cerca de ti, saltas ventanas un 30/35/40 % más rápido durante 10 s (antes un solo salto); recarga de 20 s (antes 25 s) — El Cerebro
 aprendizajedemaquina | Aprendizaje de Máquina: Al dañar un generador queda alterado (hasta 3, antes 1); al completarse uno, obtienes un 10 % de Celeridad (antes 8 %) e Indetectable, y los demás generadores dejan de estar alterados — La Singularidad
+hazmerreir | Hazmerreír: Los supervivientes a menos de 12 metros de un generador completado sufren Agotamiento e Inconsciencia (persiste 3/4/5 s) y ves las auras de los generadores completados — El Terrifier
 indetectable | Indetectable: El asesino no tiene radio de terror ni marca roja, y los supervivientes no pueden ver su aura — Efecto de estado
 apretondehierro | Apretón de Hierro: Mientras cargas a un superviviente, forcejea un 10/11/12 % más despacio (antes 4/8/12 %) y su forcejeo es un 75 % más débil — genérica
 armadefinitiva | Arma Definitiva: Al inspeccionar una taquilla, los supervivientes en un radio de 40 metros gritarán y sufrirán Ceguera durante 30 segundos (recarga 45 s) — El Xenomorfo
@@ -325,6 +329,7 @@ maleficiotierraembrujada | Maleficio: Tierra Embrujada: Se activan 2 tótems al 
 manitas | Manitas: La primera vez que cada generador alcanza el 70 % de progreso, recibes una alerta y obtienes el estado de Indetectable durante 16 segundos — El Pueblerino
 murmullos | Murmullos: Oyes murmullos del Ente si hay un superviviente a menos de 28/26/24 m (antes 48/40/32 m); fuera de ese rango obtienes un 5 % de Celeridad (nuevo) — genérica
 nadieeslibre | Nadie es Libre: Ganas distintivos por cada primer cuelgue; al completarse los motores, los palés y ventanas se bloquean 16 s por cada distintivo obtenido — El Ghoul
+negociosgraciosos | Negocios graciosos: Al dañar un generador obtienes un 10 % de Celeridad 10 s y un resultado aleatorio (más Celeridad, aturdimiento, bloqueo del generador o una broma); enfriamiento 60/50/40 s — El Terrifier
 noqueo | Noqueo: Si un superviviente se aleja 10 m (antes 6 m) de un palé que acaba de tirar, sufre un 20 % de Entorpecimiento (antes 5 %); termina antes si rompes el palé — El Caníbal
 nemesis | Némesis: Quien te ciegue o aturda será la obsesión; al cambiar la obsesión, esta sufre Inconsciencia por 60 s y ves su aura durante 8 s — El Oni
 opresion | Opresión: Al dañar un generador, hasta otros 4 generadores aleatorios empiezan a retroceder y activan una prueba de habilidad especial (recarga 35 s) — Los Mellizos
@@ -338,6 +343,7 @@ presenciaabrumadora | Presencia Abrumadora: Los supervivientes que usen objetos 
 presenciaperturbadora | Presencia Perturbadora: Los supervivientes en tu radio de terror reciben un 10 % más de pruebas de habilidad y su zona de éxito se reduce un 60 % — El Trampero
 proyectosecreto | Proyecto Secreto: Al bendecir o purificar un tótem, un generador aleatorio se bloquea por 30 s; mientras haya generadores bloqueados, obtienes Indetectable durante 30 s — El Primero
 quebrantamentes | Quebrantamentes: Mientras reparan un generador, los supervivientes sufren Ceguera y Agotamiento; el efecto persiste 5 segundos tras terminar la acción — El Demogorgon
+rachaasesina | Racha asesina: Con todos los supervivientes en su 2.º estado de gancho y los generadores completados, puedes matarlos con tus manos; el efecto termina 6/8/10 s después de cada muerte — El Terrifier
 rastrodetormento | Rastro de Tormento: Al dañar un generador, obtienes Indetectable hasta que deje de retroceder, pero los supervivientes verán el aura de dicho generador (recarga 30 s) — El Verdugo
 recuerdame | Recuérdame: Al dañar a la obsesión obtienes distintivos (máximo 5); por cada uno, los supervivientes (excepto la obsesión) abrirán las puertas de salida un 30 % más despacio — La Pesadilla
 rencor | Rencor: Al completarse un generador, ves la posición de todos por 3 s y la obsesión ve tu aura; al repararse todos, la obsesión sufre Vulnerabilidad y puedes matarla — El Espíritu
@@ -453,3 +459,5 @@ Desconocido | Imprevisto — Incompleto — Separación
 Mellizos | Acaparadora — Golpe de Gracia — Opresión
 Nemesis | Acecho Letal — Erupción
 Sentencia | Testigo celestial — Maleficio: A tu merced — Aniquilación
+Terrifier | Hazmerreír — Racha asesina — Negocios graciosos
+Sienna | Furia de valquiria — Trauma compartido — El mejor regalo
