@@ -1,4 +1,4 @@
-// Comandos de Dead by Daylight para el chat y el overlay (!perk, !pj, !mapa).
+// Comandos de Dead by Daylight para el chat y el overlay (!perk, !pj, !mapas).
 // Datos e iconos en public/dbd/ (data.json + icons/ + pj/).
 //   /dbd/perk?q=adrenalina      → texto para el chat
 //   /dbd/pj?q=jake              → texto para el chat
@@ -203,10 +203,10 @@ const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const mapLabel = m => (m.v > 1 ? `${m.n} (${m.v} variantes)` : m.n);
 
 function mapMessage(query, found, data) {
-  if (!slug(query)) return 'Uso: !mapa <mapa o reino>, por ejemplo !mapa macmillan o !mapa torre de carbón';
+  if (!slug(query)) return 'Uso: !mapas <mapa o reino>, por ejemplo !mapas macmillan o !mapas torre de carbón';
   if (!found.hit) {
     const list = found.suggestions.map(x => x.n).join(', ');
-    return list ? `No sé cuál es "${query}". ¿Quizá ${list}? Escribe !mapa con uno de esos nombres.` : `No encuentro "${query}". Prueba con el nombre del reino (macmillan, granja, pantano…) o del mapa.`;
+    return list ? `No sé cuál es "${query}". ¿Quizá ${list}? Escribe !mapas con uno de esos nombres.` : `No encuentro "${query}". Prueba con el nombre del reino (macmillan, granja, pantano…) o del mapa.`;
   }
   const hit = found.hit;
   if (hit.m) return clip(`${hit.n} (${plural(hit.m.length, 'mapa', 'mapas')}): ${mapsOf(data, hit).map(mapLabel).join(' · ')}`);
@@ -448,7 +448,7 @@ async function mapCard(env, origin, hit, data) {
 async function notFoundCard(kind, query, result) {
   const list = result.suggestions.map(x => x.n).join(' · ');
   const body = `<text x="30" y="62" fill="${C.fg}" font-size="30" font-weight="700">${esc(list ? `¿Quizá buscas…?` : `No encuentro "${query}"`)}</text>`
-    + `<text x="30" y="102" fill="${C.dim}" font-size="21">${esc(list || (kind === 'perk' ? 'Prueba con !perk y el nombre en español o inglés' : kind === 'mapa' ? 'Prueba con !mapa y el reino o el mapa' : 'Prueba con !pj y el nombre del personaje'))}</text>`;
+    + `<text x="30" y="102" fill="${C.dim}" font-size="21">${esc(list || (kind === 'perk' ? 'Prueba con !perk y el nombre en español o inglés' : kind === 'mapa' ? 'Prueba con !mapas y el reino o el mapa' : 'Prueba con !pj y el nombre del personaje'))}</text>`;
   return frame(900, 140, body);
 }
 
