@@ -378,40 +378,71 @@ async function mapCard(env, origin, hit, data) {
   const realm = hit.m ? hit : data.realmByKey[hit.r];
   const list = mapsOf(data, realm);
   const shown = hit.m ? list : [hit, ...list.filter(m => m !== hit)];
-  const icons = await Promise.all(shown.map(m => dataUri(env, origin, m.i)));
-  const perRow = hit.m ? Math.min(list.length, 4) : 1;
-  const tile = hit.m ? 205 : 380;
-  const th = hit.m ? 125 : 230;
-  const rows = hit.m ? Math.ceil(list.length / perRow) : 1;
-  const width = hit.m ? Math.max(900, 30 + perRow * (tile + 20) + 10) : 900;
+  const [icons, plans] = await Promise.all([
+    Promise.all(shown.map(m => dataUri(env, origin, m.i))),
+    Promise.all(shown.map(m => Promise.all((m.o || []).slice(0, hit.m ? 1 : 2).map(f => dataUri(env, origin, f))))),
+  ]);
   const subtitle = hit.m
     ? `Reino · ${plural(list.length, 'mapa', 'mapas')}${realm.en !== realm.n ? ' · ' + realm.en : ''}`
     : `${realm.n}${hit.v > 1 ? ` · ${hit.v} variantes` : ''}${hit.en !== hit.n ? ' · ' + hit.en : ''}`;
   let body = `<text x="30" y="62" fill="${C.fg}" font-size="38" font-weight="700">${esc(hit.n)}</text>`
     + `<text x="30" y="94" fill="${C.dim}" font-size="19">${esc(subtitle)}</text>`;
-  const tileCard = (m, x, y, w, h, icon, i, big) => {
+
+  // Foto del mapa con la etiqueta de variantes y, si hay, el plano en miniatura en una esquina.
+  const tileCard = (m, x, y, w, h, icon, plan, i, thumb) => {
     let t = `<clipPath id="m${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/></clipPath>`
       + `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${C.panel}" stroke="${C.line}" stroke-width="2"/>`
       + (icon ? `<image href="${icon}" x="${x}" y="${y}" width="${w}" height="${h}" clip-path="url(#m${i})" preserveAspectRatio="xMidYMid slice"/>` : '');
     if (m.v > 1) t += `<rect x="${x + w - 96}" y="${y + 8}" width="88" height="24" rx="4" fill="${C.blood}"/><text x="${x + w - 52}" y="${y + 25}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">${m.v} variantes</text>`;
-    if (!big) wrap(m.n, 24, 2).forEach((line, j) => {
-      t += `<text x="${x + w / 2}" y="${y + h + 22 + j * 20}" fill="${C.fg}" font-size="16" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
-    });
+    if (thumb && plan?.[0]) {
+      t += `<rect x="${x + 6}" y="${y + h - 78}" width="72" height="72" rx="6" fill="#000" fill-opacity="0.72"/>`
+        + `<image href="${plan[0]}" x="${x + 6}" y="${y + h - 78}" width="72" height="72"/>`;
+    }
     return t;
   };
+
   if (hit.m) {
+    const perRow = Math.min(list.length, 4);
+    const tile = 205;
+    const th = 125;
+    const width = Math.max(900, 30 + perRow * (tile + 20) + 10);
     shown.forEach((m, i) => {
-      body += tileCard(m, 30 + (i % perRow) * (tile + 20), 124 + Math.floor(i / perRow) * (th + 70), tile, th, icons[i], i, false);
+      const x = 30 + (i % perRow) * (tile + 20);
+      const y = 124 + Math.floor(i / perRow) * (th + 70);
+      body += tileCard(m, x, y, tile, th, icons[i], plans[i], i, true);
+      wrap(m.n, 24, 2).forEach((line, j) => {
+        body += `<text x="${x + tile / 2}" y="${y + th + 22 + j * 20}" fill="${C.fg}" font-size="16" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
+      });
     });
-    return frame(width, 124 + rows * (th + 70) + 6, body);
+    return frame(width, 124 + Math.ceil(list.length / perRow) * (th + 70) + 6, body);
   }
-  body += tileCard(hit, 30, 124, tile, th, icons[0], 0, true);
+
+  // Mapa suelto: foto y plano(s) arriba, el resto del reino debajo.
+  body += tileCard(hit, 30, 124, 340, 210, icons[0], null, 0, false);
+  const plan = plans[0];
+  let bottom = 124 + 210;
+  if (plan.length) {
+    const size = plan.length === 1 ? 210 : 150;
+    plan.forEach((uri, i) => {
+      const x = 390 + i * (size + 12);
+      body += `<rect x="${x}" y="124" width="${size}" height="${size}" rx="8" fill="#050407" stroke="${C.line}" stroke-width="2"/>`
+        + `<image href="${uri}" x="${x}" y="124" width="${size}" height="${size}"/>`;
+    });
+    const caption = ['Plano', plan.length > 1 && 'planta baja y planta alta', hit.v > 1 && 'de una de las variantes'].filter(Boolean).join(' · ');
+    body += `<text x="390" y="${124 + (plan.length === 1 ? 210 : 150) + 26}" fill="${C.dim}" font-size="16">${caption}</text>`;
+  } else {
+    body += `<text x="390" y="150" fill="${C.dim}" font-size="18">Sin plano todavía</text>`;
+  }
   const others = shown.slice(1);
-  body += `<text x="440" y="150" fill="${C.dim}" font-size="19">${others.length ? 'Otros mapas del reino' : 'Único mapa del reino'}</text>`;
-  others.forEach((m, i) => {
-    body += `<text x="440" y="${186 + i * 32}" fill="${C.fg}" font-size="22">${esc(m.n)}${m.v > 1 ? ` · ${m.v} variantes` : ''}</text>`;
-  });
-  return frame(width, Math.max(124 + th + 30, 186 + others.length * 32 + 20), body);
+  if (others.length) {
+    body += `<text x="30" y="${bottom + 40}" fill="${C.dim}" font-size="19">Otros mapas del reino</text>`;
+    others.forEach((m, i) => {
+      const col = i % 2;
+      body += `<text x="${30 + col * 430}" y="${bottom + 74 + Math.floor(i / 2) * 32}" fill="${C.fg}" font-size="22">${esc(m.n)}${m.v > 1 ? ` · ${m.v} variantes` : ''}</text>`;
+    });
+    bottom += 74 + Math.floor((others.length - 1) / 2) * 32;
+  }
+  return frame(900, bottom + 28, body);
 }
 
 async function notFoundCard(kind, query, result) {

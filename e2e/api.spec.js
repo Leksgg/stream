@@ -111,3 +111,10 @@ test('GET /dbd/mapa da el reino con sus variantes, el mapa suelto o una sugerenc
   expect(card.headers()['content-type']).toContain('image/svg+xml');
   expect(await card.text()).toContain('2 variantes');
 });
+
+test('GET /dbd/mapa.svg incluye el plano cuando el mapa lo tiene', async ({ request }) => {
+  const withPlan = await (await request.get('/dbd/mapa.svg?q=casa de los thompson')).text();
+  expect(withPlan).toContain('>Plano<');
+  const without = await (await request.get('/dbd/mapa.svg?q=almacen quejumbroso')).text();
+  expect(without).toContain('Sin plano todavía');
+});

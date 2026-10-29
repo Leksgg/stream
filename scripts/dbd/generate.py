@@ -29,7 +29,7 @@ PUBLIC = os.path.join(RAIZ, 'public', 'dbd')
 SCHEMA_VERSION = 1
 
 ITEM_TYPES = ('toolbox', 'medkit', 'flashlight', 'map', 'key', 'fogvial', 'firecracker')
-ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80, 'powers': 128, 'maps': 256}
+ICON_SIZE = {'icons': 96, 'pj': 160, 'items': 80, 'powers': 128, 'maps': 256, 'outlines': 384}
 
 # Efectos de estado: se detectan en la descripción (sin tildes; con mayúscula, como los escribe el juego).
 FX = [
@@ -288,6 +288,9 @@ def build(icons):
                                                  d=plain(v['description']), i=icons.ensure(f'maps/{slug(mn)}.webp', wiki['maps'].get(mid))))
         m['v'] += 1
         m['ids'].append(mid)
+        if mid in wiki['outlines']:  # plano (edificio principal, cobertizo, puertas, zonas fijas); varios si el mapa tiene plantas
+            files = wiki['outlines'][mid]
+            m['o'] = [icons.ensure(f'outlines/{slug(mn)}{"" if len(files) == 1 else i + 1}.webp', fl) for i, fl in enumerate(files)]
         if m['k'] not in realm['m']:
             realm['m'].append(m['k'])
     for r in realms.values():
@@ -304,7 +307,7 @@ def build(icons):
                     ch=p['ch'], i=p['i'], r=p['r'], **({'fx': p['fx']} if p['fx'] else {}), **({'ptb': True} if p.get('ptb') else {})) for p in perks],
         chars=chars,
         realms=[dict(k=r['k'], n=r['n'], en=r['en'], a=r['a'], m=r['m'], i=r['i']) for r in realms.values()],
-        maps=[dict(k=m['k'], n=m['n'], en=m['en'], r=m['r'], v=m['v'], i=m['i']) for m in maps],
+        maps=[dict(k=m['k'], n=m['n'], en=m['en'], r=m['r'], v=m['v'], i=m['i'], **({'o': m['o']} if m.get('o') else {})) for m in maps],
         items=[dict(k=x['k'], n=x['n'], t=x['t'], ra=x['ra'], ev=bool(x['ev']), i=x['i']) for x in items],
         adds=[dict(k=x['k'], n=x['n'], t=x['t'], ra=x['ra'], i=x['i']) for x in adds]
         + [dict(k=x['k'], n=x['n'], kl=slug(killer_by_power[x['p']]['n']), ra=x['ra'], i=x['i']) for x in addk],
@@ -314,7 +317,7 @@ def build(icons):
         schemaVersion=SCHEMA_VERSION, patch=adj['patch'], date=adj['date'],
         generated=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         perks=[drop(p, 'k') for p in perks], killers=killers,
-        maps=[dict(id=f"{m['r']}/{m['k']}", realm=m['r'], n=m['n'], en=m['en'], variants=m['ids'], d=m['d'], i=m['i']) for m in maps],
+        maps=[dict(id=f"{m['r']}/{m['k']}", realm=m['r'], n=m['n'], en=m['en'], variants=m['ids'], d=m['d'], i=m['i'], **({'outlines': m['o']} if m.get('o') else {})) for m in maps],
         items=[drop(x, 'k') for x in items], adds=[drop(x, 'k') for x in adds], addk=[drop(x, 'k') for x in addk],
     )
     return bot, builder

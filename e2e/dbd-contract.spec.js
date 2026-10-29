@@ -36,6 +36,7 @@ test('los ids del builder son únicos por grupo y cada entrada tiene su icono', 
     expect(new Set(ids).size, `ids repetidos en ${g}`).toBe(ids.length);
     for (const x of d[g]) if (!x.i || !iconExists(x.i)) missing.push(`${g}:${x.id}`);
   }
+  for (const m of d.maps) for (const o of m.outlines || []) if (!iconExists(o)) missing.push(`maps:${m.id}:${o}`);
   expect(missing).toEqual([]);
 });
 
