@@ -72,3 +72,23 @@ test('los iconos de DBD se sirven con CORS y caché larga', async ({ request }) 
     expect(res.headers()['cache-control']).toContain('max-age=604800');
   }
 });
+
+test('codes.json cumple el esquema v1 y se sirve con CORS', async ({ request }) => {
+  const res = await request.get('/dbd/codes.json');
+  expect(res.ok()).toBeTruthy();
+  expect(res.headers()['access-control-allow-origin']).toBe('*');
+  const d = await res.json();
+  expect(d.schemaVersion).toBe(1);
+  expect(d.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(d.codes.length).toBeGreaterThan(0);
+  expect(new Set(d.codes.map(c => c.code)).size).toBe(d.codes.length);
+  const isDate = v => v === null || /^\d{4}-\d{2}-\d{2}$/.test(v);
+  for (const c of d.codes) {
+    expect(c.code).toMatch(/^[A-Za-z0-9_-]{2,40}$/);
+    expect(c.reward).toBeTruthy();
+    expect(['limited', 'permanent']).toContain(c.kind);
+    expect(typeof c.expired).toBe('boolean');
+    expect(isDate(c.added) && isDate(c.expires)).toBeTruthy();
+    if (c.kind === 'permanent') expect(c.expires).toBeNull();
+  }
+});

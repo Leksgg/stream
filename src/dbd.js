@@ -5,6 +5,7 @@
 //   /dbd/perk.svg?q=adrenalina  → tarjeta para el overlay (evento image)
 //   /dbd/pj.svg?q=jake          → tarjeta para el overlay (evento image)
 //   /dbd/mapa?q=macmillan       → reino o mapa con sus variantes para el chat (también .svg)
+//   /dbd/codigos?q=             → códigos canjeables (!codigos): activos, «permanentes», «caducados» o un código
 //   /dbd/random/build?r=killer&s=12  → build al azar (!randomperks); sin r, de superviviente
 //   /dbd/random/survi?s=12            → superviviente al azar (!randomsurvi)
 //   /dbd/random/killer?s=12           → asesino al azar (!randomkiller)
@@ -18,11 +19,19 @@ export function isDbdRoute(pathname) {
   return ROUTE.test(pathname);
 }
 
-const ROUTE = /^\/dbd\/(perk|pj|mapa|random\/build|random\/survi|random\/killer)(\.svg)?$/;
+const ROUTE = /^\/dbd\/(perk|pj|mapa|codigos|random\/build|random\/survi|random\/killer)(\.svg)?$/;
 
 export async function handleDbd(url, env) {
   const [, kind, svg] = url.pathname.match(ROUTE);
   const query = (url.searchParams.get('q') || '').trim();
+  if (kind === 'codigos') {
+    if (svg) return text('No hay tarjeta para los códigos', 404);
+    const res = await env.ASSETS.fetch(new URL('/dbd/codes.json', url.origin));
+    if (!res.ok) return text('Códigos de DBD no disponibles', 500);
+    const hoy = url.searchParams.get('hoy');
+    const today = /^\d{4}-\d{2}-\d{2}$/.test(hoy || '') ? hoy : new Date().toISOString().slice(0, 10);
+    return text(codesMessage(await res.json(), query, today));
+  }
   const data = await loadData(env, url.origin);
   if (!data) return text('Datos de DBD no disponibles', 500);
 
@@ -245,6 +254,64 @@ function chatMessage(kind, query, result, data) {
   const c = result.hit;
   const names = c.p.map(k => data.perkByKey[k]?.n).filter(Boolean);
   return clip(`${c.n} (${c.r === 's' ? 'superviviente' : 'asesino'}): ${names.join(' · ')}`);
+}
+
+// --- Códigos canjeables (public/dbd/codes.json, lo escribe scripts/dbd/import_codes.py) ---
+const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+
+function shortDate(iso, today) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS[m - 1]}${String(y) === today.slice(0, 4) ? '' : ' ' + y}`;
+}
+
+function reward(code) {
+  return code.es || code.reward.replace(/Bloodpoints/g, 'puntos de sangre');
+}
+
+// Caducado: lo dice la fuente o ya pasó su fecha (las fechas ISO se comparan como texto).
+function codeExpired(code, today) {
+  return code.expired || (code.kind === 'limited' && !!code.expires && code.expires < today);
+}
+
+// Lista «CÓDIGO (detalle)» que cabe en el chat; junta los códigos con el mismo detalle
+// («A, B (200k…)») y, si aun así no cabe, dice cuántos faltan.
+function codeList(head, codes, detail, tail = '') {
+  const groups = new Map();
+  for (const c of codes) groups.set(detail(c), [...(groups.get(detail(c)) || []), c.code]);
+  let out = head, left = codes.length, first = true;
+  for (const [label, names] of groups) {
+    const item = (first ? '' : ' · ') + `${names.join(', ')} (${label})`;
+    if ((out + item + tail).length > CHAT_MAX - (left > names.length ? 12 : 0)) return `${out} · y ${left} más${tail}`;
+    out += item;
+    left -= names.length;
+    first = false;
+  }
+  return out + tail;
+}
+
+function codesMessage(data, query, today) {
+  const q = slug(query);
+  const live = data.codes.filter(c => !codeExpired(c, today));
+  const limited = live.filter(c => c.kind === 'limited').sort((a, b) => (a.expires || '9').localeCompare(b.expires || '9'));
+  const permanent = live.filter(c => c.kind === 'permanent');
+  const expired = data.codes.filter(c => codeExpired(c, today)).sort((a, b) => (b.expires || b.added || '').localeCompare(a.expires || a.added || ''));
+
+  if (/^(permanentes?|permanent|fijos?|siempre)$/.test(q)) {
+    return permanent.length ? codeList('Códigos de DBD que no caducan: ', permanent, reward) : 'No hay códigos permanentes registrados.';
+  }
+  if (/^(caducados?|expirados?|expired|viejos?)$/.test(q)) {
+    return expired.length ? codeList(`${expired.length} códigos caducados. Los últimos: `, expired, c => c.expires ? shortDate(c.expires, today) : 'sin fecha') : 'No hay códigos caducados registrados.';
+  }
+  if (q) {
+    const hit = data.codes.find(c => slug(c.code) === q);
+    if (!hit) return `No tengo el código "${query}". Escribe !codigos para ver los activos.`;
+    const state = codeExpired(hit, today) ? (hit.expires ? `caducó el ${shortDate(hit.expires, today)}` : 'caducado')
+      : hit.kind === 'permanent' ? 'no caduca' : hit.expires ? `activo hasta el ${shortDate(hit.expires, today)}` : 'activo';
+    return clip(`${hit.code}: ${reward(hit)} — ${state}`);
+  }
+  const tail = permanent.length ? ` | Y ${permanent.length} que no caducan: !codigos permanentes` : '';
+  if (!limited.length) return 'Ahora no hay códigos temporales de DBD activos.' + tail;
+  return codeList('Códigos de DBD activos: ', limited, c => reward(c) + (c.expires ? `, hasta ${shortDate(c.expires, today)}` : ''), tail);
 }
 
 function clip(message) {

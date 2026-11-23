@@ -118,3 +118,29 @@ test('GET /dbd/mapa.svg incluye el plano cuando el mapa lo tiene', async ({ requ
   const without = await (await request.get('/dbd/mapa.svg?q=almacen quejumbroso')).text();
   expect(without).toContain('Sin plano todavía');
 });
+
+test('GET /dbd/codigos lista los códigos activos, permanentes y caducados', async ({ request }) => {
+  const get = async q => (await request.get('/dbd/codigos?hoy=2026-11-23&q=' + encodeURIComponent(q))).text();
+
+  const active = await get('');
+  expect(active).toMatch(/^Códigos de DBD activos: /);
+  expect(active).toContain('DIABLO (');
+  expect(active).toContain('hasta 25 nov');
+  expect(active).toContain('ROADTRIP (Dark Bomber Torso for Shane Wiigwaas, hasta 1 oct 2027)');
+  expect(active).toContain('200k puntos de sangre');
+  expect(active).not.toContain('MACHETE');
+  expect(active).toContain('!codigos permanentes');
+  expect(active.length).toBeLessThanOrEqual(450);
+
+  expect(await get('permanentes')).toContain('BDGPRIDE (Pride Badge)');
+  expect(await get('caducados')).toMatch(/^\d+ códigos caducados\. Los últimos: BPFFM2026 \(18 nov\)/);
+  expect(await get('diablo')).toBe('DIABLO: Diablo Collection "Tristram Ruins" Banner & "Horadric Cube" Badge — activo hasta el 25 nov');
+  expect(await get('machete')).toContain('caducó el 31 oct');
+  expect(await get('reddit1mil')).toContain('no caduca');
+  expect(await get('noexiste')).toContain('No tengo el código');
+
+  // Un código con la fecha pasada cuenta como caducado aunque la fuente aún no lo marque.
+  const later = await (await request.get('/dbd/codigos?hoy=2026-11-26')).text();
+  expect(later).not.toContain('DIABLO');
+  expect(await (await request.get('/dbd/codigos?hoy=2026-11-26&q=diablo')).text()).toContain('caducó el 25 nov');
+});
