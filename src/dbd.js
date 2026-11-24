@@ -248,7 +248,7 @@ function chatMessage(kind, query, result, data) {
   }
   if (kind === 'perk') {
     const p = result.hit;
-    const change = p.ch ? ' [cambió en 10.2.0]' : '';
+    const change = p.ch ? ` [cambió en ${p.cv}]` : '';
     return clip(`${p.n} (${p.c || 'genérica'}): ${p.t}${change}`);
   }
   const c = result.hit;
@@ -405,7 +405,7 @@ async function perkCard(env, origin, perk) {
   body += `<text x="220" y="70" fill="${C.fg}" font-size="38" font-weight="700">${esc(perk.n)}</text>`;
   body += `<text x="220" y="100" fill="${C.dim}" font-size="19">${esc(perk.c || 'Genérica')} · ${esc(perk.en)}</text>`;
   if (perk.ch) {
-    const label = perk.ch === 'rework' ? 'REWORK 10.2.0' : 'CAMBIÓ EN 10.2.0';
+    const label = (perk.ch === 'rework' ? 'REWORK ' : 'CAMBIÓ EN ') + perk.cv;
     body += `<rect x="${width0() - 214}" y="26" width="190" height="30" rx="4" fill="${C.blood}"/>`
       + `<text x="${width0() - 119}" y="47" fill="#fff" font-size="16" font-weight="700" text-anchor="middle">${label}</text>`;
   }
@@ -436,7 +436,7 @@ async function charCard(env, origin, char, data, eyebrow = '') {
     wrap(perk.n, 20, 3).forEach((line, j) => {
       body += `<text x="${cx}" y="${266 + j * 24}" fill="${C.fg}" font-size="19" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });
-    if (perk.ch) body += `<rect x="${cx + 26}" y="122" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${cx + 50}" y="138" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
+    if (perk.ch) body += `<rect x="${cx + 26}" y="122" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${cx + 50}" y="138" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">${shortVersion(perk)}</text>`;
   });
   return frame(width, height, body);
 }
@@ -627,13 +627,18 @@ function spinSlot(ids, offset, box, stopAt, final, clip = '') {
     + `<g class="land" style="animation-delay:${stopAt}s">${final}</g>`;
 }
 
-function badge102(x, y) {
-  return `<rect x="${x}" y="${y}" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${x + 24}" y="${y + 16}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">10.2</text>`;
+// Versión corta del parche en que cambió la perk («10.3.0» → «10.3»).
+function shortVersion(perk) {
+  return String(perk.cv || '').split('.').slice(0, 2).join('.');
+}
+
+function patchBadge(perk, x, y) {
+  return `<rect x="${x}" y="${y}" width="48" height="22" rx="4" fill="${C.blood}"/><text x="${x + 24}" y="${y + 16}" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">${shortVersion(perk)}</text>`;
 }
 
 // Solo el resultado, sin texto alrededor: el mensaje lo arma cada comando en Leksimus.
 function buildMessage(build) {
-  const perks = build.perks.map(p => p.n + (p.ch ? ' (10.2)' : '')).join(' · ');
+  const perks = build.perks.map(p => p.n + (p.ch ? ` (${shortVersion(p)})` : '')).join(' · ');
   const adds = build.adds.map(a => a.n).join(' + ');
   if (build.role === 'k') return clip(`${build.killer.n} | ${perks}${adds ? ' | ' + adds : ''}`);
   return clip(`${perks} | ${build.item.n}${adds ? ' + ' + adds : ''}`);
@@ -666,7 +671,7 @@ async function buildCard(env, origin, build, user, rng, data) {
     const cx = 120 + i * 220;
     body += diamond(cx, 170, 130, null, 'b' + i);
     let final = `<image href="${perkIcons[i] || ''}" x="${cx - 65}" y="105" width="130" height="130"/>`;
-    if (perk.ch) final += badge102(cx + 30, 104);
+    if (perk.ch) final += patchBadge(perk, cx + 30, 104);
     wrap(perk.n, 20, 2).forEach((line, j) => {
       final += `<text x="${cx}" y="${262 + j * 23}" fill="${C.fg}" font-size="18" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });
@@ -716,7 +721,7 @@ async function charSpinCard(env, origin, char, data, eyebrow, rng) {
     wrap(perk.n, 20, 3).forEach((line, j) => {
       final += `<text x="${cx}" y="${266 + j * 24}" fill="${C.fg}" font-size="19" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });
-    if (perk.ch) final += badge102(cx + 26, 122);
+    if (perk.ch) final += patchBadge(perk, cx + 26, 122);
     body += `<g class="land" style="animation-delay:${stop++}s">${final}</g>`;
   });
   return frame(900, 340, body);
@@ -787,7 +792,7 @@ async function genericCard(env, origin, group) {
     const cx = 105 + (i % perRow) * 172;
     const cy = 165 + Math.floor(i / perRow) * 170;
     body += diamond(cx, cy, 96, icons[i], 'g' + i);
-    if (perk.ch) body += `<rect x="${cx + 18}" y="${cy - 52}" width="42" height="20" rx="4" fill="${C.blood}"/><text x="${cx + 39}" y="${cy - 37}" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">10.2</text>`;
+    if (perk.ch) body += `<rect x="${cx + 18}" y="${cy - 52}" width="42" height="20" rx="4" fill="${C.blood}"/><text x="${cx + 39}" y="${cy - 37}" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">${shortVersion(perk)}</text>`;
     wrap(perk.n, 20, 3).forEach((line, j) => {
       body += `<text x="${cx}" y="${cy + 66 + j * 20}" fill="${C.fg}" font-size="16" font-weight="600" text-anchor="middle">${esc(line)}</text>`;
     });

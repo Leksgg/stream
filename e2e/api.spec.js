@@ -36,6 +36,10 @@ test('GET /dbd/perk y /dbd/pj responden texto para el chat', async ({ request })
 
   const changed = await request.get('/dbd/perk?q=kindred');
   expect(await changed.text()).toContain('[cambió en 10.2.0]');
+  const recent = await (await request.get('/dbd/perk?q=murmullos')).text();
+  expect(recent).toContain('7 % de Celeridad');
+  expect(recent).toContain('[cambió en 10.3.0]');
+  expect(await (await request.get('/dbd/perk?q=kill spree')).text()).toContain('12/16/20');
 
   const pj = await request.get('/dbd/pj?q=jake');
   expect(await pj.text()).toBe('Jake Park (superviviente): Espíritu calmado · Voluntad de hierro · Sabotear');

@@ -1,5 +1,5 @@
 {
- "_nota": "Datos del PTB 10.3.0 (capítulo Terrifier: Art el Payaso y Sienna Shaw), a mano desde las notas oficiales. Misma forma que dl/*.json (es y en). El generador solo los usa si tricky aún no trae ese id; al salir en live, borrar este archivo. Los nombres en español son provisionales.",
+ "_nota": "Capítulo Terrifier (10.3.0: Art el Payaso y Sienna Shaw), a mano desde las notas oficiales de salida del 2026-11-24. Misma forma que dl/*.json (es y en). El generador solo los usa si tricky aún no trae ese id; cuando tricky tenga la 10.3.0, borrar este archivo. Los nombres en español son provisionales.",
  "perks": {
   "Laughingstock": {
    "es": {
@@ -42,15 +42,15 @@
     "character": 268435500,
     "tunables": {
      "duration": [
-      6,
-      8,
-      10
+      12,
+      16,
+      20
      ]
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_KillSpree",
     "name": "Racha asesina",
-    "description": "Cuando todos los supervivientes restantes tengan 2 estados de gancho y todos los generadores estén completados, puedes matar a los supervivientes.<br>Ambos interruptores de las puertas de salida quedan bloqueados mientras lo haces.<br><br>El efecto termina 6/8/10 segundos después de completar una muerte."
+    "description": "Cuando todos los supervivientes restantes tengan 2 estados de gancho y todos los generadores estén completados, puedes matar a los supervivientes.<br>Ambos interruptores de las puertas de salida quedan bloqueados mientras lo haces.<br><br>El efecto termina 12/16/20 segundos después de completar una muerte."
    },
    "en": {
     "categories": [],
@@ -58,15 +58,15 @@
     "character": 268435500,
     "tunables": {
      "duration": [
-      6,
-      8,
-      10
+      12,
+      16,
+      20
      ]
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_KillSpree",
     "name": "Kill Spree",
-    "description": "Once all remaining Survivors have 2 Hook States and all Generators are completed, you can kill Survivors.<br>Both Exit Gate Switches are blocked while you do so.<br><br>The effect ends 6/8/10 seconds after you finish a kill."
+    "description": "Once all remaining Survivors have 2 Hook States and all Generators are completed, you can kill Survivors.<br>Both Exit Gate Switches are blocked while you do so.<br><br>The effect ends 12/16/20 seconds after you finish a kill."
    }
   },
   "Funny_Business": {
@@ -84,7 +84,7 @@
     "teachable": 40,
     "image": "T_UI_iconsPerks_FunnyBusiness",
     "name": "Negocios graciosos",
-    "description": "Al dañar un generador obtienes un 10 % de <b>Celeridad</b> durante 10 segundos y un resultado aleatorio: 5 segundos más de Celeridad, un aturdimiento de 2 segundos, el bloqueo del generador durante 30 segundos o una broma sin efecto.<br>Enfriamiento de 60/50/40 segundos.<br><br>El mismo resultado no puede repetirse dos veces seguidas."
+    "description": "Al dañar un generador obtienes un 10 % de <b>Celeridad</b> durante 10 segundos y un resultado aleatorio: 5 segundos más de Celeridad, un aturdimiento de 2 segundos, el bloqueo del generador durante 30 segundos o confeti sin ningún efecto.<br>Enfriamiento de 60/50/40 segundos.<br><br>El mismo resultado no puede repetirse dos veces seguidas."
    },
    "en": {
     "categories": [],
@@ -186,7 +186,7 @@
     "teachable": 40,
     "image": "T_UI_iconsPerks_BestGiftEver",
     "name": "El mejor regalo",
-    "description": "Empiezas con 4/5/6 fichas.<br>La primera vez que sueltas cada tipo de objeto, gastas una ficha y el objeto se consume. Cada tipo de objeto concede una bonificación: linterna, vial de niebla, llave, mapa, botiquín o caja de herramientas."
+    "description": "Empiezas con 4/5/6 fichas.<br>La primera vez que sueltas un objeto de cada tipo, gastas una ficha y el objeto se consume. Según el tipo:<ul><li>Linterna: al aturdir al asesino, también lo ciegas 2 segundos.</li><li>Vial de niebla: tras un salto rápido, tus marcas de arañazos desaparecen un 50 % más rápido durante 5 segundos.</li><li>Llave: +1 registro en cada cofre.</li><li>Mapa: las auras que ves durante un tiempo duran 1 segundo más.</li><li>Botiquín: al curar a otro superviviente, también te curas al 25 % de velocidad.</li><li>Caja de herramientas: ves las auras de los 3 generadores más cercanos entre sí.</li></ul>"
    },
    "en": {
     "categories": [],
@@ -202,7 +202,7 @@
     "teachable": 40,
     "image": "T_UI_iconsPerks_BestGiftEver",
     "name": "Best Gift Ever",
-    "description": "You start with 4/5/6 Tokens.<br>The first time you drop each item type, you spend a Token and the item is consumed. Each item type then grants a bonus: Flashlight, Fog Vial, Key, Map, Medkit or Toolbox."
+    "description": "At the start of the trial, you earn 4/5/6 Tokens.<br>The first time you drop an Item of each type, spend 1 Token, then the dropped item is consumed. Then, based on the item type:<ul><li>Flashlight: whenever you stun the Killer, they are also blinded for 2s.</li><li>Fog Vial: whenever you fast-vault, for 5s, your scratch marks disappear 50% faster.</li><li>Key: you gain +1 rummage on each chest.</li><li>Map: Auras you see for a duration last +1s.</li><li>Medkit: while healing another Survivor, you also gain healing progress at 25% speed.</li><li>Toolbox: you see the Auras of the 3 Generators closest to each other.</li></ul>"
    }
   }
  },
@@ -217,7 +217,7 @@
     "event": null,
     "parents": null,
     "name": "Bolsa de juguetes",
-    "description": "<b>BOLSA DE JUGUETES</b><br><br>Mantén pulsado el botón de poder para abrir la bolsa y elegir uno de dos juguetes aleatorios. Después, la bolsa entra en enfriamiento.<br><br>Juguetes (de un solo uso): botella de ácido, mangual, pistola, lanzallamas y bocina. Dañan a los supervivientes sanos e infligen Tortura a los heridos. Cada Tortura añade un punto de Letalidad y, con la Letalidad al máximo, el juguete puede derribar a supervivientes heridos. La bocina al máximo también interrumpe reparaciones y curaciones y hace retroceder el progreso.<br><br><b>BURLA</b><br>Burlarte de un superviviente Aterrado, colgado o derribado, da 1 de Letalidad a todos los juguetes y elimina Aterrado."
+    "description": "<b>BOLSA DE JUGUETES</b><br><br>Mantén pulsado el botón de habilidad para abrir la bolsa y elegir entre 2 juguetes al azar. Al cerrarla entra en un enfriamiento de 10 segundos.<br><br>Juguetes (de un solo uso): botella de ácido (deja un charco 1,5 segundos), lanzallamas (prende el entorno, generadores, ventanas y palés caídos hasta 6 segundos), pistola, mangual (5 metros de alcance, golpea por encima de ventanas y palés) y bocina (detecta en 6 metros a la redonda y sin límite hacia delante).<br><br>Dañan a los supervivientes sanos e infligen Tortura a los heridos; otro juguete distinto derriba al torturado. La Tortura dura 40 segundos. Cada Tortura sube 1 punto la Letalidad de ese juguete; con la Letalidad al máximo, hiere y tortura a un sano y derriba a un herido. La bocina al máximo interrumpe reparaciones y curaciones y les quita un 5 % de progreso.<br><br><b>BURLA</b><br>Derribar a un torturado con otro juguete lo deja Aterrado. Pulsa el botón de habilidad a menos de 6 metros de un superviviente Aterrado en el suelo para burlarte: sube 1 punto la Letalidad de todos los juguetes y le quita Aterrado. A los colgados se les hace la burla automáticamente."
    },
    "en": {
     "type": "power",
@@ -228,7 +228,7 @@
     "event": null,
     "parents": null,
     "name": "Bag of Toys",
-    "description": "<b>BAG OF TOYS</b><br><br>Hold the power button to open the bag and pick one of two random Toys. The bag then goes on cooldown.<br><br>Toys (single use): Acid Bottle, Flail, Handgun, Flamethrower and Bike Horn. They damage healthy Survivors and inflict Torture on injured ones. Each Torture adds one point of Deadliness and, at maximum Deadliness, a Toy can down injured Survivors. At maximum Deadliness the Bike Horn also interrupts repairs and healing and regresses progress.<br><br><b>TAUNT</b><br>Taunting a Terrified Survivor who is hooked or downed grants 1 Deadliness to all Toys and removes Terrified."
+    "description": "<b>BAG OF TOYS</b><br><br>Hold the Ability button to open the Bag of Toys and choose from 2 random Toys. Closing the bag triggers a 10s cooldown.<br><br>Toys (single-use): Acid Bottle (leaves a puddle for 1.5s), Flamethrower (ignites the environment, Generators, Windows and downed Pallets for up to 6s), Handgun, Flail (5m range, strikes over Windows and Pallets) and Bike Horn (detects within a 6m radius and an unlimited forward range).<br><br>Toys damage healthy Survivors and inflict Torture on injured ones; a different Toy downs a Tortured Survivor. Torture lasts 40s. Inflicting Torture increases that Toy's Deadliness by 1 point; at maximum Deadliness it injures and Tortures a healthy Survivor and downs an injured one. A maxed Bike Horn interrupts repairs and healing with a 5% regression.<br><br><b>TAUNT</b><br>Downing a Tortured Survivor with a different Toy inflicts Terrified. Tap the Ability button within 6m of a Terrified Survivor in the dying state to Taunt them: all Toys gain 1 Deadliness and Terrified is removed. Hooked Survivors are Taunted automatically."
    }
   }
  },

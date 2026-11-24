@@ -6,9 +6,10 @@ Salidas (en public/dbd/ salvo que se pase --salida):
 
 Fuentes (scripts/dbd/fuentes/):
   dl/                 descarga de dbd.tricky.lol (es + en)
-  changes_es.json     cambios del último parche, a mano: {id: [tipo, texto]}
+  changes_es.json     cambios de los últimos parches, a mano: {id: [tipo, texto]} o {id: [tipo, texto, versión]};
+                      sin versión vale `parcheCambios` de ajustes.json
   ajustes.json        correcciones que tricky no trae (nombres nuevos, perks sin personaje, apodos de !pj, parche)
-  ptb_terrifier.json  datos del PTB a mano (es y en); solo entran los ids que tricky aún no trae
+  ptb_terrifier.json  capítulo que tricky aún no trae, a mano (es y en); solo entran los ids que le faltan
   dl/maps*.json       mapas por reino; las variantes (mismo nombre o «II», «III»…) se agrupan en un solo mapa
   iconos_wiki.json    archivo de deadbydaylight.wiki.gg de cada icono, por grupo e id
                       (en `powers`, una lista por poder: el icono principal y el de cada estado)
@@ -200,6 +201,7 @@ def build(icons):
             c=None if pid in adj['sinPersonaje'] else char_name(v['character']),
             d=plain(render(v['description'], v['tunables'])),
             ch=ch[0] if ch else None, cd=ch[1] if ch else None,
+            cv=(ch[2] if len(ch) > 2 else adj['parcheCambios']) if ch else None,
             i=icons.ensure(f'icons/{k}.webp', wiki['perks'].get(pid)),
             **({'ptb': True} if pid in ptb_perks else {}),
         ))
@@ -304,7 +306,7 @@ def build(icons):
         patch=adj['patch'],
         perks=[dict(k=p['k'], n=p['n'], en=p['en'], c=p['c'],
                     t=p['cd'] if p['ch'] else txt.get(slug(p['n'])) or p['d'].replace('\n', ' ').replace('• ', ''),
-                    ch=p['ch'], i=p['i'], r=p['r'], **({'fx': p['fx']} if p['fx'] else {}), **({'ptb': True} if p.get('ptb') else {})) for p in perks],
+                    ch=p['ch'], **({'cv': p['cv']} if p['ch'] else {}), i=p['i'], r=p['r'], **({'fx': p['fx']} if p['fx'] else {}), **({'ptb': True} if p.get('ptb') else {})) for p in perks],
         chars=chars,
         realms=[dict(k=r['k'], n=r['n'], en=r['en'], a=r['a'], m=r['m'], i=r['i']) for r in realms.values()],
         maps=[dict(k=m['k'], n=m['n'], en=m['en'], r=m['r'], v=m['v'], i=m['i'], **({'o': m['o']} if m.get('o') else {})) for m in maps],

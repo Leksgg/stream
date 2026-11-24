@@ -41,7 +41,8 @@
 ],
 "K36P03": [
 "valores",
-"Saltas ventanas un 15/20/25 % más rápido y la recarga de tus ataques básicos es un 10 % más corta (falles, te obstaculicen o aciertes); las cegueras y aturdimientos por palé duran un 25 % más (antes 15 %)"
+"Saltas ventanas un 15 % más rápido (antes 15/20/25 %) y la recarga de tus ataques básicos acertados es un 13/14/15 % más corta (antes 10 % en cualquier ataque); las cegueras y aturdimientos por palé duran un 15 % más (antes 25 %)",
+"10.3.0"
 ],
 "DeadMansSwitch": [
 "valores",
@@ -81,11 +82,13 @@
 ],
 "K41P01": [
 "valores",
-"Al colgar por primera vez a cada superviviente ganas 1 distintivo: cada uno da un 4 % de Celeridad cargando y cuelgas un 4 % más rápido (nuevo); con 4, todos gritan y sufren Vulnerabilidad durante 80/85/90 s (antes 40/50/60 s)"
+"Al colgar por primera vez a cada superviviente ganas 1 distintivo: cada uno da un 4 % de Celeridad cargando y cuelgas un 4 % más rápido; con 4, todos gritan y sufren Vulnerabilidad durante 60/65/70 s (antes 80/85/90 s)",
+"10.3.0"
 ],
 "Monstrous_Shrine": [
 "valores",
-"Los ganchos del sótano y 4 aleatorios son flagelantes. Nuevo: si estás a más de 24 m del superviviente colgado en uno, los generadores sin reparar retroceden un 150/175/200 % más rápido"
+"Los ganchos del sótano y 4 aleatorios son flagelantes. Si estás a más de 24 m del superviviente colgado en uno, los generadores sin reparar retroceden un 200 % más rápido (antes 150/175/200 %); el efecto dura 20/25/30 s más después de que deje el gancho (nuevo)",
+"10.3.0"
 ],
 "BoonDestroyer": [
 "rework",
@@ -105,7 +108,8 @@
 ],
 "Whispers": [
 "valores",
-"Oyes murmullos del Ente si hay un superviviente a menos de 28/26/24 m (antes 48/40/32 m); fuera de ese rango obtienes un 5 % de Celeridad (nuevo)"
+"Oyes murmullos del Ente si hay un superviviente a menos de 28/26/24 m; fuera de ese rango obtienes un 7 % de Celeridad (antes 5 %)",
+"10.3.0"
 ],
 "Kindred": [
 "valores",
@@ -153,11 +157,13 @@
 ],
 "Calm_Spirit": [
 "valores",
-"No asustas a los cuervos ni gritas; ahora purificas tótems y abres cofres un 8/9/10 % más rápido y en silencio (antes un 40/35/30 % más lento)"
+"No asustas a los cuervos ni gritas; bendices y purificas tótems y abres cofres en silencio y un 23/24/25 % más rápido (antes 8/9/10 %)",
+"10.3.0"
 ],
 "Dark_Sense": [
-"valores",
-"Al completarse un generador, si el asesino se acerca a menos de 24 m ves su aura 8/9/10 s (antes 5/7/10 s); ahora también ves palés, ventanas y al resto de supervivientes"
+"rework",
+"Ganas 1 distintivo al empezar y por cada generador completado (máx. 5). Cuando el asesino se acerca a menos de 20 m gastas uno y, durante 13/14/15 s, ves su aura, la de los demás supervivientes y la de palés y ventanas a menos de 32 m (antes solo se activaba al completarse un generador)",
+"10.3.0"
 ],
 "SoleSurvivor": [
 "rework",
@@ -196,8 +202,9 @@
 "Una vez por partida, sin 2 estados de gancho, desenganchas con el botón de habilidad: el rescatado pierde un estado de gancho y tú lo ganas, gritas, quedas herido y sufres Quebranto 160/140/120 s (antes Vulnerabilidad 60/50/40 s)"
 ],
 "Slippery_Meat": [
-"rework",
-"Ya no da intentos ni suerte para desengancharte. Los demás te desenganchan un 90/95/100 % más rápido y obtienes un 5 % de Celeridad al ser desenganchado"
+"valores",
+"Los demás te desenganchan un 65/70/75 % más rápido (antes 90/95/100 %) y obtienes un 7 % de Celeridad al ser desenganchado (antes 5 %)",
+"10.3.0"
 ],
 "Small_Game": [
 "rework",

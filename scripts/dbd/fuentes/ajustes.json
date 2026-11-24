@@ -7,8 +7,9 @@
   "sinPersonaje": [
     "SoleSurvivor"
   ],
-  "patch": "10.2.0",
-  "date": "2026-10-06",
+  "patch": "10.3.0",
+  "date": "2026-11-24",
+  "parcheCambios": "10.2.0",
   "aliasExtra": {
     "laforma": [
       "myers",
