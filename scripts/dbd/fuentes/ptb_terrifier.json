@@ -1,5 +1,5 @@
 {
- "_nota": "Capítulo Terrifier (10.3.0: Art el Payaso y Sienna Shaw), a mano desde las notas oficiales de salida del 2026-11-24. Misma forma que dl/*.json (es y en). El generador solo los usa si tricky aún no trae ese id; cuando tricky tenga la 10.3.0, borrar este archivo. Los nombres en español son provisionales.",
+ "_nota": "Capítulo Terrifier (10.3.0: Terrifier y Sienna Shaw), a mano desde las notas oficiales de salida del 2026-11-24 (inglés) y desde capturas del juego en español (nombres y textos). Misma forma que dl/*.json (es y en). El generador solo los usa si tricky aún no trae ese id; cuando tricky tenga la 10.3.0, borrar este archivo.",
  "perks": {
   "Laughingstock": {
    "es": {
@@ -16,7 +16,7 @@
     "teachable": 40,
     "image": "T_UI_iconsPerks_Laughingstock",
     "name": "Hazmerreír",
-    "description": "Los supervivientes a menos de 12 metros de un generador completado sufren <b>Agotamiento</b> e <b>Inconsciencia</b>.<br>El efecto persiste 3/4/5 segundos después de salir del alcance.<br><br>Ves las auras de los generadores completados."
+    "description": "Los supervivientes que estén en un radio de 12 metros de un generador completado:<ul><li>Sufren <b>Agotamiento</b>.</li><li>Sufren <b>Inconsciencia</b>.</li></ul>Cuando salgan de este radio, el efecto terminará después de 3/4/5 segundos.<br><br>Ves las auras de los generadores completados."
    },
    "en": {
     "categories": [],
@@ -49,8 +49,8 @@
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_KillSpree",
-    "name": "Racha asesina",
-    "description": "Cuando todos los supervivientes restantes tengan 2 estados de gancho y todos los generadores estén completados, puedes matar a los supervivientes.<br>Ambos interruptores de las puertas de salida quedan bloqueados mientras lo haces.<br><br>El efecto termina 12/16/20 segundos después de completar una muerte."
+    "name": "Oleada de asesinatos",
+    "description": "Cuando todos los supervivientes que sigan en pie tengan 2 estados de gancho y todos los generadores estén completados, podrás matar a los supervivientes.<br><br>Mientras mates a un superviviente, se bloquearán los dos interruptores de puerta de salida. Cuando termines de matar a un superviviente, esto terminará después de 12/16/20 segundos."
    },
    "en": {
     "categories": [],
@@ -83,8 +83,8 @@
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_FunnyBusiness",
-    "name": "Negocios graciosos",
-    "description": "Al dañar un generador obtienes un 10 % de <b>Celeridad</b> durante 10 segundos y un resultado aleatorio: 5 segundos más de Celeridad, un aturdimiento de 2 segundos, el bloqueo del generador durante 30 segundos o confeti sin ningún efecto.<br>Enfriamiento de 60/50/40 segundos.<br><br>El mismo resultado no puede repetirse dos veces seguidas."
+    "name": "Triquiñuela",
+    "description": "Cada vez que dañes un generador, obtienes un 10 % de <b>Celeridad</b> durante 10 segundos y se produce al azar uno de los siguientes efectos:<ul><li>Conservas tu 10 % de Celeridad durante 5 segundos más.</li><li>Sufres aturdimiento durante 2 segundos.</li><li>El generador afectado queda bloqueado durante 30 segundos.</li><li>¡Confeti! Pero no pasa nada.</li></ul>Tiempo de recarga: 60/50/40 segundos.<br><br>El mismo efecto no puede ocurrir dos veces seguidas."
    },
    "en": {
     "categories": [],
@@ -117,8 +117,8 @@
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_ValkyriesRage",
-    "name": "Furia de valquiria",
-    "description": "Tras ser perseguido durante 40/35/30 segundos, el siguiente aturdimiento con un palé al asesino dura un 75 % más."
+    "name": "Furia de la valquiria",
+    "description": "Después de que el asesino te persiga durante 40/35/30 segundos, la próxima vez que lo aturdas con un palé, quedará aturdido un 75 % más de tiempo."
    },
    "en": {
     "categories": [],
@@ -152,7 +152,7 @@
     "teachable": 40,
     "image": "T_UI_iconsPerks_SharedTrauma",
     "name": "Trauma compartido",
-    "description": "Cuando recibes un golpe de protección, los supervivientes a menos de 12 metros recuperan el <b>Agotamiento</b> mientras corren durante 30/35/40 segundos.<br>A menos de 32 metros ves las auras de los supervivientes agotados."
+    "description": "Cada vez que recibas un golpe por protección, todos los supervivientes que estén en un radio de 12 metros se recuperan de <b>Agotamiento</b> mientras corren durante 30/35/40 segundos.<br><br>Ves las auras de los supervivientes que sufran <b>Agotamiento</b> en un radio de 32 metros."
    },
    "en": {
     "categories": [],
@@ -185,8 +185,8 @@
     },
     "teachable": 40,
     "image": "T_UI_iconsPerks_BestGiftEver",
-    "name": "El mejor regalo",
-    "description": "Empiezas con 4/5/6 fichas.<br>La primera vez que sueltas un objeto de cada tipo, gastas una ficha y el objeto se consume. Según el tipo:<ul><li>Linterna: al aturdir al asesino, también lo ciegas 2 segundos.</li><li>Vial de niebla: tras un salto rápido, tus marcas de arañazos desaparecen un 50 % más rápido durante 5 segundos.</li><li>Llave: +1 registro en cada cofre.</li><li>Mapa: las auras que ves durante un tiempo duran 1 segundo más.</li><li>Botiquín: al curar a otro superviviente, también te curas al 25 % de velocidad.</li><li>Caja de herramientas: ves las auras de los 3 generadores más cercanos entre sí.</li></ul>"
+    "name": "El mejor regalo del mundo",
+    "description": "Al comienzo de la partida, obtienes 4/5/6 distintivos.<br><br>La primera vez que sueltes un objeto de cada tipo, gastas 1 distintivo y el objeto que hayas soltado se consume. Después, dependiendo del tipo de objeto:<ul><li>Linterna: cada vez que aturdas al asesino, también quedará cegado durante 2 segundos.</li><li>Vial de niebla: cada vez que realices un salto rápido, tus marcas de arañazos desaparecerán un 50 % más rápido durante 5 segundos.</li><li>Llave: podrás rebuscar 1 vez más en cada cofre.</li><li>Mapa: las auras que veas durante un tiempo permanecerán visibles 1 segundo más.</li><li>Botiquín: mientras cures a otro superviviente, también obtendrás progreso de curación a un 25 % de velocidad.</li><li>Caja de herramientas: verás las auras de los 3 generadores más cercanos entre sí.</li></ul>"
    },
    "en": {
     "categories": [],
@@ -217,7 +217,7 @@
     "event": null,
     "parents": null,
     "name": "Bolsa de juguetes",
-    "description": "<b>BOLSA DE JUGUETES</b><br><br>Mantén pulsado el botón de habilidad para abrir la bolsa y elegir entre 2 juguetes al azar. Al cerrarla entra en un enfriamiento de 10 segundos.<br><br>Juguetes (de un solo uso): botella de ácido (deja un charco 1,5 segundos), lanzallamas (prende el entorno, generadores, ventanas y palés caídos hasta 6 segundos), pistola, mangual (5 metros de alcance, golpea por encima de ventanas y palés) y bocina (detecta en 6 metros a la redonda y sin límite hacia delante).<br><br>Dañan a los supervivientes sanos e infligen Tortura a los heridos; otro juguete distinto derriba al torturado. La Tortura dura 40 segundos. Cada Tortura sube 1 punto la Letalidad de ese juguete; con la Letalidad al máximo, hiere y tortura a un sano y derriba a un herido. La bocina al máximo interrumpe reparaciones y curaciones y les quita un 5 % de progreso.<br><br><b>BURLA</b><br>Derribar a un torturado con otro juguete lo deja Aterrado. Pulsa el botón de habilidad a menos de 6 metros de un superviviente Aterrado en el suelo para burlarte: sube 1 punto la Letalidad de todos los juguetes y le quita Aterrado. A los colgados se les hace la burla automáticamente."
+    "description": "<b>BOLSA DE JUGUETES</b><br><br>Mantén pulsado el botón de habilidad para abrir la bolsa y elegir entre 2 juguetes al azar; al cerrarla, entra en un enfriamiento de 10 segundos. Cada juguete es de un solo uso.<br><br>Usa un juguete para aplicar Tortura a un superviviente herido (dura 40 segundos). A continuación, usa un juguete diferente con él para derribarlo y aplicarle Aterrorizado. Cada Tortura sube 1 punto la letalidad de ese juguete; con la letalidad al máximo, hiere y tortura a un superviviente sano y derriba a uno herido.<br><br>Juguetes:<ul><li>Mangual: ataque especial de 5 metros que pasa por encima de ventanas, palés y objetos bajos.</li><li>Frasco de ácido: se lanza a los supervivientes o contra objetos, muros o el suelo y deja un charco de ácido durante 1,5 segundos.</li><li>Lanzallamas: dispara llamas que prenden el entorno hasta 6 segundos, incluidos ventanas, generadores y palés derribados.</li><li>Pistola: dispara una única bala con un alcance extremadamente largo.</li><li>Bocina de bicicleta: revela a los supervivientes en 6 metros a la redonda y sin límite hacia delante y reinicia su Tortura; si detecta a varios, les aplica Inconsciencia. Con la letalidad al máximo, interrumpe reparaciones y curaciones con un 5 % de retroceso.</li></ul><b>PROVOCAR</b><br>Pulsa el botón de habilidad a menos de 6 metros de un superviviente Aterrorizado en el suelo para provocarlo: sube 1 punto la letalidad de todos los juguetes y le quita Aterrorizado. A los supervivientes colgados se les provoca automáticamente."
    },
    "en": {
     "type": "power",
@@ -251,7 +251,7 @@
      "Kill_Spree",
      "Funny_Business"
     ],
-    "name": "El Terrifier"
+    "name": "Terrifier"
    },
    "en": {
     "id": "K45",

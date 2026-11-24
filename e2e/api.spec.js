@@ -40,6 +40,11 @@ test('GET /dbd/perk y /dbd/pj responden texto para el chat', async ({ request })
   expect(recent).toContain('7 % de Celeridad');
   expect(recent).toContain('[cambió en 10.3.0]');
   expect(await (await request.get('/dbd/perk?q=kill spree')).text()).toContain('12/16/20');
+  const kill = await (await request.get('/dbd/perk?q=oleada')).text();
+  expect(kill).toMatch(/^Oleada de asesinatos \(Terrifier\): /);
+  expect(kill).toContain('12/16/20');
+  expect(await (await request.get('/dbd/pj?q=terrifier')).text()).toBe('Terrifier (asesino): Hazmerreír · Oleada de asesinatos · Triquiñuela');
+  expect(await (await request.get('/dbd/pj?q=art')).text()).toContain('Terrifier (asesino)');
 
   const pj = await request.get('/dbd/pj?q=jake');
   expect(await pj.text()).toBe('Jake Park (superviviente): Espíritu calmado · Voluntad de hierro · Sabotear');
